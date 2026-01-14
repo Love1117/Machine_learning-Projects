@@ -1,0 +1,33 @@
+
+.git
+.gitignore
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# IDE/Editor files
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+
+# Large ML models 
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.ckpt
