@@ -3,7 +3,7 @@ import uvicorn
 from pydantic import BaseModel
 import pandas as pd
 from pathlib import Path
-
+import joblib
 
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_DIR = BASE_DIR / "models" / "1st_version"
