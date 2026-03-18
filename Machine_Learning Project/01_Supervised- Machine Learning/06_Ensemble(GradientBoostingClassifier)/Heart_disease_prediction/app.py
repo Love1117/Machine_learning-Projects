@@ -54,9 +54,9 @@ async def predict(data: Base):
                                 "diastolic_blood_pressure": data.diastolic_blood_pressure,
                                 "cholesterol": data.cholesterol, # Corrected typo here
                                 "gluc": data.gluc,
-                                "smoke": SMOKE[data.smoke], # Corrected from smoke_intake to smoke
-                                "alcohol_intake": ALCOHOL[data.alcohol_intake], # Corrected from alcohol to alcohol_intake
-                                "Physical_activity": PHYSICAL[data.Physical_activity], # Corrected typo here
+                                "smoke": SMOKE[data.smoke],
+                                "alcohol_intake": ALCOHOL[data.alcohol_intake],
+                                "Physical_activity": PHYSICAL[data.Physical_activity],
                                 "age": data.age,
                                 "bmi": data.bmi,
                                 **bp_encoded}])
