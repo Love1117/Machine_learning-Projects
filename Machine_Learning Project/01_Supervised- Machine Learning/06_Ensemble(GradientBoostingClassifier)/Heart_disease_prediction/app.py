@@ -68,6 +68,3 @@ async def predict(data: Base):
     return {"Heart Disease: Yes" if prediction == 1 else "Heart Disease: No"}
   except Exception as e:
     raise HTTPException(status_code=500, detail=str(e))
-
-          
-    raise HTTPException(status_code=500, detail=str(e))
