@@ -5,7 +5,7 @@ import uvicorn
 from pydantic import BaseModel, Field
 from typing import Literal
 import joblib
-from pathlib import path
+from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent
