@@ -13,47 +13,42 @@ BASE_DIR = Path(__file__).resolve().parent
 
 MODEL_DIR = BASE_DIR / "models" / "1st_version"
 
-model = joblib.load(MODEL_DIR / "CreditCard_fraud_transaction.joblib")
+model = joblib.load(MODEL_DIR / "Customer_Mall_Segmentation-V1.0.0.joblib")
 scale = joblib.load(MODEL_DIR / "scale.joblib")
 
 
 
-def encode_type(type_status):
-          return {"type_CASH_OUT": 1 if type_status == "CASH_OUT" else 0,
-                  "type_DEBIT": 1 if type_status == "DEBIT" else 0,
-                  "type_PAYMENT": 1 if type_status == "PAYMENT" else 0,
-                  "type_TRANSFER": 1 if type_status == "TRANSFER" else 0}
+app = FastAPI()
 
-
-
+GENDER = {"Male":1, "Female":0}
 
 class Base(BaseModel):
-  step: float= Field(..., json_schema_extra={"example": 183, "description": "Input number of steps"})
-  amount: float = Field (..., json_schema_extra={"example": 22004.84, "description": "Amount"})
-  oldbalanceOrg: float = Field (..., json_schema_extra={"example": 87956.18, "description": "Old balance of originator account"})
-  newbalanceOrig: float = Field (..., json_schema_extra={"example": 65951.34, "description": "New balance of originator account"})
-  oldbalanceDest: float = Field (..., json_schema_extra={"example": 0.00, "description": "Old balance of destination account"})
-  newbalanceDest: float = Field (..., json_schema_extra={"example": 0.00, "description": "New balance of destination account"})
-  type_status: str = Field (..., json_schema_extra={"example": "CASH_OUT", "description": "Type of payment"})
+  Gender: Literal["Male", "Female"]
+  Age: int= Field(..., example=44, description="input your age")
+  Annual_Income_k: float= Field(..., alias="Annual_Income_(k$)", example=73, description="what is your annual income")
+  Spending_Score_1_100: float= Field(..., alias="Spending_Score(1-100)", example=7, description="what is your spending score")
+
 
 @app.post("/predict")
 async def predict(data: Base):
   try:
-    type_encoded = encode_type(data.type_status)
+    input_data = pd.DataFrame([{"Gender": GENDER[data.Gender],
+                                "Age": data.Age,
+                                "Annual Income (k$)": data.Annual_Income_k,
+                                "Spending Score (1-100)": data.Spending_Score_1_100}])
 
-    input_data = pd.DataFrame([{"step": data.step,
-                                  "amount": data.amount,
-                                  "oldbalanceOrg": data.oldbalanceOrg,
-                                  "newbalanceOrig": data.newbalanceOrig,
-                                  "oldbalanceDest": data.oldbalanceDest,
-                                  "newbalanceDest": data.oldbalanceDest,
-                                  **type_encoded}])
+    scaled_df = scale.transform(input_data)
 
-    scale_df = scale.transform(input_data)
+    prediction = model.predict(scaled_df)[0]
 
-    prediction = model.predict(scale_df)[0]
+    group_mapping = {
+        0:"High-income, Low-spending customers",
+        1:"Average-income, Moderate-spending customers",
+        2: "High-income, High-spending customers",
+        3: "Low-income, High-spending customers",
+        4: "Low-income, Low-spending customers"}
 
-    return {"is_fraud: Yes" if prediction == -1 else "is_fraud:: No"}
+    return {"Falls_Into": group_mapping.get(prediction, "Unknown Group")}
 
   except Exception as e:
     raise HTTPException(status_code=500, detail=str(e))
