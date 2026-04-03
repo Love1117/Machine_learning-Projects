@@ -1,11 +1,10 @@
 from fastapi import FastAPI, HTTPException
 import uvicorn
-import pandas as pd
 from pydantic import BaseModel, Field
-from pathlib import Path
+import pandas as pd
+from typing import Literal
 import joblib
-
-
+from pathlib import Path
 
 app = FastAPI()
 
