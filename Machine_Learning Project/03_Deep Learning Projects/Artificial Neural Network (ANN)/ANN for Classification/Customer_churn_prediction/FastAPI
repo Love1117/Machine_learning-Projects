@@ -9,8 +9,12 @@ from tensorflow import keras
 from tensorflow.keras import models
 from pathlib import Path
 
-model = models.load_model("/content/drive/My Drive/Models/Deep Learning/Artificial Neural Network/ANN for classification/Customer churn prediction 1/Customer_churn_prediction_V1.0.0.keras")
-scale = joblib.load("/content/drive/My Drive/Models/Deep Learning/Artificial Neural Network/ANN for classification/Customer churn prediction 1/scale.joblib")
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_DIR = BASE_DIR / "models" / "1st_version"
+
+model = joblib.load(MODEL_DIR / "Customer_churn_prediction_V1.0.0.keras")
+scale = joblib.load(MODEL_DIR / "scale.joblib")
+
 
 app = FastAPI()
 
