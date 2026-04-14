@@ -16,7 +16,7 @@ MODEL_DIR = BASE_DIR / "models" / "1st_version"
 @app.on_event("startup")
 async def load_model():
     global model
-    model = keras.models.load_model(MODEL_DIR / "CreditCard_fraud_transaction.joblib")
+    model = keras.models.load_model(MODEL_DIR / "CIFAR-10 images classification/CIFAR-10_images_classification.keras,.")
     print("Model loaded successfully!")
 
 
