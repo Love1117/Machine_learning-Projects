@@ -3,24 +3,20 @@ from pydantic import BaseModel
 from PIL import Image
 import io
 import numpy as np
+import tensorflow as tf
 from tensorflow import keras
-from pathlib import Path
-import joblib
 
 
 app = FastAPI(title="CIFAR-10 Image Classification API")
 
-model_path = ("/content/drive/My Drive/Models/Deep Learning/Convolutional Neural Network/CIFAR-10 images classification/CIFAR-10_images_classification.keras")
-
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_DIR = BASE_DIR / "models" / "1st_version"
 
-model = joblib.load(MODEL_DIR / "CreditCard_fraud_transaction.joblib")
 
 @app.on_event("startup")
 async def load_model():
     global model
-    model = keras.models.load_model(model_path)
+    model = keras.models.load_model(MODEL_DIR / "CreditCard_fraud_transaction.joblib")
     print("Model loaded successfully!")
 
 
