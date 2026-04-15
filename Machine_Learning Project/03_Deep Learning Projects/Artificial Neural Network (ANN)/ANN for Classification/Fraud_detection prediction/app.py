@@ -115,7 +115,10 @@ async def predict(data: Base):
     probability = model.predict(scaled_df)[0][0]
     prediction_class = 1 if probability >= 0.5 else 0
 
-    return {"is_fraudulent": "Yes" if prediction_class == 1 else "No"}
+    return {"prediction_probability": float(probability),
+            "is_fraudulent": "Yes" if prediction_class == 1 else "No",
+            "model_used": "ANN"}
+          
 
   except Exception as e:
     raise HTTPException(status_code=500, detail=str(e))
