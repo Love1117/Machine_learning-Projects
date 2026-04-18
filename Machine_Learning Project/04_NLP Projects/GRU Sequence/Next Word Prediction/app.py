@@ -8,23 +8,52 @@ from tensorflow.keras import Sequential
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from pathlib import Path
+import gdown
 
 nest_asyncio.apply()
 app = FastAPI()
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path.cwd()
 MODEL_DIR = BASE_DIR / "models" / "1st_version"
 
-try:
-    global loaded_model, loaded_tokenizer
-    model = load_model(MODEL_DIR / "GRU_model.keras")
-    tokenizer = joblib.load(MODEL_DIR / "GRU_tokenizer.plk")
-    print("Model and Tokenizer loaded successfully!")
+MODEL_PATH = MODEL_DIR / "GRU_model.keras"
+TOKENIZER_PATH = MODEL_DIR / "GRU_tokenizer.pkl"
 
-except Exception as e:
-    print(f"Error loading model or tokenizer: {e}")
-    loaded_model = None
-    loaded_tokenizer = None
+# 🔹 Google Drive File IDs
+MODEL_FILE_ID = "1ZbZ6Hlesmi4MzgmHZIe216-o4LrDMCOi"
+TOKENIZER_FILE_ID = "1ZbZ6Hlesmi4MzgmHZIe216-o4LrDMCOi"
+
+def download_from_drive(file_id, output_path):
+    url = f"https://drive.google.com/uc?id={file_id}"
+    gdown.download(url, str(output_path), quiet=False)
+
+def ensure_files_exist():
+    MODEL_DIR.mkdir(parents=True, exist_ok=True)
+
+    # Download model if not exists
+    if not MODEL_PATH.exists():
+        print("Downloading model from Google Drive...")
+        download_from_drive(MODEL_FILE_ID, MODEL_PATH)
+
+    # Download tokenizer if not exists
+    if not TOKENIZER_PATH.exists():
+        print("Downloading tokenizer from Google Drive...")
+        download_from_drive(TOKENIZER_FILE_ID, TOKENIZER_PATH)
+
+@app.on_event("startup")
+def load_resources():
+    global model, tokenizer
+
+    ensure_files_exist()
+
+    print("Loading model...")
+    model = load_model(MODEL_PATH)
+
+    print("Loading tokenizer...")
+    tokenizer = joblib.load(TOKENIZER_PATH)
+
+    print("✅ Model and Tokenizer loaded successfully!")
+
 
 
 def predict_next_words(input_word: str, len_of_words: int, tokenizer, model):
@@ -50,7 +79,7 @@ def predict_next_words(input_word: str, len_of_words: int, tokenizer, model):
 
     seq_to_predict = seq_to_predict.reshape(1, 3)
 
-    # To Ensure model is loaded 
+    # To Ensure model is loaded
     if model is None:
         return "Error: Model not loaded."
 
@@ -73,7 +102,6 @@ def predict_next_words(input_word: str, len_of_words: int, tokenizer, model):
       break
 
   return generated_text
-
 
 
 
