@@ -9,6 +9,8 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from pathlib import Path
 import gdown
+import os
+
 
 nest_asyncio.apply()
 app = FastAPI()
