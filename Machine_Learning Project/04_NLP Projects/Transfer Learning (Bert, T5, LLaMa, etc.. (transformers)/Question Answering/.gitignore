@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables
+.env
+
+# Jupyter / Colab
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Model cache (IMPORTANT for transformers)
+.cache/
+huggingface/
+*.pt
+*.bin
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+*.tar
