@@ -10,8 +10,11 @@ from scipy.special import softmax
 # Initialize FastAPI app
 app = FastAPI(title="Disneyland Review Sentiment Analysis API")
 
-# Download NLTK VADER lexicon
-nltk.download('vader_lexicon')
+try:
+    nltk.data.find('sentiment/vader_lexicon.zip')
+except LookupError:
+    nltk.download('vader_lexicon')
+
 
 # Initialize VADER Sentiment Analyzer
 sia = SentimentIntensityAnalyzer()
