@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import uvicorn
 from pydantic import BaseModel, Field
 import nltk
 from nltk.sentiment import SentimentIntensityAnalyzer
