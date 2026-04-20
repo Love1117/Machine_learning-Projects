@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+venv/
+env/
+.venv/
+
+# Environment
+.env
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# HuggingFace / Torch models
+.cache/
+huggingface/
+*.pt
+*.bin
+
+# NLTK data
+nltk_data/
+
+# Jupyter
+.ipynb_checkpoints/
