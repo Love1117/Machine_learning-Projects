@@ -1,5 +1,6 @@
 import nest_asyncio
 from fastapi import FastAPI
+import uvicorn
 from pydantic import BaseModel
 from keras.models import load_model
 import joblib
