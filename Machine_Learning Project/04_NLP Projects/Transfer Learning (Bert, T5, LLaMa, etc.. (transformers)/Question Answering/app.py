@@ -1,4 +1,5 @@
 import nest_asyncio
+import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import pipeline
