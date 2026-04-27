@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 from database.db import SessionLocal, engine
 from database.models import Base, Prediction
@@ -83,7 +83,7 @@ Transmission_Map = {"Automatic":1, "Manual":0}
 
 
 
-class Base(BaseModel):
+class PredictionRequest(BaseModel):
   car_ModelAndYear: Car_modelAndYear_Enum
   car_name: Car_name_Enum
   year: int = Field(..., example=2018, description="Year of the car")
@@ -116,7 +116,7 @@ def get_db():
 
 
 @app.post("/predict")
-async def predict(data: Base, db: Session = Depends(get_db)):
+async def predict(data: PredictionRequest, db: Session = Depends(get_db)):
   try:
     fuel_encoded = encode_fuel(data.fuel)
     owner_encoded = encode_owner(data.owner)
@@ -176,10 +176,11 @@ async def predict(data: Base, db: Session = Depends(get_db)):
             engine = data.engine,
             max_power = data.max_power,
             seats = data.seats,
-            fuel =
-            owner = 
-            seller_type =
-            car_price = Prediction)
+            fuel = data.fuel
+            owner = data.owner
+            seller_type = data.seller_type
+            car_price = prediction
+
 
     db.add(db_prediction)
     db.commit()
