@@ -1,7 +1,7 @@
 import pandas as pd
 from fastapi import HTTPException
 
-from app.services.model_loader import model, scaler, Country_freq, Race_freq, Job_title_encoder
+from app.services.model_loader import model, scale, Country_freq, Race_freq, Job_title_encoder
 from app.core.constants import Gend
 from app.database.crud import save_prediction
 
@@ -61,7 +61,7 @@ def predict_price(data, db):
                              "Senior",
                              "Job_title"]]
 
-    Scaled = scaler.transform(input_data)
+    Scaled = scale.transform(input_data)
     prediction = float(round(model.predict(scaled)[0], 2))
 
     db_obj = save_prediction(db, data, prediction)
