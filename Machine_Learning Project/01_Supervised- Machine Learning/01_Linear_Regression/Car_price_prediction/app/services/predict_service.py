@@ -1,4 +1,5 @@
 import pandas as pd
+from fastapi import HTTPException
 
 from app.services.model_loader import model, scaler, car_model_encoder, car_name_encoder
 from app.services.preprocessing import encode_fuel, encode_owner, encode_seller_type
@@ -7,6 +8,26 @@ from app.database.crud import save_prediction
 
 
 def predict_price(data, db):
+
+    if data.car_ModelAndYear not in car_model_encoder:
+        raise HTTPException(
+            status_code=400,
+            detail={
+                "error": "Invalid car_ModelAndYear",
+                "hint": "Use /options endpoint to see valid values",
+                "examples": list(car_model_encoder.keys())[:5]
+            }
+        )
+
+    if data.car_name not in car_name_encoder:
+        raise HTTPException(
+            status_code=400,
+            detail={
+                "error": "Invalid car_name",
+                "hint": "Use /options endpoint to see valid values",
+                "examples": list(car_name_encoder.keys())[:5]
+            }
+        )
 
     fuel_encoded = encode_fuel(data.fuel)
     owner_encoded = encode_owner(data.owner)
