@@ -24,4 +24,4 @@ def model_check():
 
 @router.post("/predict")
 def predict(data: PredictionRequest, db: Session = Depends(get_db)):
-    return predict_salary(data, db)
+    return prediction(data, db)
