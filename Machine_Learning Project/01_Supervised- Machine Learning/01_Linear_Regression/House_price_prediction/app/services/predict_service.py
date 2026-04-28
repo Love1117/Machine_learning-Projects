@@ -7,61 +7,71 @@ from app.database.crud import save_prediction
 
 def predict_price(data, db):
 
-    if data.Country not in Country_freq:
+    if data.Address_And_City not in AddressAndCity_Encoder:
         raise HTTPException(
             status_code=400,
             detail={
-                "error": "Invalid Country",
+                "error": "Invalid Address_And_City",
                 "hint": "Use /options endpoint to see valid values",
-                "examples": list(Country_freq.keys())[:5]
+                "examples": list(AddressAndCity_Encoder.keys())[:5]
             }
         )
 
-    if data.Race not in Race_freq:
+    if data.State not in State_Encoder:
         raise HTTPException(
             status_code=400,
             detail={
-                "error": "Invalid Race",
+                "error": "Invalid State",
                 "hint": "Use /options endpoint to see valid values",
-                "examples": list(Race_freq.keys())[:5]
+                "examples": list(State_Encoder.keys())[:5]
             }
         )
 
-    if data.Job_title not in Job_title_encoder:
+    if data.County not in County_Encoder:
         raise HTTPException(
             status_code=400,
             detail={
-                "error": "Invalid Job_title",
+                "error": "Invalid County",
                 "hint": "Use /options endpoint to see valid values",
-                "examples": list(Job_title_encoder.keys())[:5]
+                "examples": list(County_Encoder.keys())[:5]
             }
         )
 
     
 
-    Country_val = Country_freq[data.Country]
-    Race_val = Race_freq[data.Race]
-    Job_title_val = Job_title_encoder[data.Job_title]
+    Address_And_City_val = AddressAndCity_Encoder[data.Address_And_City]
+    State_val = State_Encoder[data.State]
+    County_val = County_Encoder[data.County]
 
-    input_data = pd.DataFrame([{"Age": data.Age,
-                                "Gender": Gend[data.Gender],
-                                "Education_Level": data.Education_Level,
-                                "Years_of_Experience": data.Years_of_Experience,
-                                "Country": Country_val,
-                                "Race": Race_val,
-                                "Senior": data.Senior,
-                                "Job_title": Job_title_val}])
-    input_data = input_data[["Age",
-                             "Gender",
-                             "Education_Level",
-                             "Years_of_Experience",
-                             "Country",
-                             "Race",
-                             "Senior",
-                             "Job_title"]]
 
-    Scaled = scale.transform(input_data)
-    prediction = float(round(model.predict(scaled)[0], 2))
+
+
+    
+    input_data = pd.DataFrame([{"Bedrooms": data.Bedrooms,
+                              "Bathrooms": data.Bathrooms,
+                              "Living_Space": data.Living_Space,
+                              "Median_Household_Income": data.Median_Household_Income,
+                              "Zip_Code": data.Zip_Code,
+                              "Latitude": data.Latitude,
+                              "Longitude": data.Longitude,
+                              "Address_And_City": AddressAndCity_Encoded,
+                              "State": State_Encoded,
+                              "County": County_Encoded}])
+    
+    input_data = input_data[["Bedrooms",
+                             "Bathrooms",
+                             "Living_Space",
+                             "Median_Household_Income",
+                             "Zip_Code",
+                             "Latitude",
+                             "Longitude",
+                             "Address_And_City",
+                             "State",
+                             "County"]]
+
+    scaled_df = scale.transform(input_data)
+
+    prediction = float(round(model.predict(scaled_df)[0], 2))
 
     db_obj = save_prediction(db, data, prediction)
 
