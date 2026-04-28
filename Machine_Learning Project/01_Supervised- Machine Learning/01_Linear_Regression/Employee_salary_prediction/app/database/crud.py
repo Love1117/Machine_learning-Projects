@@ -10,9 +10,8 @@ def save_prediction(db, data, prediction):
         Country = data.Country,
         Race = data.Race,
         Senior = data.Senior,
-        Job_title = data.Job_title  
-        employee_salary = predicted_salary
-    )
+        Job_title = data.Job_title,
+        employee_salary = prediction)
 
     db.add(db_obj)
     db.commit()
