@@ -6,7 +6,7 @@ from app.core.constants import Gend
 from app.database.crud import save_prediction
 
 
-def predict_price(data, db):
+def prediction(data, db):
 
     if data.Country not in Country_freq:
         raise HTTPException(
