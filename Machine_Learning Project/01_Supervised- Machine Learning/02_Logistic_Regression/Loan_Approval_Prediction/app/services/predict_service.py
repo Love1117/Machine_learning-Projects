@@ -1,7 +1,7 @@
 import pandas as pd
 from fastapi import HTTPException
 
-from app.services.model_loader import model, scaler, car_model_encoder, car_name_encoder
+from app.services.model_loader import model, scale, car_model_encoder, car_name_encoder
 from app.core.constants import Fuel_Columns, Owner_Columns, Seller_type_Columns, Transmission_Map
 from app.database.crud import save_prediction
 
