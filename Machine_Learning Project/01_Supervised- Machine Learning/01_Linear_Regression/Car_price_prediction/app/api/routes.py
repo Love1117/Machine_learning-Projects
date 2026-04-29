@@ -22,6 +22,23 @@ def get_options():
 def model_check():
     return {"status": "ok"}
 
+@route.get("/model_info")
+def model_info():
+  return {"model_type":"Linear_Regresion",
+          "Features":["car_model",
+                      "year",
+                      "car_name",
+                      "km_driven",
+                      "transmission",
+                      "millage",
+                      "engine",
+                      "max_power",
+                      "seats",
+                      "fuel",
+                      "seller_type",
+                      "owner",
+                      "selling_price"],
+          "Version": "v1.0.0.0"}
 
 @router.post("/predict")
 def predict(data: PredictionRequest, db: Session = Depends(get_db)):
