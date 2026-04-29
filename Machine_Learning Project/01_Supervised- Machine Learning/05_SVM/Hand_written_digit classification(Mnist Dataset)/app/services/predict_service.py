@@ -1,7 +1,13 @@
 import pandas as pd
-from fastapi import HTTPException
+from fastapi import File, UploadFile, HTTPException
+from PIL import Image
+import numpy as np
+import joblib
+import io
+from pathlib import Path
 
 from app.services.model_loader import model
+from app.services.preprocessing import preprocess_image
 from app.database.crud import save_prediction
 
 
