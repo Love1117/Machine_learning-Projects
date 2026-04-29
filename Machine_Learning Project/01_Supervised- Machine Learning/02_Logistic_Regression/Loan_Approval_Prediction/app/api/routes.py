@@ -19,6 +19,24 @@ def get_options():
 def model_check():
     return {"status": "ok"}
 
+@router.get("/model_info")
+def info():
+  return {"Project_name":"Loan Approval Prediction",
+          "Features":["Age",
+                       "Gender",
+                      "Education",
+                      "Income",
+                      "Employment_experience",
+                      "Home_ownership",
+                      "Loan_amount",
+                      "Loan_intent",
+                      "Loan_interest_rate",
+                      "Loan_percent_income",
+                      "Credit_history_length",
+                      "Credit_score",
+                      "Previous_loan_defaults_on_file",
+                     "Loan_status"],
+          "Version": "v1.0.0.0"}
 
 @router.post("/predict")
 def predict(data: PredictionRequest, db: Session = Depends(get_db)):
