@@ -5,7 +5,7 @@ from app.services.model_loader import model, scale, AddressAndCity_Encoder, Stat
 from app.database.crud import save_prediction
 
 
-def predict_price(data, db):
+def prediction(data, db):
 
     if data.Address_And_City not in AddressAndCity_Encoder:
         raise HTTPException(
