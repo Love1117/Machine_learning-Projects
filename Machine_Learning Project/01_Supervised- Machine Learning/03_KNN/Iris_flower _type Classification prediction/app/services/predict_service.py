@@ -6,69 +6,25 @@ from app.database.crud import save_prediction
 
 
 def prediction(data, db):
+    input_data = pd.DataFrame([{"sepal length (cm)": data.sepal_length,
+                                "sepal width (cm)": data.sepal_width,
+                                "petal length (cm)": data.petal_length,
+                                "petal width (cm)": data.petal_width}])
+    
+    prediction = model.predict(input_data)[0]
 
-    if data.car_ModelAndYear not in car_model_encoder:
-        raise HTTPException(
-            status_code=400,
-            detail={
-                "error": "Invalid car_ModelAndYear",
-                "hint": "Use /options endpoint to see valid values",
-                "examples": list(car_model_encoder.keys())[:5]
-            }
-        )
+    if prediction==0:
+      iris_flower = "Setosa"
 
-    if data.car_name not in car_name_encoder:
-        raise HTTPException(
-            status_code=400,
-            detail={
-                "error": "Invalid car_name",
-                "hint": "Use /options endpoint to see valid values",
-                "examples": list(car_name_encoder.keys())[:5]
-            }
-        )
+    elif prediction==1:
+      iris_flower = "Versicolor"
 
-    fuel_encoded = encode_fuel(data.fuel)
-    owner_encoded = encode_owner(data.owner)
-    seller_encoded = encode_seller_type(data.seller_type)
-
-    car_model_val = car_model_encoder[data.car_ModelAndYear]
-    car_name_val = car_name_encoder[data.car_name]
-
-    input_dict = {
-        "car_ModelAndYear": car_model_val,
-        "car_name": car_name_val,
-        "year": data.year,
-        "km_driven": data.km_driven,
-        "transmission": Transmission_Map[data.transmission],
-        "mileage": data.mileage,
-        "engine": data.engine,
-        "max_power": data.max_power,
-        "seats": data.seats,
-        **fuel_encoded,
-        **owner_encoded,
-        **seller_encoded
-    }
-
-    columns = [
-        "car_ModelAndYear",
-        "car_name",
-        "year",
-        "km_driven",
-        "transmission",
-        "mileage",
-        "engine",
-        "max_power",
-        "seats",
-    ] + Fuel_Columns + Owner_Columns + Seller_type_Columns
-
-    df = pd.DataFrame([input_dict]).reindex(columns=columns, fill_value=0)
-
-    scaled = scaler.transform(df)
-    prediction = float(round(model.predict(scaled)[0], 2))
+    else:
+      iris_flower = "Verginca"
 
     db_obj = save_prediction(db, data, prediction)
 
     return {
-        "car_price": prediction,
+        "prediction": iris_flower,
         "db_id": db_obj.id
     }
