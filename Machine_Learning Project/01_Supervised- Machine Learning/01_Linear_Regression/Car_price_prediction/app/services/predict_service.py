@@ -7,7 +7,7 @@ from app.core.constants import Fuel_Columns, Owner_Columns, Seller_type_Columns,
 from app.database.crud import save_prediction
 
 
-def predict_price(data, db):
+def prediction(data, db):
 
     if data.car_ModelAndYear not in car_model_encoder:
         raise HTTPException(
