@@ -21,6 +21,21 @@ def get_options():
 def model_check():
     return {"status": "ok"}
 
+@router.get("/Model/{used_model}")
+def Model_Info(used_model: str="Linear_Regression"):
+  return {"model":{used_model},
+          "Features":["Bedrooms",
+                      "Bathrooms",
+                      "Living_Space",
+                      "Median_Household_Income",
+                      "Zip_Code",
+                      "Latitude",
+                      "Longitude",
+                      "Address_And_City",
+                      "State",
+                      "County",
+                      "Price"],
+          "Version":"v1.0.0.0"}
 
 @router.post("/predict")
 def predict(data: PredictionRequest, db: Session = Depends(get_db)):
