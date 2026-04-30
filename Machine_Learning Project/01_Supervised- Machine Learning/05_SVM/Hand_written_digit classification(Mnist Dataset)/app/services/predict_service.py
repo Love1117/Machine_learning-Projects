@@ -13,15 +13,14 @@ from app.database.crud import save_prediction
 
 def predict_digit(file, db: Session):
     contents = await file.read()
-        image = Image.open(io.BytesIO(contents))
+    image = Image.open(io.BytesIO(contents))
 
-        # Preprocess
-        features = preprocess_image(image)
+    # Preprocess
+    features = preprocess_image(image)
 
-        # Predict
-        prediction = model.predict(features)[0]
+    # Predict
+    prediction = model.predict(features)[0]
 
-    prediction = float(round(model.predict(scaled)[0], 2))
 
     db_obj = save_prediction(db, data, prediction)
 
