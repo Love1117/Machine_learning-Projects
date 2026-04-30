@@ -21,10 +21,10 @@ def predict_digit(file, db: Session):
     # Predict
     prediction = model.predict(features)[0]
 
-
-    db_obj = save_prediction(db, data, prediction)
+    
+    db_obj = save_prediction(db, filename, prediction or predicted_digit)
 
     return {
-        "car_price": prediction,
+        "predicted_digit": int(prediction),
         "db_id": db_obj.id
     }
