@@ -4,3 +4,5 @@ pillow
 numpy
 joblib
 scikit-learn
+sqlalchemy==2.0.32
+python-dotenv==1.0.1
