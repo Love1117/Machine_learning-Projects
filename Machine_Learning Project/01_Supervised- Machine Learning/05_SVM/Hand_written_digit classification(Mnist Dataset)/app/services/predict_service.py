@@ -22,7 +22,7 @@ def predict_digit(file, db: Session):
     prediction = model.predict(features)[0]
 
     
-    db_obj = save_prediction(db, filename, prediction or predicted_digit)
+    db_obj = save_prediction(db, filename, predicted_digit)
 
     return {
         "predicted_digit": int(prediction),
