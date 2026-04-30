@@ -4,7 +4,7 @@ from app.database.models import Prediction
 def save_prediction(db: Session, filename: str, predicted_digit: int):
     db_obj = Prediction(
         filename=filename,
-        predicted_digit=predicted_digit
+        predicted_digit=prediction
     )
 
     db.add(db_obj)
