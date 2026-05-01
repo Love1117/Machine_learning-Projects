@@ -16,7 +16,7 @@ def save_prediction(db, data, prediction):
         fuel=data.fuel,
         owner=data.owner,
         seller_type=data.seller_type,
-        car_price=prediction
+        prediction=prediction
 
       gender=GENDER[data.gender],
       height=data.height,
