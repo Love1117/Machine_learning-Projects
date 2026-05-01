@@ -1,5 +1,5 @@
 from app.database.models import Prediction
-
+from app.core.constants import GENDER
 def save_prediction(db, data, prediction):
 
     db_obj = Prediction(
