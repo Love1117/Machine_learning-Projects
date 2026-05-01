@@ -10,7 +10,7 @@ def save_prediction(db, data, prediction):
        oldbalanceDest=data.oldbalanceDest,
        newbalanceDest=data.oldbalanceDest,
        type_status=data.type_status,
-       car_price=prediction
+       prediction=prediction
     )
 
     db.add(db_obj)
