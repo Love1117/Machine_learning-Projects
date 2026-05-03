@@ -7,10 +7,11 @@ from app.core.constants import GENDER, EVER_MARRIED, GRADUATED
 from app.database.crud import save_prediction
 
 def prediction(data, db):
-  bp_Profession = encode_Profession(data.Profession_status)
-  bp_Variable = encode_Variable(data.Variable_status)
+  try:
+    bp_Profession = encode_Profession(data.Profession_status)
+    bp_Variable = encode_Variable(data.Variable_status)
   
-  input_data = pd.DataFrame([{"Gender": GENDER[data.Gender],
+    input_data = pd.DataFrame([{"Gender": GENDER[data.Gender],
                                 "Ever_Married": EVER_MARRIED[data.Ever_Married],
                                 "Age": data.Age,
                                 "Graduated": GRADUATED[data.Graduated],
@@ -20,23 +21,34 @@ def prediction(data, db):
                                 **bp_Profession,
                                 **bp_Variable}])
   
-  scaled_df = scale.transform(input_data)
+    scaled_df = scale.transform(input_data)
 
-  prediction = model.predict(scaled_df)[0]
+    prediction = model.predict(scaled_df)[0]
   
-  group_mapping = {
-        0: "High-Value Loyal Customers",
-        1: "Budget-Conscious Shoppers",
-        2: "Premium Customers",
-        3: "Low Engagement Customers",
-        4: "Occasional Spenders",
-        5: "Occasional Spenders",
-        6: "Impulse / Trend Buyers"
-    }
+    if prediction==-0:
+      Group_into = "High-Value Loyal Customers"
 
-    db_obj = save_prediction(db, data, prediction)
+    elif prediction==1:
+      Group_into = "Budget-Conscious Shoppers"
 
+    elif prediction==2:
+      Group_into = "Premium Customers"
+
+    elif prediction==3:
+      Group_into = "Low Engagement Customers"
+
+    elif prediction==4:
+      Group_into = "Occasional Spenders"
+
+    elif prediction==5:
+      Group_into = "Regular Mid-Spenders"
+            
+    else:
+      Group_into = "Impulse / Trend Buyers"
+
+    db_obj = save_prediction(db, data, Group_into)
+    
     return {
-        "Group_into": group_mapping.get(prediction, "Unknown Group"),
+        "prediction": Group_into,
         "db_id": db_obj.id
     }
