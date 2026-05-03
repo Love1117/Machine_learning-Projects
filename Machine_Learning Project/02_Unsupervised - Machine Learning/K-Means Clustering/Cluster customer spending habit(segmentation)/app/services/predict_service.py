@@ -6,6 +6,7 @@ from app.services.preprocessing import encode_Profession. encode_Variable
 from app.core.constants import GENDER, EVER_MARRIED, GRADUATED
 from app.database.crud import save_prediction
 
+
 def prediction(data, db):
   try:
     bp_Profession = encode_Profession(data.Profession_status)
