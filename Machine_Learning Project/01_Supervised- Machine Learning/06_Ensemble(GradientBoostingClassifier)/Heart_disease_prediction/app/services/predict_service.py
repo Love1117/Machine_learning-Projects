@@ -8,6 +8,7 @@ from app.database.crud import save_prediction
 
 
 def prediction(data, db):
+  try:
     bp_encode = encode_bp(data.bp_status)
 
     input_data = pd.DataFrame([{"gender": GENDER[data.gender],
@@ -34,3 +35,5 @@ def prediction(data, db):
         "Heart Disease: Yes" if prediction == 1 else "Heart Disease: No",
         "db_id": db_obj.id
     }
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=str(e))
