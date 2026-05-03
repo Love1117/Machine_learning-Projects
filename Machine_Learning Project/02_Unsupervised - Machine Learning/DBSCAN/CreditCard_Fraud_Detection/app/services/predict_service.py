@@ -7,6 +7,7 @@ from app.database.crud import save_prediction
 
 
 def prediction(data, db):
+  try:
     type_encoded = encode_type(data.type_status)
 
     input_data = pd.DataFrame([{"step": data.step,
@@ -20,11 +21,19 @@ def prediction(data, db):
     scale_df = scale.transform(input_data)
 
     prediction = model.predict(scale_df)[0]
+    
+    if prediction==-1:
+      is_fraud = "Yes"
 
+    else:
+      is_fraud = "No"
+        
 
-    db_obj = save_prediction(db, data, prediction)
+    db_obj = save_prediction(db, data, is_fraud)
 
     return {
-        "is_fraud: Yes" if prediction == -1 else "is_fraud:: No",
+        "prediction": is_fraud,
         "db_id": db_obj.id
     }
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=str(e))
