@@ -7,12 +7,12 @@ class Prediction(Base):
     __tablename__ = "predictions"
 
     id = Column(Integer, primary_key=True, index=True)
-    Age  = Column(int)
+    Age  = Column(Integer)
     Gender = Column(String)
     Education = Column(String)
     Income = Column(Float)
     Employment_experience  = Column(Float)
-    Home_ownership = Column(string)
+    Home_ownership = Column(String)
     Loan_amount = Column(Float)
     Loan_intent = Column(String)
     Loan_interest_rate = Column(Float)
@@ -20,4 +20,4 @@ class Prediction(Base):
     Credit_history_length = Column(Float)
     Credit_score = Column(Float)
     Previous_loan_defaults_on_file = Column(String)
-    Outcome_status = Column(string)
+    Outcome_status = Column(String)
