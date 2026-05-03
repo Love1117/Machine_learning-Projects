@@ -11,4 +11,4 @@ class Prediction(Base):
     Age = Column(int)
     Annual_Income_k = Column(Float)
     Spending_Score_1_100 = Column(Float)
-    prediction = Column(Float)
+    prediction = Column(string)
