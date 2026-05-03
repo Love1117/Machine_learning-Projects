@@ -7,7 +7,6 @@ class Prediction(Base):
     __tablename__ = "predictions"
 
     id = Column(Integer, primary_key=True, index=True)
-
     car_ModelAndYear = Column(Float)
     car_name = Column(Float)
     year = Column(Integer)
