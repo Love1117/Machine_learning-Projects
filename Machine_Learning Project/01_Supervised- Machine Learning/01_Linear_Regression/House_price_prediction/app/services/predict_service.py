@@ -6,7 +6,7 @@ from app.database.crud import save_prediction
 
 
 def prediction(data, db):
-
+  try:
     if data.Address_And_City not in AddressAndCity_Encoder:
         raise HTTPException(
             status_code=400,
@@ -39,9 +39,9 @@ def prediction(data, db):
 
     
 
-    Address_And_City_val = AddressAndCity_Encoder[data.Address_And_City]
-    State_val = State_Encoder[data.State]
-    County_val = County_Encoder[data.County]
+    AddressAndCity_Encoded = AddressAndCity_Encoder[data.Address_And_City]
+    State_Encoded = State_Encoder[data.State]
+    County_Encoded = County_Encoder[data.County]
 
 
 
@@ -76,6 +76,8 @@ def prediction(data, db):
     db_obj = save_prediction(db, data, prediction)
 
     return {
-        "employee_salary": prediction,
+        "House_price": prediction,
         "db_id": db_obj.id
     }
+except Exception as e:
+    raise HTTPException(status_code=500, detail=str(e))
