@@ -1,13 +1,13 @@
 from app.database.models import Prediction
 from app.core.constants import GENDER
-def save_prediction(db, data, prediction):
+def save_prediction(db, data, Falls_into):
 
     db_obj = Prediction(
         Gender=GENDER[data.Gender],
         Age=data.Age,
         Annual_Income_k=data.Annual_Income_k,
         Spending_Score_1_100=data.Spending_Score_1_100,
-        prediction=prediction
+        prediction=Falls_into
     )
 
     db.add(db_obj)
