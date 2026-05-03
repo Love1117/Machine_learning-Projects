@@ -16,7 +16,7 @@ def save_prediction(db, data, prediction):
       age=data.age,
       bmi=data.bmi,
       bp_status=data.bp_status,
-      Heart_Disease=prediction
+      prediction=prediction
     )
 
     db.add(db_obj)
