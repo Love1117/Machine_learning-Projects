@@ -40,9 +40,9 @@ def prediction(data, db):
 
     
 
-    Country_val = Country_freq[data.Country]
-    Race_val = Race_freq[data.Race]
-    Job_title_val = Job_title_encoder[data.Job_title]
+    Country_val = Country_freq(data.Country)
+    Race_val = Race_freq(data.Race)
+    Job_title_val = Job_title_encoder(data.Job_title)
 
     input_data = pd.DataFrame([{"Age": data.Age,
                                 "Gender": Gend[data.Gender],
