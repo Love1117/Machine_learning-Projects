@@ -11,4 +11,4 @@ class Prediction(Base):
     sepal_width = Column(Float)
     petal_length = Column(Float)
     petal_width = Column(Float)
-    iris_flower = Column(string)
+    iris_flower = Column(String)
