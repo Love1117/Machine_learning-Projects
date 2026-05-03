@@ -7,7 +7,7 @@ from app.database.crud import save_prediction
 
 
 def prediction(data, db):
-
+  try:  
     if data.Country not in Country_freq:
         raise HTTPException(
             status_code=400,
@@ -70,3 +70,5 @@ def prediction(data, db):
         "employee_salary": prediction,
         "db_id": db_obj.id
     }
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=str(e))
