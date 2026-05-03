@@ -12,6 +12,7 @@ from app.database.crud import save_prediction
 
 
 def predict_digit(file, db: Session):
+  try:
     contents = await file.read()
     image = Image.open(io.BytesIO(contents))
 
@@ -20,7 +21,7 @@ def predict_digit(file, db: Session):
 
     # Predict
     prediction = model.predict(features)[0]
-
+    predicted_digit = int(prediction)
     
     db_obj = save_prediction(db, filename, predicted_digit)
 
@@ -28,3 +29,5 @@ def predict_digit(file, db: Session):
         "predicted_digit": int(prediction),
         "db_id": db_obj.id
     }
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=str(e))
