@@ -28,4 +28,3 @@ class Prediction(Base):
   Contract_status = Column(string)
   InternetService_status = Column(string)
   prediction = Column(Float)
-  probability = Column(foat)
