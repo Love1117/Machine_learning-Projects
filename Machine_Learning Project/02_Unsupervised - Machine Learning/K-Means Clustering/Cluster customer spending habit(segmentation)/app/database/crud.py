@@ -1,6 +1,6 @@
 from app.database.models import Prediction
 from app.core.constants import GRADUATED, EVER_MARRIED, GENDER 
-def save_prediction(db, data, prediction):
+def save_prediction(db, data, Group_into):
 
     db_obj = Prediction(
        Gender": GENDER[data.Gender],
@@ -12,7 +12,7 @@ def save_prediction(db, data, prediction):
        Family_Size=data.Family_Size,
        Profession_status=data.Family_Size,
        Variable_status=data.Variable_status,
-       Group_into=prediction
+       prediction=Group_into
     )
 
     db.add(db_obj)
