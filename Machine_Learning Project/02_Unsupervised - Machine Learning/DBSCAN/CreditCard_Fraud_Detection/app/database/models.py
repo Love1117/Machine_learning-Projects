@@ -14,4 +14,4 @@ class Prediction(Base):
     oldbalanceDest = Column(Float)
     newbalanceDest = Column(Float)
     type_encoded = Column(string)
-    prediction = Column(string)
+    Is_fraud = Column(string)
