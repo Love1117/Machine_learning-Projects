@@ -8,7 +8,7 @@ from app.database.crud import save_prediction
 
 
 def prediction(data, db):
-
+  try:
     if data.car_ModelAndYear not in car_model_encoder:
         raise HTTPException(
             status_code=400,
@@ -74,3 +74,5 @@ def prediction(data, db):
         "car_price": prediction,
         "db_id": db_obj.id
     }
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=str(e))
