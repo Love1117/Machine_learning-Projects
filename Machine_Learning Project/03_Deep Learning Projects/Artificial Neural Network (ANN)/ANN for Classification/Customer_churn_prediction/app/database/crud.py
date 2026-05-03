@@ -1,5 +1,7 @@
 from app.database.models import Prediction
 from app.core.constants import GENDER, Senior_Citizen, PARTNER, DEPENDENT, Phone_Sevice, Multi_Lines, Online_Security, Online_Backup, Device_Protection, Tech_Support, Streaming_TV, Streaming_Movies, Peperless_Billings
+
+
 def save_prediction(db, data, prediction_class, probability):
   db_obj = Prediction(
         gender=GENDER[data.gender],
