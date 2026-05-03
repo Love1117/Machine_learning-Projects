@@ -17,4 +17,4 @@ class Prediction(Base):
     Address_And_City = Column(String)
     State  = Column(String)
     County  = Column(String)
-    house_prediction = Column(Float)
+    House_price = Column(Float)
