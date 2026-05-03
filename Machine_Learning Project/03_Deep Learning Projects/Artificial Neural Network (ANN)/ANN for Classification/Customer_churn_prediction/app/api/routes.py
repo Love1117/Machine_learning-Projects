@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.schemas.prediction_schema import PredictionRequest
-from app.services.predict_service import prediction
+from app.services.predict_service import prediction_class
 from app.database.session import get_db
 
 
