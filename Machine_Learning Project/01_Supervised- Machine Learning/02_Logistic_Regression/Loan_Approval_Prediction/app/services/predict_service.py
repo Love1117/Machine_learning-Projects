@@ -7,7 +7,7 @@ from app.database.crud import save_prediction
 
 
 def prediction(data, db):
-
+  try:
     if data.Loan_intent not in Loan_intent_freq:
         raise HTTPException(
             status_code=400,
@@ -74,3 +74,5 @@ def prediction(data, db):
         "prediction": "Loan_Approved" if prediction == 1 else "Loan_Decline",
         "db_id": db_obj.id
     }
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=str(e))
