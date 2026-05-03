@@ -1,9 +1,9 @@
 import pandas as pd
 from fastapi import HTTPException
 
-from app.services.model_loader import model, scaler, car_model_encoder, car_name_encoder
-from app.services.preprocessing import encode_fuel, encode_owner, encode_seller_type
-from app.core.constants import Fuel_Columns, Owner_Columns, Seller_type_Columns, Transmission_Map
+from app.services.model_loader import model, scale
+from app.services.preprocessing import encode_PaymentMethod, encode_Contract, encode_InternetService
+from app.core.constants import GENDER, Senior_Citizen, PARTNER, DEPENDENT, Phone_Sevice, Multi_Lines, Online_Security, Online_Backup, Device_Protection, Tech_Support, Streaming_TV, Streaming_Movies, Peperless_Billings
 from app.database.crud import save_prediction
 
 
