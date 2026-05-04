@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException
 from sqlalchemy.orm import Session
 
+from app.schemas.prediction_schema import PredictionRequest
 from app.services.predict_service import predict_image
 from app.database.session import get_db
 
@@ -22,4 +23,4 @@ async def predict_image(
     if not file.content_type.startswith("image/"):
         raise HTTPException(status_code=400, detail="File must be an image")
 
-    return await predict_image(file, db)
+    return await predict_image(data:PredictionRequest, file, db)
