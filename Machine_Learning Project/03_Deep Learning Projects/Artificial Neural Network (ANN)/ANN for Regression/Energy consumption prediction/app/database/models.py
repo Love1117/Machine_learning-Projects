@@ -19,4 +19,4 @@ class Prediction(Base):
   Weekend = Column(String)
   Appliance_Type_status = Column(String)
   Season_status = Column(String)
-  prediction = Column(Float)
+  Energy_Consumption_kWh = Column(Float)
