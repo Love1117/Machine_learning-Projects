@@ -1,8 +1,6 @@
-import pandas as pd
 from fastapi import File, UploadFile, HTTPException
 from PIL import Image
 import numpy as np
-import joblib
 import io
 from pathlib import Path
 
@@ -29,6 +27,7 @@ def predict_image(file: UploadFile = File(...)):
     db_obj = save_prediction("filename": file.filename, "predicted_class_name": predicted_class_name, "confidence": confidence)
 
     return {
+        "filename": filename,
         "predicted_class_name": predicted_class_name,
         "confidence": confidence,
         "db_id": db_obj.id
