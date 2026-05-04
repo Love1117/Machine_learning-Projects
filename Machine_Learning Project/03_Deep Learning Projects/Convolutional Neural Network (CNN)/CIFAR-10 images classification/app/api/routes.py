@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException
 from sqlalchemy.orm import Session
 
-from app.services.predict_service import predict_digit
+from app.services.predict_service import predict_image
 from app.database.session import get_db
 
 router = APIRouter()
