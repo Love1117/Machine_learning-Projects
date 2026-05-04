@@ -9,6 +9,6 @@ class Prediction(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     filename = Column(String, nullable=False)
-    predicted_class = Column(Integer, nullable=False)
+    predicted_class_name = Column(Integer, nullable=False)
     confidence = Column(Float)
     created_at = Column(DateTime, default=datetime.utcnow)
