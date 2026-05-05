@@ -10,3 +10,5 @@ tensorflow==2.15.0
 # Optional but recommended
 numpy==1.26.4
 scikit-learn==1.4.1.post1
+sqlalchemy==2.0.32
+python-dotenv==1.0.1
