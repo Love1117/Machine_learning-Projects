@@ -5,73 +5,24 @@ from app.services.model_loader import model, tokenizer
 from app.services.preprocessing.py import predict_next_words
 from app.database.crud import save_prediction
 
-
-def prediction(data, db):
+  
+def prediction(request, db):
   try:
-    if data.car_ModelAndYear not in car_model_encoder:
-        raise HTTPException(
-            status_code=400,
-            detail={
-                "error": "Invalid car_ModelAndYear",
-                "hint": "Use /options endpoint to see valid values",
-                "examples": list(car_model_encoder.keys())[:5]
-            }
+    generated_text = predict_next_words(
+            input_word=request.input_word,
+            len_of_words=request.len_of_words,
+            tokenizer=tokenizer,
+            model=model
         )
 
-    if data.car_name not in car_name_encoder:
-        raise HTTPException(
-            status_code=400,
-            detail={
-                "error": "Invalid car_name",
-                "hint": "Use /options endpoint to see valid values",
-                "examples": list(car_name_encoder.keys())[:5]
-            }
-        )
-
-    fuel_encoded = encode_fuel(data.fuel)
-    owner_encoded = encode_owner(data.owner)
-    seller_encoded = encode_seller_type(data.seller_type)
-
-    car_model_val = car_model_encoder[data.car_ModelAndYear]
-    car_name_val = car_name_encoder[data.car_name]
-
-    input_dict = {
-        "car_ModelAndYear": car_model_val,
-        "car_name": car_name_val,
-        "year": data.year,
-        "km_driven": data.km_driven,
-        "transmission": Transmission_Map[data.transmission],
-        "mileage": data.mileage,
-        "engine": data.engine,
-        "max_power": data.max_power,
-        "seats": data.seats,
-        **fuel_encoded,
-        **owner_encoded,
-        **seller_encoded
-    }
-
-    columns = [
-        "car_ModelAndYear",
-        "car_name",
-        "year",
-        "km_driven",
-        "transmission",
-        "mileage",
-        "engine",
-        "max_power",
-        "seats",
-    ] + Fuel_Columns + Owner_Columns + Seller_type_Columns
-
-    df = pd.DataFrame([input_dict]).reindex(columns=columns, fill_value=0)
-
-    scaled = scaler.transform(df)
-    prediction = float(round(model.predict(scaled)[0], 2))
-
-    db_obj = save_prediction(db, data, prediction)
+    db_obj = save_prediction(db, request, prediction)
 
     return {
-        "car_price": prediction,
+        "generated_text": generated_text,
         "db_id": db_obj.id
     }
   except Exception as e:
-    raise HTTPException(status_code=500, detail=str(e))
+    print(f"Prediction error: {e}")
+    import traceback
+    traceback_str = traceback.format_exc()
+    return {"error": f"An internal error occurred during prediction: {e}", "traceback": traceback_str, "generated_text": ""}
