@@ -1,81 +1,53 @@
-import pandas as pd
-import numpy
-from fastapi import HTTPException
+from app.services.model_loader import model, tokenizer
+impoprt numpy as np
 import tensorflow as tf
 from tensorflow.keras import Sequential
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-from app.services.model_loader import model, tokenizer
-from app.database.crud import save_prediction
+def predict_next_words(input_word: str, len_of_words: int, tokenizer, model):
+  generated_text = input_word
 
+  for _ in range(len_of_words):
+    seq = tokenizer.texts_to_sequences([generated_text])[0]
 
-def prediction(data, db):
-  try:
-    if data.car_ModelAndYear not in car_model_encoder:
-        raise HTTPException(
-            status_code=400,
-            detail={
-                "error": "Invalid car_ModelAndYear",
-                "hint": "Use /options endpoint to see valid values",
-                "examples": list(car_model_encoder.keys())[:5]
-            }
-        )
+    if len(seq) < 3:
+      seq_to_predict = pad_sequences([seq], maxlen=3, padding='pre')[0]
+    else:
+      seq_to_predict = seq[-3:]
 
-    if data.car_name not in car_name_encoder:
-        raise HTTPException(
-            status_code=400,
-            detail={
-                "error": "Invalid car_name",
-                "hint": "Use /options endpoint to see valid values",
-                "examples": list(car_name_encoder.keys())[:5]
-            }
-        )
+    seq_to_predict = np.array(seq_to_predict)
 
-    fuel_encoded = encode_fuel(data.fuel)
-    owner_encoded = encode_owner(data.owner)
-    seller_encoded = encode_seller_type(data.seller_type)
+    if not seq_to_predict.tolist():
+        break
 
-    car_model_val = car_model_encoder[data.car_ModelAndYear]
-    car_name_val = car_name_encoder[data.car_name]
+    # seq_to_predict is already a 1D numpy array from pad_sequences
+    # It needs to be reshaped to (1, 3) for the model input
+    if seq_to_predict.shape[0] != 3:
+        seq_to_predict = pad_sequences([seq_to_predict], maxlen=3, padding='pre')[0]
 
-    input_dict = {
-        "car_ModelAndYear": car_model_val,
-        "car_name": car_name_val,
-        "year": data.year,
-        "km_driven": data.km_driven,
-        "transmission": Transmission_Map[data.transmission],
-        "mileage": data.mileage,
-        "engine": data.engine,
-        "max_power": data.max_power,
-        "seats": data.seats,
-        **fuel_encoded,
-        **owner_encoded,
-        **seller_encoded
-    }
+    seq_to_predict = seq_to_predict.reshape(1, 3)
 
-    columns = [
-        "car_ModelAndYear",
-        "car_name",
-        "year",
-        "km_driven",
-        "transmission",
-        "mileage",
-        "engine",
-        "max_power",
-        "seats",
-    ] + Fuel_Columns + Owner_Columns + Seller_type_Columns
+    # To Ensure model is loaded
+    if model is None:
+        return "Error: Model not loaded."
 
-    df = pd.DataFrame([input_dict]).reindex(columns=columns, fill_value=0)
+    pred_probs = model.predict(seq_to_predict, verbose=0)
+    pred_index = np.argmax(pred_probs, axis=1)[0]
 
-    scaled = scaler.transform(df)
-    prediction = float(round(model.predict(scaled)[0], 2))
+    next_word = ""
+    next_word_found = False
 
-    db_obj = save_prediction(db, data, prediction)
+    for win, idx in tokenizer.word_index.items():
+      if idx == pred_index:
+        next_word = win
+        next_word_found = True
+        break
 
-    return {
-        "car_price": prediction,
-        "db_id": db_obj.id
-    }
-  except Exception as e:
-    raise HTTPException(status_code=500, detail=str(e))
+    if next_word_found:
+      generated_text += " " + next_word
+    else:
+      print(f"Predicted index {pred_index} not found in tokenizer vocabulary. Stopping prediction.")
+      break
+
+  return generated_text
