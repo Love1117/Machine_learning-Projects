@@ -17,5 +17,5 @@ def model_check():
 
 
 @router.post("/predict")
-def predict(request: PredictionRequest, db: Session = Depends(get_db)):
+def predict(data: PredictionRequest, db: Session = Depends(get_db)):
     return prediction(data, db)
