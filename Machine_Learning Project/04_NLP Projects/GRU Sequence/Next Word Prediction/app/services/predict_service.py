@@ -1,4 +1,3 @@
-import numpy as np
 from fastapi import HTTPException
 
 from app.services.model_loader import model, tokenizer
@@ -15,7 +14,7 @@ def prediction(request, db):
             model=model
         )
 
-    db_obj = save_prediction(db, request, prediction)
+    db_obj = save_prediction(db, request, generated_text)
 
     return {
         "generated_text": generated_text,
