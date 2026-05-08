@@ -18,4 +18,4 @@ def model_check():
 
 @router.post("/predict")
 def predict_spam(text_input: TextInput, db: Session = Depends(get_db)):
-    return prediction(request, db)
+    return prediction(text_input, db)
