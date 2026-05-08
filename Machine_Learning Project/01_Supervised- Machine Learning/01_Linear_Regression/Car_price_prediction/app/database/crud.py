@@ -1,7 +1,6 @@
 from app.database.models import Prediction
-
-def save_prediction(db, data, prediction):
-
+    
+def save_prediction(db, data, prediction):  
     db_obj = Prediction(
         car_ModelAndYear=data.car_ModelAndYear,
         car_name=data.car_name,
@@ -17,7 +16,7 @@ def save_prediction(db, data, prediction):
         seller_type=data.seller_type,
         car_price=prediction
     )
-
+    
     db.add(db_obj)
     db.commit()
     db.refresh(db_obj)
