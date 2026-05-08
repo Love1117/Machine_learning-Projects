@@ -6,3 +6,5 @@ joblib==1.3.2
 tensorflow==2.15.0
 nest-asyncio==1.6.0
 gdown
+sqlalchemy==2.0.32
+python-dotenv==1.0.1
