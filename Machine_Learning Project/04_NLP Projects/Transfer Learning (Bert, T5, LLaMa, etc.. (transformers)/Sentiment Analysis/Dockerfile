@@ -1,6 +1,8 @@
 # Base image
 FROM python:3.10-slim
 
+ENV PYTHONUNBUFFERED=1
+
 # Set working directory
 WORKDIR /app
 
@@ -16,10 +18,9 @@ RUN python -c "from transformers import AutoTokenizer, AutoModelForSequenceClass
 AutoTokenizer.from_pretrained('cardiffnlp/twitter-roberta-base-sentiment-latest'); \
 AutoModelForSequenceClassification.from_pretrained('cardiffnlp/twitter-roberta-base-sentiment-latest')"
 
-RUN python -c "import nltk; nltk.download('vader_lexicon')"
 
 COPY . .
 
 EXPOSE 8000
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
