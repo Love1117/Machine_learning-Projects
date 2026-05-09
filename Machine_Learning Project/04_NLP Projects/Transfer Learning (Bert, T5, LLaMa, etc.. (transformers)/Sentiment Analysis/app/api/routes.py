@@ -18,4 +18,8 @@ def model_check():
 
 @router.post("/predict-roberta")
 def predict_roberta_sentiment(request: TextRequest, db: Session = Depends(get_db)):
+     """
+  Analyzes the sentiment of the provided text using the VADER model.
+  Returns polarity scores (negative, neutral, positive, compound).
+  """
     return prediction(request, db)
