@@ -10,5 +10,4 @@ class Prediction(Base):
   id = Column(Integer, primary_key=True, index=True)
   text = Column(String)
   model = Column(String)
-  text = Column(String)
   sentiment_scores = Column(Float)
