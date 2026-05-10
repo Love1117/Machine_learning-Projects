@@ -1,8 +1,5 @@
-import os
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
 from openai import OpenAI
-from typing import Dict, Any
 from app.core.config import HF_TOKEN
 
 
@@ -12,7 +9,7 @@ client = OpenAI(
     api_key=HF_TOKEN,
 )
 
-def generate_chat_response(request: ChatRequest) -> Dict[str, Any]:
+def prediction(text: str):
     try:
         completion = client.chat.completions.create(
             model="meta-llama/Llama-3.2-3B-Instruct:novita",
