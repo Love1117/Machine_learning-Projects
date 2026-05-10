@@ -1,4 +1,4 @@
-from app.schemas.prediction_schema import ChatRequest
+from app.schemas.chat_schema import ChatRequest
 
 
 router = APIRouter()
