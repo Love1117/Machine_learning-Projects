@@ -1,5 +1,5 @@
 from app.schemas.chat_schema import ChatRequest
-
+from typing import Dict, Any
 
 router = APIRouter()
 
@@ -11,5 +11,8 @@ def model_check():
 
 
 @router.post("/chat", summary="Generate text using Llama 3.2")
-def generate_chat_response(request: ChatRequest):
-    return prediction(request)
+def generate_chat_response(request: ChatRequest) -> Dict[str, Any]:
+    """
+    Generates a chat response using the Meta LLaMA 3.2 model.
+    """
+    return prediction(request.text)
