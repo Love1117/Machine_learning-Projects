@@ -11,7 +11,7 @@ def model_check():
 
 
 @router.post("/chat")
-def chat_with_model(
+async def chat_with_model(
     question: str = Form(...),
     image: Optional[UploadFile] = File(None)
 ):
