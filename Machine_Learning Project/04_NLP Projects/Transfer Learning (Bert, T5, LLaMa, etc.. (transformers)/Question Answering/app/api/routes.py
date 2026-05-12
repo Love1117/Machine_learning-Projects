@@ -12,6 +12,6 @@ def model_check():
     return {"status": "ok"}
 
 
-@router.post("/predict")
+@router.post("/predict_answer")
 def def predict_answer(question_data: Question, db: Session = Depends(get_db)):
     return prediction(question_data, db)
