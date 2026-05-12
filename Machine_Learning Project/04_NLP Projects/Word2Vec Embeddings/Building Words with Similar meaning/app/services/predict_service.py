@@ -31,7 +31,7 @@ def prediction(request, db):
 
 
 
-def prediction2(request, db):
+def next_prediction(request, db):
   try:
     for word in [request.word1, request.word2]:
       if word not in word2vec_model.wv.key_to_index:
