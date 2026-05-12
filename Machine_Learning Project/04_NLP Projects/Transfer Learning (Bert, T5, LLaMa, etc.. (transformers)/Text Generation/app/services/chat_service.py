@@ -1,13 +1,6 @@
 from fastapi import FastAPI, HTTPException
-from openai import OpenAI
-from app.core.config import HF_TOKEN
+from app.core.config import HF_TOKEN, client
 
-
-
-client = OpenAI(
-    base_url="https://router.huggingface.co/v1",
-    api_key=HF_TOKEN,
-)
 
 def prediction(text: str):
     try:
