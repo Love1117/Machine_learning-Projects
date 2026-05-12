@@ -27,7 +27,7 @@ def predict_digit(file, db: Session):
 
     return {
         "predicted_digit": int(prediction),
-        filename,
+        "filename": filename,
         "db_id": db_obj.id
     }
   except Exception as e:
