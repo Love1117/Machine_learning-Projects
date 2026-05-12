@@ -59,7 +59,7 @@ async def get_similar_words(request: SimilarWordsRequest):
             "word": word,
             "similarity": float(score) # Convert numpy float to standard float
         } for word, score in similar_words]
-        return {"query_word": request.word, "similar_words": result}
+        return {request, "similar_words": result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
 
