@@ -1,5 +1,4 @@
 from fastapi import FastAPI, HTTPException
-from openai import OpenAI
 from app.core.config import HF_TOKEN, client 
 from app.services.preprocessing import encode_image
 
