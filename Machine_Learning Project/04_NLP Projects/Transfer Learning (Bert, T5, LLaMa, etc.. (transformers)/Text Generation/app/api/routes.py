@@ -1,6 +1,6 @@
 from app.schemas.chat_schema import ChatRequest
 from typing import Dict, Any
-
+from app.services.chat_service import prediction
 router = APIRouter()
 
 
