@@ -176,10 +176,10 @@ async def predict(data: PredictionRequest, db: Session = Depends(get_db)):
             engine = data.engine,
             max_power = data.max_power,
             seats = data.seats,
-            fuel = data.fuel
-            owner = data.owner
-            seller_type = data.seller_type
-            car_price = prediction
+            fuel = data.fuel,
+            owner = data.owner,
+            seller_type = data.seller_type,
+            car_price = prediction)
 
 
     db.add(db_prediction)
