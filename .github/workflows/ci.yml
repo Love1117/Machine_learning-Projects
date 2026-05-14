@@ -1,0 +1,81 @@
+name: FastAPI ML CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  test:
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: "Machine_Learning Project/01_Supervised- Machine Learning/01_Linear_Regression/Car_price_prediction"
+
+    steps:
+
+      # Step 1 - Download repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2 - Install Python
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Step 3 - Upgrade pip
+      - name: Upgrade Pip
+        run: |
+          python -m pip install --upgrade pip
+
+      # Step 4 - Install requirements
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # Step 5 - Verify main FastAPI file exists
+      - name: Verify FastAPI Main File
+        run: |
+          test -f app/main.py
+
+      # Step 6 - Check Python syntax
+      - name: Check Python Syntax
+        run: |
+          python -m py_compile app/main.py
+
+      # Step 7 - Import FastAPI app
+      - name: Test FastAPI Import
+        run: |
+          python -c "from app.main import app"
+
+      # Step 8 - Run FastAPI validation
+      - name: Run FastAPI Validation
+        run: |
+          python - <<EOF
+          from app.main import app
+          print("FastAPI app loaded successfully")
+          print("Routes:", app.routes)
+          EOF
+
+      # Step 9 - Install pytest
+      - name: Install Pytest
+        run: |
+          pip install pytest
+
+      # Step 10 - Run Tests
+      - name: Run Pytest
+        run: |
+          pytest
+
+      # Step 11 - Success Message
+      - name: CI/CD Success
+        run: |
+          echo "All tests passed successfully"
