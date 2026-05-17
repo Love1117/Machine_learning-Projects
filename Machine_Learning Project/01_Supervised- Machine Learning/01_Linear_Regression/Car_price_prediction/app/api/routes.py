@@ -22,7 +22,7 @@ def get_options():
 def model_check():
     return {"status": "ok"}
 
-@route.get("/model_info")
+@router.get("/model_info")
 def model_info():
   return {"model_type":"Linear_Regresion",
           "Features":["car_model",
