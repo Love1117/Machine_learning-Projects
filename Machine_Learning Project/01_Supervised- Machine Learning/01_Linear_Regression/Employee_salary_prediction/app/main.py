@@ -14,4 +14,8 @@ app = FastAPI(title="Employee Salary Prediction",
 def on_startup():
     Base.metadata.create_all(bind=engine)
     
+@app.get("/")
+def home():
+    return{"message": "FastAPI is running successfully"}
+
 app.include_router(router)
