@@ -71,9 +71,9 @@ jobs:
           pip install pytest
 
       # Step 10 - Run Tests
-      - name: Run Pytest
+-       name: Run Pytest
         run: |
-          pytest
+          PYTHONPATH=. pytest
 
       # Step 11 - Success Message
       - name: CI/CD Success

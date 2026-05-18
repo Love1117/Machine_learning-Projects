@@ -1,1 +1,1 @@
-test my project
+test my projectgit add .
