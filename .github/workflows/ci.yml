@@ -17,7 +17,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: "Machine_Learning Project/01_Supervised- Machine Learning/01_Linear_Regression/Employee_salary_prediction"
+        working-directory: "Machine_Learning Project/02_Unsupervised - Machine Learning/DBSCAN/CreditCard_Fraud_Detection"
 
     steps:
 
