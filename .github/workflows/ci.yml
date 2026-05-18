@@ -71,7 +71,7 @@ jobs:
           pip install pytest
 
       # Step 10 - Run Tests
--       name: Run Pytest
+      - name: Run Pytest
         run: |
           PYTHONPATH=. pytest
 
