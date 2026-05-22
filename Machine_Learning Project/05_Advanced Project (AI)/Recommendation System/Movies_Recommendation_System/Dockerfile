@@ -1,12 +1,19 @@
-FROM python:3.11-slim
+<<<<<<< HEAD
+FROM python:3.10-slim
 
+ENV PYTHONUNBUFFERED=1
+
+# working directory
 WORKDIR /app
 
+COPY requirements.txt .
+
+# Installing dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copying entire project
 COPY . .
 
-RUN pip install --no-cache-dir -r app/requirements.txt
 
 EXPOSE 8000
 EXPOSE 8501
-
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port 8000 & streamlit run frontend/streamlit_app.py --server.port 8501 --server.address 0.0.0.0"]
