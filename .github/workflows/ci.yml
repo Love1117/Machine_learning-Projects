@@ -1,6 +1,7 @@
-name: FastAPI ML CI/CD Pipeline
+name: Movie Recommendation CI/CD
 
 on:
+
   push:
     branches:
       - main
@@ -17,65 +18,65 @@ jobs:
 
     defaults:
       run:
-        working-directory: "Machine_Learning Project/02_Unsupervised - Machine Learning/DBSCAN/CreditCard_Fraud_Detection"
+        working-directory: "Machine_Learning Project/05_Advanced Project (AI)/Recommendation System/Movies_Recommendation_System"
 
     steps:
 
-      # Step 1 - Download repository
+      # STEP 1 — CHECKOUT REPOSITORY
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # Step 2 - Install Python
+      # STEP 2 — SETUP PYTHON
       - name: Set Up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      # Step 3 - Upgrade pip
-      - name: Upgrade Pip
-        run: |
-          python -m pip install --upgrade pip
+      # STEP 3 — INSTALL DOCKER COMPOSE
+      - name: Set Up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      # Step 4 - Install requirements
-      - name: Install Dependencies
+      # STEP 4 — BUILD CONTAINERS
+      - name: Build Docker Containers
         run: |
-          pip install -r requirements.txt
+          docker compose build
 
-      # Step 5 - Verify main FastAPI file exists
-      - name: Verify FastAPI Main File
+      # STEP 5 — START CONTAINERS
+      - name: Start Containers
         run: |
-          test -f app/main.py
+          docker compose up -d
 
-      # Step 6 - Check Python syntax
-      - name: Check Python Syntax
+      # STEP 6 — WAIT FOR SERVICES
+      - name: Wait For Services
         run: |
-          python -m py_compile app/main.py
+          sleep 15
 
-      # Step 7 - Import FastAPI app
-      - name: Test FastAPI Import
+      # STEP 7 — TEST FASTAPI HEALTH
+      - name: Test FastAPI API
         run: |
-          python -c "from app.main import app"
+          curl http://localhost:8000
 
-      # Step 8 - Run FastAPI validation
-      - name: Run FastAPI Validation
+      # STEP 8 — TEST FASTAPI DOCS
+      - name: Test FastAPI Docs
         run: |
-          python - <<EOF
-          from app.main import app
-          print("FastAPI app loaded successfully")
-          print("Routes:", app.routes)
-          EOF
+          curl http://localhost:8000/docs
 
-      # Step 9 - Install pytest
-      - name: Install Pytest
+      # STEP 9 — TEST STREAMLIT
+      - name: Test Streamlit
         run: |
-          pip install pytest
+          curl http://localhost:8501
 
-      # Step 10 - Run Tests
-      - name: Run Pytest
+      # STEP 10 — VERIFY CONTAINERS RUNNING
+      - name: Check Running Containers
         run: |
-          PYTHONPATH=. pytest
+          docker ps
 
-      # Step 11 - Success Message
-      - name: CI/CD Success
+      # STEP 11 — SHUTDOWN CONTAINERS
+      - name: Stop Containers
         run: |
-          echo "All tests passed successfully"
+          docker compose down
+
+      # STEP 12 — SUCCESS MESSAGE
+      - name: Success
+        run: |
+          echo "CI/CD pipeline completed successfully"
