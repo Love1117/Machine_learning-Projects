@@ -10,32 +10,63 @@ st.set_page_config(
 
 st.title("🎬 AI Movie Recommendation System")
 
-movie_name = st.text_input(
-    "Enter Movie Name"
-)
-
-if st.button("Recommend"):
-
-    response = requests.post(
-        f"{API_URL}/recommend",
-        json={"title": movie_name}
+# GET MOVIES FROM FASTAPI
+try:
+    response = requests.get(
+        f"{API_URL}/movies"
     )
 
-    data = response.json()
+    movies = response.json()["movies"]
 
-    if "recommendations" in data:
+except:
+    st.error("FastAPI server is not running.")
+    st.stop()
 
-        st.subheader("Recommended Movies")
+# SEARCHABLE DROPDOWN
+selected_movie = st.selectbox(
+    "Search or Select a Movie",
+    movies,
+    index=None,
+    placeholder="Type to search movie titles..."
+)
 
-        cols = st.columns(5)
+# RECOMMEND BUTTON
+if st.button("Recommend"):
 
-        for idx, movie in enumerate(data["recommendations"]):
+    if not selected_movie:
+        st.warning("Please select a movie.")
+        st.stop()
 
-            with cols[idx % 5]:
+    with st.spinner("Finding recommendations..."):
 
-                st.image(movie["poster"])
+        response = requests.post(
+            f"{API_URL}/recommend",
+            json={
+                "title": selected_movie
+            }
+        )
 
-                st.write(movie["title"])
+        data = response.json()
 
-    else:
-        st.error(data["error"])
+        # SHOW RESULTS
+        if "recommendations" in data:
+
+            st.subheader(
+                f"Top Recommendations for {selected_movie}"
+            )
+
+            cols = st.columns(5)
+
+            for idx, movie in enumerate(data["recommendations"]):
+
+                with cols[idx % 5]:
+
+                    st.image(
+                        movie["poster"],
+                        use_container_width=True
+                    )
+
+                    st.write(movie["title"])
+
+        else:
+            st.error(data["error"])
