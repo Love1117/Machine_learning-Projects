@@ -47,10 +47,15 @@ jobs:
           docker compose up -d
 
       # STEP 6 — WAIT FOR SERVICES
-      - name: Wait For Services
+      - name: Wait For FastAPI
         run: |
-          sleep 40
-          
+          for i in {1..30}; do
+            curl -f http://localhost:8000 && break
+            echo "Waiting for FastAPI..."
+            sleep 2
+          done
+
+
       - name: Show Docker Logs
         run: |
           docker compose logs
