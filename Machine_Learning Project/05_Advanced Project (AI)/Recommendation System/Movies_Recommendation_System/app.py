@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent
 MODEL_DIR = BASE_DIR / "models" / "1st_version"
 
 vector = joblib.load(MODEL_DIR / "vector.joblib")
-similarity = joblib.load(MODEL_DIR / "tfidf.joblib")
+tfidf = joblib.load(MODEL_DIR / "tfidf.joblib")
 movies = joblib.load(MODEL_DIR / "movies.joblib")
 
 
