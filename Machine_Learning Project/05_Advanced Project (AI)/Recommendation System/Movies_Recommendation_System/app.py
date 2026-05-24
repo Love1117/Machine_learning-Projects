@@ -1,15 +1,18 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
+from pathlib import Path
 import os
+from sklearn.metrics.pairwise import cosine_similarity
 
+BASE_DIR = Path(__file__).resolve().parent
 
-output_dir = "/content/drive/My Drive/Models/Advanced Project/Recommendation System/"
+MODEL_DIR = BASE_DIR / "models" / "1st_version"
 
-# Load the vector and similarity matrix
-vector = joblib.load(os.path.join(output_dir, "Vector.joblib"))
-similarity = joblib.load(os.path.join(output_dir, "similarity.joblib"))
-movies = joblib.load(os.path.join(output_dir, "movies.joblib"))
+vector = joblib.load(MODEL_DIR / "vector.joblib")
+similarity = joblib.load(MODEL_DIR / "tfidf.joblib")
+movies = joblib.load(MODEL_DIR / "movies.joblib")
+
 
 app = FastAPI()
 
@@ -21,20 +24,13 @@ def read_root():
     return {"message": "Welcome to the Movie Recommendation API!"}
 
 
-def get_recommendations(title):
-  idx = movies[movies["Title"]== title].index[0]
-  sim_scores = sorted(list(enumerate(similarity[idx])), reverse=True,  key= lambda vector: vector[1])
-  for i in sim_scores[1:11]:
-    print(movies.iloc[i[0]].Title)
-
 @app.post("/recommend")
 def get_movie_recommendations(request: MovieRequest):
     try:
         title = request.title
 
-        
-        idx = movies[movies["Title"] == request.title].index[0]
-        sim_scores = sorted(list(enumerate(similarity[idx])), reverse=True, key=lambda x: x[1])
+        idx = movies[movies["Title"].str.lower() == title.lower()].index[0]
+        sim_scores = sorted(list(enumerate(cosine_similarity(vector[idx], vector).flatten())), reverse=True,  key= lambda item: item[1])
 
         # Get the top 10 similar movies (excluding the movie itself)
         recommendations = []
