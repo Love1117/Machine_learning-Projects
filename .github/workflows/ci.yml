@@ -36,6 +36,10 @@ jobs:
       - name: Set Up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      # DOCKER COMPOSE
+      - name: Set up Docker Compose
+        uses: docker/setup-compose-action@v1
+
       # STEP 4 — BUILD CONTAINERS
       - name: Build Docker Containers
         run: |
@@ -49,16 +53,19 @@ jobs:
       # STEP 6 — WAIT FOR SERVICES
       - name: Wait For FastAPI
         run: |
-          for i in {1..30}; do
-            curl -f http://localhost:8000 && break
-            echo "Waiting for FastAPI..."
-            sleep 2
-          done
-
+          sleep 40
+      
+      - name: Streamlit Logs
+        run: |
+          docker compose logs streamlit
 
       - name: Show Docker Logs
         run: |
           docker compose logs
+
+      - name: FastAPI Logs
+        run: |
+          docker compose logs fastapi
 
       # STEP 7 — TEST FASTAPI HEALTH
       - name: Test FastAPI API
@@ -78,7 +85,7 @@ jobs:
       # STEP 10 — VERIFY CONTAINERS RUNNING
       - name: Check Running Containers
         run: |
-          docker ps
+          docker ps -a
 
       # STEP 11 — SHUTDOWN CONTAINERS
       - name: Stop Containers
