@@ -1,0 +1,38 @@
+services:
+
+  fastapi:
+
+    build: .
+
+    container_name: music_api
+
+    ports:
+      - "8000:8000"
+
+    environment:
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+
+    volumes:
+      - .:/app
+
+  streamlit:
+
+    build: .
+
+    container_name: music_streamlit
+
+    command: streamlit run frontend/streamlit_app.py --server.port 8501 --server.address 0.0.0.0
+
+    ports:
+      - "8501:8501"
+
+    environment:
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+      
+    volumes:
+      - .:/app
+
+    depends_on:
+      - fastapi
