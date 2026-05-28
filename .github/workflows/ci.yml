@@ -1,4 +1,4 @@
-name: Movie Recommendation CI/CD
+name: Music Recommendation CI/CD
 
 on:
 
@@ -108,6 +108,9 @@ jobs:
       # STEP 15 — STOP CONTAINERS
       - name: Stop Containers
         if: always()
+        env:
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
         run: |
           docker compose down
 
