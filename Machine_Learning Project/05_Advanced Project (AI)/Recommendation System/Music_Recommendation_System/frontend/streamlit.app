@@ -3,48 +3,60 @@ from streamlit_searchbox import st_searchbox
 import requests
 import pandas as pd
 import joblib
+from app.core.config import MODEL_DIR
 
-# Load songs dataset
+
+
+# Load songs
 songs = joblib.load("models/songs.joblib")
 
-# Create song list
-song_list = songs["track_name"].drop_duplicates().tolist()
+# Remove duplicates
+song_list = sorted(
+    songs["track_name"].dropna().unique().tolist()
+)
 
-# Streamlit settings
+# Streamlit page
 st.set_page_config(
-    page_title="Music Recommendation",
+    page_title="Music Recommendation System",
     layout="wide"
 )
 
 st.title("🎵 Music Recommendation System")
 
-# SEARCHABLE DROPDOWN
-selected_song = st_searchbox(
+# Searchable dropdown
+selected_song = st.selectbox(
 
-    "Search and Select Song",
+    "Search Song",
 
-    song_list,
+    options=song_list,
 
     index=None,
 
-    placeholder="Type song name here..."
+    placeholder="Type or select a song"
 
 )
 
 API_URL = "http://fastapi:8000/recommend"
 
-# Button
+# Recommendation button
 if st.button("Recommend"):
 
-    if selected_song:
+    if not selected_song:
+        st.warning("Please select a song")
 
-        response = requests.post(
+    else:
 
-            API_URL,
+        with st.spinner("Getting recommendations..."):
 
-            json={"track_name": selected_song}
+            response = requests.post(
 
-        )
+                API_URL,
+
+                json={
+                    "track_name": selected_song
+                }
+
+            )
 
         if response.status_code == 200:
 
@@ -60,13 +72,13 @@ if st.button("Recommend"):
 
                 with cols[index % 5]:
 
-                    # POSTER
+                    # Poster
                     st.image(
                         song["poster"],
                         use_container_width=True
                     )
 
-                    # SONG TITLE
+                    # Music title
                     st.markdown(
                         f"""
                         <h4 style='margin-bottom:0px;'>
@@ -76,7 +88,7 @@ if st.button("Recommend"):
                         unsafe_allow_html=True
                     )
 
-                    # ARTIST
+                    # Artist name
                     st.markdown(
                         f"""
                         <p style='color:gray; margin-top:0px;'>
@@ -87,4 +99,5 @@ if st.button("Recommend"):
                     )
 
         else:
+
             st.error("Song not found")

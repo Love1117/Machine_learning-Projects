@@ -1,3 +1,5 @@
+Testing secreat env on colab notebook
+
 from fastapi import FastAPI, UploadFile, File, HTTPException, Form
 from typing import Optional
 import uvicorn
@@ -6,12 +8,12 @@ import io
 import base64
 from PIL import Image
 from openai import OpenAI
-import os
 from dotenv import load_dotenv
+from google.colab import userdata
 
 load_dotenv()
 
-HF_TOKEN = os.getenv("HF_TOKEN")
+HF_TOKEN = userdata.get("HF_TOKEN")
 if not HF_TOKEN:
     raise ValueError("HF_TOKEN not found. Check your .env file.")
 
