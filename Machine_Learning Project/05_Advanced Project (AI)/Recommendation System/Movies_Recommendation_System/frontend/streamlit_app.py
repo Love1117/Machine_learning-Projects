@@ -1,6 +1,16 @@
 import streamlit as st
 import requests
 
+
+DEFAULT_IMAGE = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
+def is_valid_image(url):
+    try:
+        response = requests.head(url, timeout=3)
+        return response.status_code == 200
+    except:
+        return False
+
+
 API_URL = "http://fastapi:8000"
 
 st.set_page_config(
@@ -61,12 +71,19 @@ if st.button("Recommend"):
 
                 with cols[idx % 5]:
 
+                    img_url = movie.get("poster")
+
+                    if not img_url or img_url == "N/A" or not is_valid_image(img_url):
+                        img_url = DEFAULT_IMAGE
+
                     st.image(
-                        movie["poster"],
-                        use_container_width=True
-                    )
+                             img_url,
+                             use_container_width=True)
 
                     st.write(movie["title"])
 
         else:
-            st.error(data["error"])
+            if "error" in data:
+                st.error(data["error"])
+            else:
+                st.write(data)
