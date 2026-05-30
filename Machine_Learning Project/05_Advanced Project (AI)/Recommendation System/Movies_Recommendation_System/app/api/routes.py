@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from app.schemas.movie_schema import MovieRequest
 from app.services.movie_service import recommendation
-
+from app.services.model_loader import movies
 
 
 
