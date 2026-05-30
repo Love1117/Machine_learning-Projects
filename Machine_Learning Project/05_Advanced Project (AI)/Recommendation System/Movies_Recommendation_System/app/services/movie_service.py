@@ -1,12 +1,14 @@
 import pandas as pd
 from fastapi import HTTPException
+from sklearn.metrics.pairwise import cosine_similarity
+
 
 from app.services.model_loader import movies, tfidf, vector
 
 
 def recommendation(request):
     try:
-        title = request.title
+        title = request.title()
 
         idx = movies[movies["Title"].str.lower() == title.lower()].index[0]
         sim_scores = sorted(list(enumerate(cosine_similarity(vector[idx], vector).flatten())), reverse=True,  key= lambda item: item[1])
@@ -19,7 +21,14 @@ def recommendation(request):
             
         return {"movie": title, 
                 "recommendations": recommendations}
+    
+
     except IndexError:
-        return {"error": f"Movie '{request.title}' not found in the database."}, 404
+        raise HTTPException(
+        status_code=404,
+        detail=f"Movie '{request.title}' not found in the database.")
+
     except Exception as e:
-        return {"error": str(e)}, 500
+        raise HTTPException(
+        status_code=500,
+        detail=str(e))
