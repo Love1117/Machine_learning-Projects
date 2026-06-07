@@ -10,8 +10,8 @@ BASE_DIR = Path(__file__).resolve().parent
 MODEL_DIR = BASE_DIR / "models" / "1st_version"
 
 # Load models
-products = joblib.load(MODEL_DIR, "products.joblib")
-vector = joblib.load(MODEL_DIR, "vector.joblib")
+products = joblib.load(MODEL_DIR / "products.joblib")
+vector = joblib.load(MODEL_DIR / "vector.joblib")
 
 def strikethrough_text(text):
     return ''.join([char + '\u0336' for char in str(text)])
