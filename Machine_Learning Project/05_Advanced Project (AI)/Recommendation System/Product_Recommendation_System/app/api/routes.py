@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from app.schemas.mobile_schema import ProductRequest
-from app.services.mobile_service import recommend_products
+from app.schemas.product_schema import ProductRequest
+from app.services.product_service import recommend_products
 from app.services.model_loader import products 
 
 
