@@ -1,4 +1,4 @@
 from pydantic import BaseModel
 
-class MobileRequest(BaseModel):
+class ProductRequest(BaseModel):
     category: str
