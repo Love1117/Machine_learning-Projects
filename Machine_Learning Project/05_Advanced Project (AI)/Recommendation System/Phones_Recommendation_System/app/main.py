@@ -3,7 +3,7 @@ from app.api.routes import router
 
 
 app = FastAPI(
-    title="Music Recommendation API",
+    title="Mobile Recommendation API",
     version="1.0"
 )
 
