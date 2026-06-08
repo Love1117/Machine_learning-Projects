@@ -3,11 +3,7 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from app.services.model_loader import phone_data, vector
-
-
-
-def strikethrough_text(text):
-    return ''.join([char + '\u0336' for char in str(text)])
+from app.services.preprocessing import strikethrough_text, rating_to_stars
 
 
 
@@ -38,11 +34,13 @@ def recommend_phones(request: MobileRequest):
     for i in sim_scores[1:11]:
       recommended_phone = phone_data.iloc[i[0]]
       market_price_formatted = strikethrough_text(recommended_phone['market_price'])
+      star_rating = rating_to_stars(recommended_phone['rating'])
 
       recommendations.append({
                 "image_url": recommended_phone['image_url'],
                 "product_name": recommended_phone['name'],
-                "rating": f"{recommended_phone['rating']} out of 5 stars ({recommended_phone['ratings_reviews']}) Total comments",
+                # Include both star emojis and the numerical rating with 'out of 5 stars;
+                "rating": f"{star_rating} {recommended_phone['rating']} ({recommended_phone['ratings_reviews']})Comments",
                 "sale_price": f"{recommended_phone['discount']} ${recommended_phone['Sale_Price']}",
                 "market_price": f"${market_price_formatted}"
             })
