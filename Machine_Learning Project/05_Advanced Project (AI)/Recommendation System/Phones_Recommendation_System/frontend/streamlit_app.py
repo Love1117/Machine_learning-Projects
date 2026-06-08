@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-
+from app.services.model_loader import phone_data 
 
 DEFAULT_IMAGE = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
 def is_valid_image(url):
@@ -23,10 +23,10 @@ st.title("🎬 AI Mobile Recommendation System")
 # GET MOBILES FROM FASTAPI
 try:
     response = requests.get(
-        f"{API_URL}/mobile"
+        f"{API_URL}/brands"
     )
 
-    mobiles = response.json()["Brands"]
+    brands = response.json()["brands"]
 
 except:
     st.error("FastAPI server is not running.")
@@ -35,13 +35,13 @@ except:
 # SEARCHABLE DROPDOWN
 selected_brand = st.selectbox(
     "Search or Select a Phone Brand",
-    Brands,
+    brands,
     index=None,
     placeholder="Type to search brand..."
 )
 
 # RECOMMEND BUTTON
-if st.button("Recommend"):
+if st.button("Recommend Phones"):
 
     if not selected_brand:
         st.warning("Please select a brand.")
@@ -56,34 +56,25 @@ if st.button("Recommend"):
             }
         )
 
-        data = response.json()
+        recommendations  = response.json()
 
-        # SHOW RESULTS
-        if "recommendations" in data:
-
-            st.subheader(
+        st.subheader(
                 f"Top Recommendations for {selected_brands}"
             )
 
-            cols = st.columns(5)
+        cols = st.columns(5)
 
-            for idx, brand in enumerate(data["recommendations"]):
+        for idx, phone in enumerate("recommendations"):
 
-                with cols[idx % 5]:
+            with cols[idx % 5]:
 
-                    img_url = phone_data.get("image_url")
+                img_url = phone.get("image_url")
 
-                    if not img_url or img_url == "N/A" or not is_valid_image(img_url):
-                        img_url = DEFAULT_IMAGE
+                if not img_url or img_url == "N/A" or not is_valid_image(img_url):
+                    img_url = DEFAULT_IMAGE
 
                     st.image(
                              img_url,
                              use_container_width=True)
 
-                    st.write(movie["title"])
-
-        else:
-            if "error" in data:
-                st.error(data["error"])
-            else:
-                st.write(data)
+                    st.write(phone_data["brand"])
