@@ -16,9 +16,9 @@ def model_check():
 
 @router.get("/mobile")
 def get_mobiles():
-    phone_brand = phone_data["brand"].tolist()
+    brands = phone_data["brand"].tolist()
     return {
-        "Brands": phone_brand
+        "brands": brands
     }
 
 @router.post("/recommend")
