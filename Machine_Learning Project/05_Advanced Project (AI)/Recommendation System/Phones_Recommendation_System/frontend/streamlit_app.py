@@ -1,6 +1,5 @@
 import streamlit as st
 import requests
-from app.services.model_loader import phone_data 
 
 DEFAULT_IMAGE = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
 def is_valid_image(url):
@@ -52,19 +51,19 @@ if st.button("Recommend Phones"):
         response = requests.post(
             f"{API_URL}/recommend",
             json={
-                "title": selected_brands
+                "brand": selected_brand
             }
         )
 
         recommendations  = response.json()
 
         st.subheader(
-                f"Top Recommendations for {selected_brands}"
+                f"Top Recommendations for {selected_brand}"
             )
 
         cols = st.columns(5)
 
-        for idx, phone in enumerate("recommendations"):
+        for idx, phone in enumerate(recommendations):
 
             with cols[idx % 5]:
 
@@ -77,4 +76,28 @@ if st.button("Recommend Phones"):
                              img_url,
                              use_container_width=True)
 
-                    st.write(phone_data["brand"])
+                    st.markdown(
+            f"""
+            <div style="
+                border:1px solid #ddd;
+                border-radius:12px;
+                padding:10px;
+                margin-bottom:15px;
+                min-height:200px;
+            ">
+                <h5>{phone['product_name']}</h5>
+
+                <p>{phone['rating']}</p>
+
+                <p>
+                    <b>{phone['sale_price']}</b>
+                </p>
+
+                <p>
+                    {phone['market_price']}
+                </p>
+
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
