@@ -14,11 +14,11 @@ def model_check():
     return {"status": "ok"}
 
 
-@router.get("/mobile")
+@router.get("/products")
 def get_products():
     product_category = products["category"].tolist()
     return {
-        "category": product_category
+        "product_category": product_category
     }
 
 @router.post("/recommend")
