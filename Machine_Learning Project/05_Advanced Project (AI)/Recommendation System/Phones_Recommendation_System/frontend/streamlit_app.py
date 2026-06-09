@@ -72,19 +72,19 @@ if st.button("Recommend Phones"):
                 if not img_url or img_url == "N/A" or not is_valid_image(img_url):
                     img_url = DEFAULT_IMAGE
 
-                    st.image(
+                st.image(
                              img_url,
                              use_container_width=True)
 
-                    st.markdown(
-            f"""
-            <div style="
+                st.markdown(
+                f"""
+                <div style="
                 border:1px solid #ddd;
                 border-radius:12px;
                 padding:10px;
                 margin-bottom:15px;
                 min-height:200px;
-            ">
+                ">
                 <h5>{phone['product_name']}</h5>
 
                 <p>{phone['rating']}</p>
