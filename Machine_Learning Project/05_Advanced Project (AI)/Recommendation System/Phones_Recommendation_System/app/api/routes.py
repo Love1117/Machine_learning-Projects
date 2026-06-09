@@ -14,8 +14,8 @@ def model_check():
     return {"status": "ok"}
 
 
-@router.get("/mobile")
-def get_mobiles():
+@router.get("/brands")
+def get_brands():
     brands = phone_data["brand"].tolist()
     return {
         "brands": brands
