@@ -19,4 +19,4 @@ COPY . .
 
 # Expose FastAPI Port
 EXPOSE 8000
-EXPOSE 
+EXPOSE 8501
