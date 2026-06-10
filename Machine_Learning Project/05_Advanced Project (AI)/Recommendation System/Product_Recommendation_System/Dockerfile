@@ -1,22 +1,18 @@
-# Base Image
-FROM python:3.12-slim
+ FROM python:3.10-slim
 
-# Prevent python cache
-ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Working directory
+# working directory
 WORKDIR /app
 
-# Copy requirements first
 COPY requirements.txt .
 
-# Install dependencies
+# Installing dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy project files
+# Copying entire project
 COPY . .
 
-# Expose FastAPI Port
+
 EXPOSE 8000
-EXPOSE 
+EXPOSE 8501
