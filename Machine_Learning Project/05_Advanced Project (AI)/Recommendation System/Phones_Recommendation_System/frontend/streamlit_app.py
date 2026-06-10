@@ -55,6 +55,10 @@ if st.button("Recommend Phones"):
             }
         )
 
+        if response.status_code != 200:
+            st.error("Could not fetch recommendations.")
+            st.stop()
+
         recommendations  = response.json()
 
         st.subheader(
