@@ -13,7 +13,7 @@ def is_valid_image(url):
 API_URL = "http://fastapi:8000"
 
 st.set_page_config(
-    page_title="Mobile Recommender",
+    page_title="Product Recommender",
     layout="wide"
 )
 
@@ -32,18 +32,18 @@ except:
     st.stop()
 
 # SEARCHABLE DROPDOWN
-selected_brand = st.selectbox(
-    "Search or Select a Phone Brand",
-    brands,
+selected_product = st.selectbox(
+    "Search or Select a Product category",
+    selected_category,
     index=None,
-    placeholder="Type to search brand..."
+    placeholder="Type to search product..."
 )
 
 # RECOMMEND BUTTON
-if st.button("Recommend Phones"):
+if st.button("Recommend Products"):
 
-    if not selected_brand:
-        st.warning("Please select a brand.")
+    if not selected_category:
+        st.warning("Please select a Category.")
         st.stop()
 
     with st.spinner("Finding recommendations..."):
