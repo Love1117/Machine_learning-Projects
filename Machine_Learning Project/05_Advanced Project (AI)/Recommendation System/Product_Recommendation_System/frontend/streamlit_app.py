@@ -22,21 +22,21 @@ st.title("🎬 AI Product Recommendation System")
 # GET PRODUCTS FROM FASTAPI
 try:
     response = requests.get(
-        f"{API_URL}/Products"
+        f"{API_URL}/categories"
     )
 
-    brands = response.json()["Products"]
+    brands = response.json()["categories"]
 
 except:
     st.error("FastAPI server is not running.")
     st.stop()
 
 # SEARCHABLE DROPDOWN
-selected_product = st.selectbox(
-    "Search or Select a Product category",
-    selected_category,
+selected_category = st.selectbox(
+    "Search or Select a Product Category",
+    categories,
     index=None,
-    placeholder="Type to search product..."
+    placeholder="Type to search category..."
 )
 
 # RECOMMEND BUTTON
@@ -51,19 +51,19 @@ if st.button("Recommend Products"):
         response = requests.post(
             f"{API_URL}/recommend",
             json={
-                "brand": selected_brand
+                "category": selected_category
             }
         )
 
         recommendations  = response.json()
 
         st.subheader(
-                f"Top Recommendations for {selected_brand}"
+                f"Top Recommendations for {selected_category}"
             )
 
         cols = st.columns(5)
 
-        for idx, phone in enumerate(recommendations):
+        for idx, product in enumerate(recommendations):
 
             with cols[idx % 5]:
 
@@ -85,19 +85,16 @@ if st.button("Recommend Products"):
                 margin-bottom:15px;
                 min-height:200px;
                 ">
-                <h5>{phone['product_name']}</h5>
+                 <h5>{product['product_name']}</h5>
 
-                <p>{phone['rating']}</p>
+                        <p>
+                            <b>{product['sale_price']}</b>
+                        </p>
 
-                <p>
-                    <b>{phone['sale_price']}</b>
-                </p>
+                        <p>
+                            {product['market_price']}
+                        </p>
 
-                <p>
-                    {phone['market_price']}
-                </p>
-
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+                    </div>
+                    """,
+                    unsafe_allow_html=True)
