@@ -14,13 +14,14 @@ def model_check():
     return {"status": "ok"}
 
 
-@router.get("/products")
-def get_products():
-    product_category = products["category"].tolist()
+@router.get("/categories")
+def get_categories():
+    categories = sorted(
+        products["category"].dropna().unique().tolist()
+    )
     return {
-        "product_category": product_category
+        "categories": categories
     }
-
 @router.post("/recommend")
 def get_product_recommendations(request: ProductRequest):
     return recommend_products(request.category)
