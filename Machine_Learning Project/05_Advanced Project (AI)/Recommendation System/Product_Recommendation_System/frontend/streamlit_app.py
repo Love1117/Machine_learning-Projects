@@ -25,7 +25,7 @@ try:
         f"{API_URL}/categories"
     )
 
-    brands = response.json()["categories"]
+    categories = response.json()["categories"]
 
 except:
     st.error("FastAPI server is not running.")
@@ -55,6 +55,10 @@ if st.button("Recommend Products"):
             }
         )
 
+        if response.status_code != 200:
+            st.error("Could not fetch recommendations.")
+            st.stop()
+
         recommendations  = response.json()
 
         st.subheader(
@@ -67,7 +71,7 @@ if st.button("Recommend Products"):
 
             with cols[idx % 5]:
 
-                img_url = phone.get("image_url")
+                img_url = product.get("image_url")
 
                 if not img_url or img_url == "N/A" or not is_valid_image(img_url):
                     img_url = DEFAULT_IMAGE
