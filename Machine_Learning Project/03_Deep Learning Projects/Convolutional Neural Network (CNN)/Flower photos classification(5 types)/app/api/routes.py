@@ -6,10 +6,6 @@ from app.database.session import get_db
 
 router = APIRouter()
 
-@router.get("/")
-def home():
-    return {"message": "Flower Classifier API is running"}
-
 @router.get("/model_check")
 def model_check():
     return {"status": "ok"}
