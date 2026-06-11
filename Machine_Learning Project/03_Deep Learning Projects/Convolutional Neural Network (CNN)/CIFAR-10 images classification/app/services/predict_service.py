@@ -9,7 +9,7 @@ from app.core.constants import Classes
 from app.database.crud import save_prediction
 
 
-def predict_image(file: UploadFile = File(...)):
+def predict_image(file: UploadFile = File(...), db):
   try:
     image_data = await file.read()
     image = Image.open(io.BytesIO(image_data))
