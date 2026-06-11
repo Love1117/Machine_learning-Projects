@@ -9,6 +9,7 @@ from app.core.constants import flower_dict
 from app.database.crud import save_prediction
 
 
+
 def predict_flower(file: UploadFile = File(...), db):
   try:
     # Read the image file
