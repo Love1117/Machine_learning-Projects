@@ -3,8 +3,6 @@ from fastapi import FastAPI, UploadFile, File, HTTPException
 from PIL import Image
 import numpy as np
 import io
-import uvicorn
-import nest_asyncio
 import tensorflow_hub as hub
 import joblib
 from pathlib import Path
