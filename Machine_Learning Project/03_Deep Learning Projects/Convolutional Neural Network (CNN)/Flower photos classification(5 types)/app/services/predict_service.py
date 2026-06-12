@@ -10,7 +10,7 @@ from app.database.crud import save_prediction
 
 
 
-def predict_flower(file: UploadFile = File(...), db):
+def predict_flower_prediction(file: UploadFile = File(...), db):
   try:
     # Read the image file
     contents = await file.read()
