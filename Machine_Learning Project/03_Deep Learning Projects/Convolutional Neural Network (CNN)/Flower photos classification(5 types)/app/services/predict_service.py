@@ -1,4 +1,4 @@
-from fastapi import File, UploadFile
+from fastapi import File, UploadFile, HTTPException
 from PIL import Image
 import numpy as np
 import io
