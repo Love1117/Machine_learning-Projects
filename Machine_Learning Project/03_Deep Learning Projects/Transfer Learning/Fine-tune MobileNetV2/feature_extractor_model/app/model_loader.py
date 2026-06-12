@@ -1,5 +1,4 @@
 import tensorflow as tf
-from tensorflow import keras
 from app.core.config import MODEL_DIR
 import tensorflow_hub as hub
 import joblib
