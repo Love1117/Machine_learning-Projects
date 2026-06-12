@@ -18,4 +18,4 @@ async def predict_flower(
     if not file.content_type.startswith("image/"):
         raise HTTPException(status_code=400, detail="File must be an image")
 
-    return await predict_flower(file, db)
+    return await predict_flower_prediction(file, db)
