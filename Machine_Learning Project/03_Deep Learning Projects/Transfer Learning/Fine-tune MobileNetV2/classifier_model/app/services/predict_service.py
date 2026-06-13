@@ -4,7 +4,7 @@ from PIL import Image
 import numpy as np
 import io
 
-from app.services.model_loader import loaded_model, class_names
+from app.services.model_loader import classifier_loaded
 from app.database.crud import save_prediction
 
 
@@ -17,7 +17,7 @@ labels_path = tf.keras.utils.get_file('ImageNetLabels.txt','https://storage.goog
 imagenet_labels = np.array(open(labels_path).read().splitlines())
 
 
-def predict_flower_prediction(file: UploadFile = File(...), db):
+def image_prediction(file: UploadFile = File(...), db):
   try:
     # Read the image file
         contents = await file.read()
