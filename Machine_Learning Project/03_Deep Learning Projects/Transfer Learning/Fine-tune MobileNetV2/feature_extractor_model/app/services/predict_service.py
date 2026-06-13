@@ -14,7 +14,7 @@ img_width = 224
 
 
 
-def predict_flower_prediction(file: UploadFile = File(...), db):
+def predict_flower(file: UploadFile = File(...), db):
   try:
     # Read the image file
     contents = await file.read()
