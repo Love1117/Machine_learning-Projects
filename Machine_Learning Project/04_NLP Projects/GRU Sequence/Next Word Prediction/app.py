@@ -23,8 +23,8 @@ MODEL_PATH = MODEL_DIR / "GRU_model.keras"
 TOKENIZER_PATH = MODEL_DIR / "GRU_tokenizer.pkl"
 
 # 🔹 Google Drive File IDs
-MODEL_FILE_ID = "1ZbZ6Hlesmi4MzgmHZIe216-o4LrDMCOi"
-TOKENIZER_FILE_ID = "1ZbZ6Hlesmi4MzgmHZIe216-o4LrDMCOi"
+MODEL_FILE_ID = "1GqW86V1WDRiazINCi157AJ5Fon5oB8as"
+TOKENIZER_FILE_ID = "12b6RvO6bvJklCxwg8GEc_I1SZaN648dP"
 
 def download_from_drive(file_id, output_path):
     url = f"https://drive.google.com/uc?id={file_id}"
