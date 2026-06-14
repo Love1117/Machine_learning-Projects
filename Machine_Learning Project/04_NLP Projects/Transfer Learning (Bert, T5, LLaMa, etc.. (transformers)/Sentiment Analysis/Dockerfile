@@ -21,6 +21,6 @@ AutoModelForSequenceClassification.from_pretrained('cardiffnlp/twitter-roberta-b
 
 COPY . .
 
+# Expose FastAPI and streamlit port
 EXPOSE 8000
-
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE 8501
