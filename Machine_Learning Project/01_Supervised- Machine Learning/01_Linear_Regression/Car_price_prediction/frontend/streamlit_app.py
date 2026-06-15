@@ -1,6 +1,9 @@
 import streamlit as st
 import request
-from api_client import predict_car
+from api_client import (predict_car, get_car_models, get_car_names)
+
+models = get_car_models()
+car_names = get_car_names()
 
 
 def load_css():
@@ -40,21 +43,13 @@ with st.form("prediction_form"):
     with col1:
         car_ModelAndYear = st.selectbox(
             "Car Model & Year",
-            [
-                "Maruti Swift 2018",
-                "Toyota Corolla 2020",
-                "Hyundai i20 2019"
-            ]
+            models
         )
 
     with col2:
         car_name = st.selectbox(
             "Car Name",
-            [
-                "Swift",
-                "Corolla",
-                "i20"
-            ]
+            car_names
         )
 
     col3, col4 = st.columns(2)
