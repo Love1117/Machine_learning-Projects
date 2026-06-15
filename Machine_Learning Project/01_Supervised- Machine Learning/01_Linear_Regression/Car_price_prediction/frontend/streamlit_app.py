@@ -1,6 +1,12 @@
 import streamlit as st
-import request
 from api_client import (predict_car, get_car_models, get_car_names)
+
+st.set_page_config(
+    page_title="Car Price Prediction",
+    page_icon="🚗",
+    layout="wide"
+)
+
 
 models = get_car_models()
 car_names = get_car_names()
@@ -15,12 +21,6 @@ def load_css():
         
 load_css()
 
-
-st.set_page_config(
-    page_title="Car Price Prediction",
-    page_icon="🚗",
-    layout="wide"
-)
 
 st.markdown("""
 <div class="main-header">
@@ -55,7 +55,7 @@ with st.form("prediction_form"):
     col3, col4 = st.columns(2)
 
     with col3:
-    year = st.number_input(
+        year = st.number_input(
         "Year",
         min_value=1990,
         max_value=2030,
@@ -155,11 +155,10 @@ with col3:
 # -------------------------------
 # Prediction Button
 # -------------------------------
-
-submit = st.form_submit_button(
+with st.form("prediction_form"):
+    submit = st.form_submit_button(
     "🚗 Predict Price",
-    use_container_width=True
-)
+    use_container_width=True)
 
 if submit:
 
