@@ -8,12 +8,20 @@ st.set_page_config(
 )
 
 
-models = get_car_models()
-car_names = get_car_names()
+@st.cache_data
+def load_models():
+    return get_car_models()
+
+@st.cache_data
+def load_car_names():
+    return get_car_names()
+
+models = load_models()
+car_names = load_car_names()
 
 
 def load_css():
-    with open("frontend/styles.css") as f:
+    with open("styles.css") as f:
         st.markdown(
             f"<style>{f.read()}</style>",
             unsafe_allow_html=True
@@ -43,14 +51,12 @@ with st.form("prediction_form"):
     with col1:
         car_ModelAndYear = st.selectbox(
             "Car Model & Year",
-            models
-        )
+             models)
 
     with col2:
         car_name = st.selectbox(
             "Car Name",
-            car_names
-        )
+             car_names)
 
     col3, col4 = st.columns(2)
 
@@ -73,65 +79,57 @@ with st.form("prediction_form"):
 # Specifications
 # -------------------------------
 
-st.markdown(
+    st.markdown(
     '<div class="section-title">Technical Specifications</div>',
-    unsafe_allow_html=True
-)
+    unsafe_allow_html=True)
 
-col1, col2, col3 = st.columns(3)
+    col1, col2, col3 = st.columns(3)
 
-with col1:
-    mileage = st.number_input(
+    with col1:
+        mileage = st.number_input(
         "Mileage",
-        value=20.0
-    )
+        value=20.0)
 
-with col2:
-    engine = st.number_input(
+    with col2:
+        engine = st.number_input(
         "Engine Capacity",
-        value=1200.0
-    )
+        value=1200.0)
 
-with col3:
-    max_power = st.number_input(
+    with col3:
+        max_power = st.number_input(
         "Max Power",
-        value=80.0
-    )
+        value=80.0)
 
-col4, col5 = st.columns(2)
+    col4, col5 = st.columns(2)
 
-with col4:
-    seats = st.number_input(
+    with col4:
+        seats = st.number_input(
         "Seats",
-        value=5
-    )
+        value=5)
 
-with col5:
-    km_driven = st.number_input(
+    with col5:
+        km_driven = st.number_input(
         "KM Driven",
-        value=50000
-    )
+        value=50000)
 
 
 # -------------------------------
 # Ownership
 # -------------------------------
 
-st.markdown(
+    st.markdown(
     '<div class="section-title">Ownership Information</div>',
-    unsafe_allow_html=True
-)
+    unsafe_allow_html=True)
 
-col1, col2, col3 = st.columns(3)
+    col1, col2, col3 = st.columns(3)
 
-with col1:
-    fuel = st.selectbox(
+    with col1:
+        fuel = st.selectbox(
         "Fuel Type",
-        ["Diesel", "Petrol", "LPG", "CNG"]
-    )
+        ["Diesel", "Petrol", "LPG", "CNG"])
 
-with col2:
-    owner = st.selectbox(
+    with col2:
+        owner = st.selectbox(
         "Owner Type",
         [
             "First Owner",
@@ -139,27 +137,26 @@ with col2:
             "Third Owner",
             "Fourth & Above Owner",
             "Test Drive Car"
-        ]
-    )
+        ])
 
-with col3:
-    seller_type = st.selectbox(
+    with col3:
+        seller_type = st.selectbox(
         "Seller Type",
         [
             "Individual",
             "Dealer",
             "Trustmark Dealer"
-        ]
-    )
+        ])
 
 # -------------------------------
 # Prediction Button
 # -------------------------------
-with st.form("prediction_form"):
+
     submit = st.form_submit_button(
     "🚗 Predict Price",
     use_container_width=True)
 
+    
 if submit:
 
     payload = {
@@ -186,8 +183,7 @@ if submit:
 
         st.metric(
             label="Estimated Car Price",
-            value=f"${result['Car Price']:,.2f}"
-        )
+            value=f"${result['Car Price']:,.2f}")
 
         st.progress(95)
 
