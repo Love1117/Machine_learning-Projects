@@ -4,8 +4,7 @@ from api_client import (predict_car, get_car_models, get_car_names)
 st.set_page_config(
     page_title="Car Price Prediction",
     page_icon="🚗",
-    layout="wide"
-)
+    layout="wide")
 
 
 @st.cache_data
