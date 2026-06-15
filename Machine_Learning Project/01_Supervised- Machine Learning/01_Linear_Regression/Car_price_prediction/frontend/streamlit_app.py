@@ -1,4 +1,5 @@
 import streamlit as st
+import request
 from api_client import predict_car
 
 
@@ -8,10 +9,8 @@ def load_css():
             f"<style>{f.read()}</style>",
             unsafe_allow_html=True
         )
-
-
+        
 load_css()
-
 
 
 st.set_page_config(
