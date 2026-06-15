@@ -16,6 +16,18 @@ def get_options():
         "car_names": list(car_name_encoder.keys())
     }
 
+@router.get("/car_models")
+def get_models():
+    return {"car_model_and_year": list(car_model_encoder.keys())}
+
+@router.get("/car_names")
+def get_names():
+    return {"car_names": list(car_name_encoder.keys())}
+
+
+
+
+
 
 
 @router.get("/model_check")
