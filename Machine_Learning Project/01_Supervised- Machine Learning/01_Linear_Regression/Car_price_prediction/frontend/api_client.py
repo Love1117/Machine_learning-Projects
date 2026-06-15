@@ -9,3 +9,17 @@ def predict_car(data):
     )
 
     return response.json()
+
+
+def get_car_models():
+    response = requests.get(
+        f"{FASTAPI_URL}/car_models"
+    )
+    return response.json()
+
+
+def get_car_names():
+    response = requests.get(
+        f"{FASTAPI_URL}/car_names"
+    )
+    return response.json()
