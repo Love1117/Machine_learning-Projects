@@ -26,7 +26,7 @@ def get_race():
     response.raise_for_status()
     return response.json()
 
-def jobs():
+def get_jobs():
     response = requests.get(
         f"{FASTAPI_URL}/job_title"
     )
