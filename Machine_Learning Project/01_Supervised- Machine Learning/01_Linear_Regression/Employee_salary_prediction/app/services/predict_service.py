@@ -2,7 +2,7 @@ import pandas as pd
 from fastapi import HTTPException
 
 from app.services.model_loader import model, scale, Country_freq, Race_freq, Job_title_encoder
-from app.core.constants import Gend
+from app.core.constants import Gend, Senio
 from app.database.crud import save_prediction
 
 
@@ -50,7 +50,7 @@ def prediction(data, db):
                                 "Years_of_Experience": data.Years_of_Experience,
                                 "Country": Country_val,
                                 "Race": Race_val,
-                                "Senior": data.Senior,
+                                "Senior": Senio[data.Senior],
                                 "Job_title": Job_title_val}])
     input_data = input_data[["Age",
                              "Gender",
