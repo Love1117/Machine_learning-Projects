@@ -9,16 +9,15 @@ st.set_page_config(
 
 @st.cache_data
 def load_country():
-    return get_country()
+    return get_country()["Country"]
 
 @st.cache_data
 def load_racism():
-    return get_race()
+    return get_race()["Race"]
 
 @st.cache_data
 def load_jobs():
-    return get_jobs()
-
+    return get_jobs()["Job_title"]
 
 country = load_country()
 racism = load_racism()
@@ -61,19 +60,17 @@ with st.form("prediction_form"):
     with col2:
         Gender = st.selectbox(
             "Gender",
-            ["Male", "Female"]
-        )
+            ["Male", "Female"])
 
-     with col3:
+    with col3:
         Education_Level = st.number_input(
         "Education_Level",
         min_value=0,
         max_value=3,
         value=None,
-        placeholder="Enter Education_Level (e.g. 3)"
+        placeholder="Enter Education_Level (e.g. 3)")
 
             
-    )
     col4, col5 = st.columns(2)
 
     with col4:
@@ -99,7 +96,7 @@ with st.form("prediction_form"):
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        Job_title = st.st.selectbox(
+        Job_title = st.selectbox(
         "Job_Title",
         job_title)
 
@@ -109,12 +106,12 @@ with st.form("prediction_form"):
         min_value=0,
         max_value=32,
         value=None,
-        placeholder="Enter Years_of_Experience (e.g. 10)"
+        placeholder="Enter Years_of_Experience (e.g. 10)")
 
     with col3:
         Senior = st.selectbox(
         "Senior Employee",
-        ["Yes", "No"]
+        ["Yes", "No"])
 
 # -------------------------------
 # Prediction Button
