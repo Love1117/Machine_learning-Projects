@@ -89,7 +89,7 @@ with st.form("prediction_form"):
 
 
 # -------------------------------
-# Specifications
+# Employment Details
 # -------------------------------
 
     st.markdown(
@@ -121,7 +121,7 @@ with st.form("prediction_form"):
 # -------------------------------
 
     submit = st.form_submit_button(
-    "🚗 Predict Salary",
+    "Predict Salary",
     use_container_width=True)
 
     
@@ -140,16 +140,14 @@ if submit:
 
 
     try:
-
-        result = predict_car(payload)
+        with st.spinner("Generating prediction..."):
+            result = predict_salary(payload)
 
         st.success("Prediction Generated Successfully")
 
         st.metric(
             label="Estimated Employee Salary",
             value=f"${result['Employee_Salary']:,.2f}")
-
-        st.progress(95)
 
     except Exception as e:
         st.error(str(e))
