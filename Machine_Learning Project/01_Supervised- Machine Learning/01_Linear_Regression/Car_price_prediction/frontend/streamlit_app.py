@@ -161,6 +161,9 @@ with st.form("prediction_form"):
 # -------------------------------
 # Prediction Button
 # -------------------------------
+    st.markdown(
+    '<div class="prediction-card">Prediction</div>',
+    unsafe_allow_html=True)
 
     submit = st.form_submit_button(
     "🚗 Predict Price",
