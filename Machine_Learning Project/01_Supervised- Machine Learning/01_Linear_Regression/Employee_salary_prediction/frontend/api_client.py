@@ -10,6 +10,13 @@ def predict_salary(data):
     response.raise_for_status()
     return response.json()
 
+def get_options():
+    response = requests.get(
+        f"{FASTAPI_URL}/options"
+    )
+    response.raise_for_status()
+    return response.json()
+    
 
 def get_country():
     response = requests.get(
