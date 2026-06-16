@@ -64,10 +64,10 @@ def prediction(data, db):
     Scaled = scale.transform(input_data)
     prediction = float(round(model.predict(scaled)[0], 2))
 
-    db_obj = save_prediction(db, data, prediction)
+    db_obj = save_prediction(db, data, Employee_Salary)
 
     return {
-        "employee_salary": prediction,
+        "Employee_Salary": prediction,
         "db_id": db_obj.id
     }
   except Exception as e:
