@@ -8,8 +8,8 @@ def save_prediction(db, data, prediction):
         Education_Level = data.Education_Level,
         Years_of_Experience = data.Years_of_Experience,
         Country = data.Country,
-        Race = 1 if data.Race == "Yes" else 0,
-        Senior = data.Senior,
+        Race = data.Race,
+        Senior = 1 if data.Senior == "Yes" else 0,,
         Job_title = data.Job_title,
         employee_salary = prediction)
 
