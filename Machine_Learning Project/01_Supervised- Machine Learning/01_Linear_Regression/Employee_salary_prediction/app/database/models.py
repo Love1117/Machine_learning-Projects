@@ -13,6 +13,6 @@ class Prediction(Base):
     Years_of_Experience = Column(Float)
     Country = Column(String)
     Race = Column(String)
-    Senior = Column(Integer)
+    Senior = Column(String)
     Job_title = Column(String)
     predicted_salary = Column(Float)
