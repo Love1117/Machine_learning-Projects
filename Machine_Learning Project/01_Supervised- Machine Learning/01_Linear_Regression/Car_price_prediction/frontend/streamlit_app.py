@@ -186,16 +186,14 @@ if submit:
 
 
     try:
-
-        result = predict_car(payload)
+         with st.spinner("Generating prediction..."):
+             result = predict_car(payload)
 
         st.success("Prediction Generated Successfully")
 
         st.metric(
             label="Estimated Car Price",
             value=f"${result['Car_Price']:,.2f}")
-
-        st.progress(95)
 
     except Exception as e:
         st.error(str(e))
