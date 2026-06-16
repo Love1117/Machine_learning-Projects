@@ -1,5 +1,5 @@
 import streamlit as st
-from api_client import (predict_car, get_car_models, get_car_names)
+from api_client import (predict_salary, get_country, get_race, get_jobs)
 
 st.set_page_config(
     page_title="Employee_salary_prediction",
@@ -8,16 +8,21 @@ st.set_page_config(
 
 
 @st.cache_data
-def load_models():
-    return get_car_models()
+def load_country():
+    return get_country()
 
 @st.cache_data
-def load_car_names():
-    return get_car_names()
+def load_racism():
+    return get_race()
 
-models = load_models()
-car_names = load_car_names()
+@st.cache_data
+def load_jobs():
+    return get_jobs()
 
+
+country = load_country()
+racism = load_racism()
+job_title = load_jobs()
 
 def load_css():
     with open("styles.css") as f:
@@ -96,7 +101,7 @@ with st.form("prediction_form"):
     with col1:
         Job_title = st.st.selectbox(
         "Job_Title",
-        Job_title)
+        job_title)
 
     with col2:
         Years_of_Experience = st.number_input(
