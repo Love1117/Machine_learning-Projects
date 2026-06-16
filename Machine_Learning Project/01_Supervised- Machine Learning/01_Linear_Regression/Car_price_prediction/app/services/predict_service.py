@@ -68,7 +68,7 @@ def prediction(data, db):
     scaled = scaler.transform(df)
     prediction = float(round(model.predict(scaled)[0], 2))
 
-    db_obj = save_prediction(db, data, Car Price)
+    db_obj = save_prediction(db, data, car_price)
 
     return {
         "car_price": prediction,
