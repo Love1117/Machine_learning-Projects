@@ -17,18 +17,6 @@ def get_options():
         "Job_title": list(Job_title_encoder.keys())
     }
 
-@router.get("/countries")
-def get_countries():
-    return {"Country": list(Country_freq.keys())}
-
-@router.get("/racism")
-def get_racism():
-    return {"Race": list(Race_freq.keys())}
-
-@router.get("/job_title")
-def get_job_title():
-    return {"Job_title": list(Job_title_encoder.keys())}
-
 
 @router.get("/model_check")
 def model_check():
