@@ -1,6 +1,6 @@
 from app.database.models import Prediction
     
-def save_prediction(db, data, car_price):  
+def save_prediction(db, data, Car_Price):  
     db_obj = Prediction(
         car_ModelAndYear=data.car_ModelAndYear,
         car_name=data.car_name,
@@ -14,7 +14,7 @@ def save_prediction(db, data, car_price):
         fuel=data.fuel,
         owner=data.owner,
         seller_type=data.seller_type,
-        car_price=car_price
+        Car_Price=Car_Price
     )
     
     db.add(db_obj)
