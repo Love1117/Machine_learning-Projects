@@ -93,7 +93,7 @@ async def predict(data: Base):
     prediction = model.predict(Scale)[0]
 
     return {
-            "predicted_salary": round(float(prediction), 2)
+            "predicted_salary": float(round(prediction, 2))
  }
 
   except Exception as e:
