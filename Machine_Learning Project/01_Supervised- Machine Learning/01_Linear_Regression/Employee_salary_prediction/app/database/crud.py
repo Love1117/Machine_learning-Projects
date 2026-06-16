@@ -1,6 +1,6 @@
 from app.database.models import Prediction
 from app.core.constants import Gend, Senio
-def save_prediction(db, data, employee_salary):
+def save_prediction(db, data, Employee_Salary):
 
     db_obj = Prediction(
         Age = data.Age,
@@ -11,7 +11,7 @@ def save_prediction(db, data, employee_salary):
         Race = data.Race,
         Senior = Senio[data.Senior],
         Job_title = data.Job_title,
-        employee_salary = employee_salary)
+        Employee_Salary = Employee_Salary)
 
     db.add(db_obj)
     db.commit()
