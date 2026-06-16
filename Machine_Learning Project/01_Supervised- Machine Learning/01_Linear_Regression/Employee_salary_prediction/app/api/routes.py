@@ -27,7 +27,7 @@ def get_racism():
 
 @router.get("/job_title")
 def get_job_title():
-    return {""Job_title": list(Job_title_encoder.keys())}
+    return {"Job_title": list(Job_title_encoder.keys())}
 
 
 @router.get("/model_check")
