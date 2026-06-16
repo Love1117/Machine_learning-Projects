@@ -42,7 +42,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# Employee Information
+# Personal Information
 with st.form("prediction_form"):
 
     st.markdown(
@@ -93,7 +93,7 @@ with st.form("prediction_form"):
 # -------------------------------
 
     st.markdown(
-    '<div class="section-title">Technical Specifications</div>',
+    '<div class="section-title">Employment Details</div>',
     unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns(3)
@@ -119,7 +119,7 @@ with st.form("prediction_form"):
 # -------------------------------
 # Prediction Button
 # -------------------------------
-
+            
     submit = st.form_submit_button(
     "Predict Salary",
     use_container_width=True)
@@ -142,8 +142,12 @@ if submit:
     try:
         with st.spinner("Generating prediction..."):
             result = predict_salary(payload)
-
+            
         st.success("Prediction Generated Successfully")
+        
+        st.markdown(
+        '<div class="prediction-card">Prediction</div>',
+        unsafe_allow_html=True)
 
         st.metric(
             label="Estimated Employee Salary",
