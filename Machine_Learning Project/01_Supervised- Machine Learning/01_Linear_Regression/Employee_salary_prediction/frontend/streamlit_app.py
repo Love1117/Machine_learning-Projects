@@ -1,5 +1,5 @@
 import streamlit as st
-from api_client import (predict_salary, get_country, get_race, get_jobs)
+from api_client import (predict_salary, get_options)
 
 st.set_page_config(
     page_title="Employee_salary_prediction",
@@ -8,20 +8,15 @@ st.set_page_config(
 
 
 @st.cache_data
-def load_country():
-    return get_country()["Country"]
+def load_options():
+    return get_options()
 
-@st.cache_data
-def load_racism():
-    return get_race()["Race"]
+options = load_options()
 
-@st.cache_data
-def load_jobs():
-    return get_jobs()["Job_title"]
 
-country = load_country()
-racism = load_racism()
-job_title = load_jobs()
+country = options["Country"]
+racism = options["Race"]
+job_title = options["Job_title"]
 
 def load_css():
     with open("styles.css") as f:
