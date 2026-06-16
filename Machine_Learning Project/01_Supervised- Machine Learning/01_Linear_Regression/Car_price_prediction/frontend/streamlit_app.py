@@ -9,11 +9,11 @@ st.set_page_config(
 
 @st.cache_data
 def load_models():
-    return get_car_models()
+    return get_car_models()["car_model_and_year"]
 
 @st.cache_data
 def load_car_names():
-    return get_car_names()
+    return get_car_names()["car_names"]
 
 models = load_models()
 car_names = load_car_names()
