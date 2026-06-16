@@ -51,15 +51,15 @@ with st.form("prediction_form"):
         "Age",
         value=None,
         placeholder="Enter Age (e.g. 35)")
-
+        
     with col2:
         Gender = st.selectbox(
-            "Gender",
-            ["Male", "Female"])
+        "Gender",
+        ["Male", "Female"])
 
     with col3:
         Education_Level = st.number_input(
-        "Education_Level",
+        "Education Level",
         min_value=0,
         max_value=3,
         value=None,
@@ -92,12 +92,12 @@ with st.form("prediction_form"):
 
     with col1:
         Job_title = st.selectbox(
-        "Job_Title",
+        "Job Title",
         job_title)
 
     with col2:
         Years_of_Experience = st.number_input(
-        "Years_of_Experience",
+        "Years of Experience",
         min_value=0,
         max_value=32,
         value=None,
