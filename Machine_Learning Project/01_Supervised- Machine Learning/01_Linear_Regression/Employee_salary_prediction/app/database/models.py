@@ -15,4 +15,4 @@ class Prediction(Base):
     Race = Column(String)
     Senior = Column(String)
     Job_title = Column(String)
-    predicted_salary = Column(Float)
+    Employee_Salary = Column(Float)
