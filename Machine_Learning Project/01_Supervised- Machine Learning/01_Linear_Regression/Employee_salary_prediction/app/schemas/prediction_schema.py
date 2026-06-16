@@ -8,5 +8,5 @@ class PredictionRequest(BaseModel):
   Years_of_Experience: float
   Country: str
   Race: str
-  Senior: int
+  Senior: Literal["Yes","No"]
   Job_title: str
