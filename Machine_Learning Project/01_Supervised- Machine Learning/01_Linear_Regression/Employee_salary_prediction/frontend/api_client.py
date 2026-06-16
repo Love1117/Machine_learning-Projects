@@ -16,26 +16,3 @@ def get_options():
     )
     response.raise_for_status()
     return response.json()
-    
-
-def get_country():
-    response = requests.get(
-        f"{FASTAPI_URL}/countries"
-    )
-    response.raise_for_status()
-    return response.json()
-
-
-def get_race():
-    response = requests.get(
-        f"{FASTAPI_URL}/racism"
-    )
-    response.raise_for_status()
-    return response.json()
-
-def get_jobs():
-    response = requests.get(
-        f"{FASTAPI_URL}/job_title"
-    )
-    response.raise_for_status()
-    return response.json()
