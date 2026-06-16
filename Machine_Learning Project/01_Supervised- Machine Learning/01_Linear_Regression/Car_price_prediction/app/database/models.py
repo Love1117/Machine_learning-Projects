@@ -19,4 +19,4 @@ class Prediction(Base):
     fuel = Column(String)
     owner = Column(String)
     seller_type = Column(String)
-    car_price = Column(Float)
+    Car_Price = Column(Float)
