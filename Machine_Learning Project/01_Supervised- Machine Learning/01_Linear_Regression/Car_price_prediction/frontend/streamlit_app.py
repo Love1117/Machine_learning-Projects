@@ -64,7 +64,8 @@ with st.form("prediction_form"):
         "Year",
         min_value=1990,
         max_value=2030,
-        value=2018
+        value=None,
+        placeholder="Enter mileage (e.g. 2015)"
     )
 
     with col4:
@@ -87,29 +88,39 @@ with st.form("prediction_form"):
     with col1:
         mileage = st.number_input(
         "Mileage",
-        value=20.0)
+        value=None,
+        format="%.2f",
+        placeholder="Enter mileage (e.g. 20.0)")
 
     with col2:
         engine = st.number_input(
         "Engine Capacity",
-        value=1200.0)
+        value=None,
+        format="%.2f",
+        placeholder="Enter mileage (e.g. 1200.0)")
 
     with col3:
         max_power = st.number_input(
         "Max Power",
-        value=80.0)
+        value=None,
+        format="%.2f",
+        placeholder="Enter mileage (e.g. 80.0)")
 
     col4, col5 = st.columns(2)
 
     with col4:
         seats = st.number_input(
         "Seats",
-        value=5)
+        value=None,
+        format="%.2f",
+        placeholder="Enter mileage (e.g. 5)")
 
     with col5:
         km_driven = st.number_input(
         "KM Driven",
-        value=50000)
+        value=None,
+        format="%.2f",
+        placeholder="Enter mileage (e.g. 50000)")
 
 
 # -------------------------------
