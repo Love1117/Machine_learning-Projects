@@ -56,7 +56,7 @@ with st.form("prediction_form"):
 
     with col2:
         Bathrooms = st.number_input(
-        "Bedrooms",
+        "Bathrooms",
         min_value=1,
         max_value=66,
         value=None,
@@ -141,6 +141,39 @@ with st.form("prediction_form"):
     
 if submit:
 
+    # -----------------------------------
+    # Validate Required Fields
+    # -----------------------------------
+    missing_fields = []
+
+    if Bedrooms is None:
+        missing_fields.append("Bedrooms")
+
+    if Bathrooms is None:
+        missing_fields.append("Bathrooms")
+
+    if Living_Space is None:
+        missing_fields.append("Living Space")
+
+    if Median_Household_Income is None:
+        missing_fields.append("Median Household Income")
+
+    if Zip_Code is None:
+        missing_fields.append("Zip Code")
+
+    if Latitude is None:
+        missing_fields.append("Latitude")
+
+    if Longitude is None:
+        missing_fields.append("Longitude")
+
+    if missing_fields:
+        st.warning(
+            f"⚠️ Please complete the following fields: {', '.join(missing_fields)}"
+        )
+        st.stop()
+
+
     payload = {
         "Bedrooms": Bedrooms,
         "Bathrooms": Bathrooms,
@@ -162,7 +195,7 @@ if submit:
         st.success("Prediction Generated Successfully")
         
         st.markdown(
-        '<div class="prediction-card">Prediction</div>',
+        '<div class="prediction-card">Prediction Result</div>',
         unsafe_allow_html=True)
 
         st.metric(
