@@ -14,7 +14,7 @@ def home():
 def model_check():
     return {"status": "ok"}
 
-@router.post("/predict")
+@router.post("/predict-image")
 async def predict_digit_image(
     file: UploadFile = File(...),
     db: Session = Depends(get_db)
