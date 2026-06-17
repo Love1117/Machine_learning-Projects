@@ -20,4 +20,4 @@ class Prediction(Base):
     Credit_history_length = Column(Float)
     Credit_score = Column(Float)
     Previous_loan_defaults_on_file = Column(String)
-    Outcome_status = Column(String)
+    prediction = Column(String)
