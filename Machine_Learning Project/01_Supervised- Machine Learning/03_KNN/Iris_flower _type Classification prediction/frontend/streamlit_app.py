@@ -3,7 +3,7 @@ from api_client import iris_flower
 
 st.set_page_config(
     page_title="Iris Flower-type Classification",
-    page_icon="🏠",
+    page_icon="🪷",
     layout="wide")
 
 
