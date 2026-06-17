@@ -29,10 +29,10 @@ def prediction(data, db):
 
     prediction = model.predict(scale_df)[0]
 
-    db_obj = save_prediction(db, data, prediction)
+    db_obj = save_prediction(db, data, Heart_Disease)
 
     return {
-        "Heart Disease: Yes" if prediction == 1 else "Heart Disease: No",
+        "Heart_Disease: Yes" if prediction == 1 else "Heart Disease: No",
         "db_id": db_obj.id
     }
   except Exception as e:
