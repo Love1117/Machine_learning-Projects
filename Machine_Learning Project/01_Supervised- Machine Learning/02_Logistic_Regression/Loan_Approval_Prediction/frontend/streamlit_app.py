@@ -14,9 +14,9 @@ def load_options():
 options = load_options()
 
 
-address_and_city = options["Address_And_City"]
-state = options["State"]
-county = options["County"]
+loan_intent = options["Loan_intent"]
+home_ownership = options["Home_ownership"]
+
 
 def load_css():
     with open("styles.css") as f:
@@ -30,104 +30,124 @@ load_css()
 
 st.markdown("""
 <div class="main-header">
-    <h1>House_price_prediction System</h1>
-    <p>Predict the price of house using Machine Learning</p>
+    <h1>Loan_approval_prediction System</h1>
+    <p>Predict user Loan status using Machine Learning</p>
 </div>
 """, unsafe_allow_html=True)
 
 
-# House Information
+# Personal Information
 with st.form("prediction_form"):
 
     st.markdown(
-        '<div class="section-title">House Information</div>',
+        '<div class="section-title">personal Information</div>',
         unsafe_allow_html=True
     )
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
 
     with col1:
-        Bedrooms = st.number_input(
-        "Bedrooms",
-        min_value=1,
-        max_value=54,
+        Age = st.number_input(
+        "Age",
         value=None,
-        placeholder="Enter No of Bedrooms (e.g. 5)")
+        placeholder="Enter your Age (e.g. 48)")
 
     with col2:
-        Bathrooms = st.number_input(
-        "Bathrooms",
-        min_value=1,
-        max_value=66,
-        value=None,
-        placeholder="Enter No of Bathrooms (e.g. 5)")
+        Gender = st.selectbox(
+        "Gender",
+        ["Male","Female"])
       
-
-            
-    col3, col4 = st.columns(2)
-
     with col3:
-        Living_Space = st.number_input(
-        "Living Space",
-        value=None,
-        placeholder="Enter Living_Space size sq. ft. (e.g. 1538)")
+        Education = st.selectbox(
+        "Education",
+        ["High School", "Associate", "Bachelor", "Master", "Doctorate"])
 
-  
+    
+    col4, col5, col6 = st.columns(3)
     with col4:
-        Median_Household_Income = st.number_input(
-        "Median Household Income",
+        Income = st.number_input(
+        "Income",
         value=None,
         format="%.2f",
-        placeholder="Enter Median Household Income $ (e.g. 370046.00)")
+        placeholder="Enter Income $. (e.g. 66135.0)")
+  
+    with col5:
+        Employment_experience = st.number_input(
+        "Employment experience",
+        value=None,
+        format="%.2f",
+        placeholder="Enter your years of employment experience (e.g. 25)")
+
+    with col6:
+        Home_ownership = st.selectbox(
+        "Home ownership",
+        home_ownership)
       
 
 
-    col5, col6 = st.columns(2)
+    # -------------------------------
+    # Loan information
+    # -------------------------------
 
-    with col5:
-        Zip_Code = st.number_input(
-        "Zip Code",
+    st.markdown(
+    '<div class="section-title">Loan Information</div>',
+    unsafe_allow_html=True)
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        Loan_amount = st.number_input(
+        "Loan amount",
         value=None,
-        placeholder="Enter  Zip Code. (e.g. 1538)")
+        format="%.2f",
+        placeholder="Enter Loan amount $ (e.g. 35000.0)")
 
+    with col2:
+        Loan_intent = st.selectbox(
+        "Loan intent",
+        loan_intent)
+      
+    with col3:
+        Loan_interest_rate = st.number_input(
+        "Loan interest rate",
+        value=None,
+        format="%.2f",
+        placeholder="Enter Loan interset rate % (e.g. 6.25)")
+
+
+
+    col4, col5 = st.columns(2)
+
+    with col4:
+        Loan_percent_income = st.number_input(
+        "Loan percent income",
+        value=None,
+        format="%.2f",
+        placeholder="Enter  Loan percent income % (e.g. o.25)")
+
+  
+    with col5:
+        Credit_history_length = st.number_input(
+        "Credit history length",
+        min_value=2,
+        max_value=30
+        value=None,
+        placeholder="Enter your Credit history length (e.g. 5)")
+
+
+    
+    col6, col7 = st.columns(2)
   
     with col6:
-        Latitude = st.number_input(
-        "Latitude",
+        Credit_score = st.number_input(
+        "Credit score",
         value=None,
-        format="%.2f",
-        placeholder="Enter Latitude. (e.g. 40.72)")
-
-
-  
-    col7, col8 = st.columns(2)
+        placeholder="Enter your Credit score (e.g. 586)")
 
     with col7:
-        Longitude = st.number_input(
-        "Longitude",
-        value=None,
-        format="%.2f",
-        placeholder="Enter  Longitude (e.g. 74.00)")
-
-  
-    with col8:
-        Address_And_City = st.selectbox(
-        "Address and city",
-        address_and_city)
-
-  
-
-    col9, col10 = st.columns(2)
-  
-    with col9:
-        State = st.selectbox(
-        "State",
-        state)
-
-    with col10:
-        County = st.selectbox(
-        "County",
-        county)
+        Previous_loan_defaults_on_file = st.selectbox(
+        "Previous loan defaults on file",
+        ["Yes","No"])
 
 
 # -------------------------------
@@ -135,7 +155,7 @@ with st.form("prediction_form"):
 # -------------------------------
             
     submit = st.form_submit_button(
-    "Predict House Price",
+    "Predict Loan Approval",
     use_container_width=True)
 
     
@@ -146,26 +166,29 @@ if submit:
     # -----------------------------------
     missing_fields = []
 
-    if Bedrooms is None:
-        missing_fields.append("Bedrooms")
+    if Age is None:
+        missing_fields.append("Age")
 
-    if Bathrooms is None:
-        missing_fields.append("Bathrooms")
+    if Income is None:
+        missing_fields.append("Income")
 
-    if Living_Space is None:
-        missing_fields.append("Living Space")
+    if Employment_experience is None:
+        missing_fields.append("Employment experience")
 
-    if Median_Household_Income is None:
-        missing_fields.append("Median Household Income")
+    if Loan_amount is None:
+        missing_fields.append("Loan amount")
 
-    if Zip_Code is None:
-        missing_fields.append("Zip Code")
+    if Loan_interest_rate is None:
+        missing_fields.append("Loan interest rate")
 
-    if Latitude is None:
-        missing_fields.append("Latitude")
+    if Loan_percent_income is None:
+        missing_fields.append("Loan percent income")
 
-    if Longitude is None:
-        missing_fields.append("Longitude")
+    if Credit_history_length is None:
+        missing_fields.append("Credit history length")
+
+    if Credit_score is None:
+        missing_fields.append("Credit score")
 
     if missing_fields:
         st.warning(
@@ -175,16 +198,19 @@ if submit:
 
 
     payload = {
-        "Bedrooms": Bedrooms,
-        "Bathrooms": Bathrooms,
-        "Living_Space": Living_Space,
-        "Median_Household_Income": Median_Household_Income,
-        "Zip_Code": Zip_Code,
-        "Latitude": Latitude,
-        "Longitude": Longitude,
-        "Address_And_City": Address_And_City,
-        "State": State,
-        "County": County
+        "Age": Age,
+        "Gender": Gender,
+        "Education": Education,
+        "Income": Income,
+        "Employment_experience": Employment_experience,
+        "Home_ownership": Home_ownership,
+        "Loan_amount": Loan_amount,
+        "Loan_intent": Loan_intent,
+        "Loan_interest_rate": Loan_interest_rate,
+        "Loan_percent_income": Loan_percent_income,
+        "Credit_history_length": Credit_history_length,
+        "Credit_score": Credit_score,
+        "Previous_loan_defaults_on_file": Previous_loan_defaults_on_file
     }
 
 
