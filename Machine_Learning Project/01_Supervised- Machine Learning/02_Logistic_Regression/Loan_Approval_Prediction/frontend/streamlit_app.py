@@ -3,7 +3,7 @@ from api_client import (loan_approval, get_options)
 
 st.set_page_config(
     page_title="House_price_prediction",
-    page_icon="🏠",
+    page_icon="💰",
     layout="wide")
 
 
