@@ -1,13 +1,13 @@
 from app.database.models import Prediction
 
-def save_prediction(db, data, iris_flower):
+def save_prediction(db, data, prediction):
 
     db_obj = Prediction(
         sepal_length=data.sepal_length,
         sepal_width=data.sepal_width,
         petal_length=data.petal_length,
         petal_width=data.petal_width,
-        prediction=iris_flower)
+        prediction=prediction)
 
     db.add(db_obj)
     db.commit()
