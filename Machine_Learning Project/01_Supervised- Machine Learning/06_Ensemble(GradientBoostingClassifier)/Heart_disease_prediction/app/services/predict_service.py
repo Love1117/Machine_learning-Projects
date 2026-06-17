@@ -32,7 +32,7 @@ def prediction(data, db):
     db_obj = save_prediction(db, data, Heart_Disease)
 
     return {
-        "Heart_Disease: Yes" if prediction == 1 else "Heart Disease: No",
+        "Heart_Disease": "Yes" if prediction == 1 else "No",
         "db_id": db_obj.id
     }
   except Exception as e:
