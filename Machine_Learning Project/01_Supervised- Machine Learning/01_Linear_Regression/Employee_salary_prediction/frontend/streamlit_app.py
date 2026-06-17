@@ -119,6 +119,28 @@ with st.form("prediction_form"):
     
 if submit:
 
+    # -----------------------------------
+    # Validate Required Fields
+    # -----------------------------------
+    missing_fields = []
+
+    if Age is None:
+        missing_fields.append("Age")
+
+    if Education_Level is None:
+        missing_fields.append("Education Level")
+
+    if Years_of_Experience is None:
+        missing_fields.append("Years of Experience")
+
+    if missing_fields:
+        st.warning(
+            f"⚠️ Please complete the following fields: {', '.join(missing_fields)}"
+        )
+        st.stop()
+
+    
+    
     payload = {
         "Age": Age,
         "Gender": Gender,
@@ -138,7 +160,7 @@ if submit:
         st.success("Prediction Generated Successfully")
         
         st.markdown(
-        '<div class="prediction-card">Prediction</div>',
+        '<div class="prediction-card">Prediction Result</div>',
         unsafe_allow_html=True)
 
         st.metric(
