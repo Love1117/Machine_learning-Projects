@@ -1,5 +1,7 @@
 import streamlit as st
 from api_client import (predict_house_price, get_options)
+from pathlib import Path
+
 
 st.set_page_config(
     page_title="House_price_prediction",
@@ -18,14 +20,16 @@ address_and_city = options["Address_And_City"]
 state = options["State"]
 county = options["County"]
 
+
 def load_css():
-    with open("styles.css") as f:
+    css_path = Path(__file__).parent / "styles.css"
+    with open(css_path) as f:
         st.markdown(
             f"<style>{f.read()}</style>",
-            unsafe_allow_html=True
-        )
+            unsafe_allow_html=True)
         
 load_css()
+
 
 
 st.markdown("""
