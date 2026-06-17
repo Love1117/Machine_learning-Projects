@@ -98,7 +98,7 @@ async def predict(data: Base):
 
     prediction = model.predict(scaled_df)[0]
 
-    return {"Prediction": float(round(prediction,2)),}
+    return {"House_price": float(round(prediction,2)),}
 
   except Exception as e:
     raise HTTPException(status_code=500, detail=str(e))
