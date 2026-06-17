@@ -1,7 +1,7 @@
 from app.core.constants import SMOKE, ALCOHOL, PHYSICAL, GENDER
 from app.database.models import Prediction
 
-def save_prediction(db, data, prediction):
+def save_prediction(db, data, Heart_Disease):
 
     db_obj = Prediction(
       gender=GENDER[data.gender],
@@ -16,7 +16,7 @@ def save_prediction(db, data, prediction):
       age=data.age,
       bmi=data.bmi,
       bp_status=data.bp_status,
-      prediction=prediction
+      prediction=Heart_Disease
     )
 
     db.add(db_obj)
