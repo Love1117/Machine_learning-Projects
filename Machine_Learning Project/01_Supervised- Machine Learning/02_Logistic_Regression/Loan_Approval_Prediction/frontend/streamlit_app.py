@@ -1,5 +1,5 @@
 import streamlit as st
-from api_client import (predict_house_price, get_options)
+from api_client import (loan_approval, get_options)
 
 st.set_page_config(
     page_title="House_price_prediction",
@@ -190,7 +190,7 @@ if submit:
 
     try:
         with st.spinner("Generating prediction..."):
-            result = predict_house_price(payload)
+            result = loan_approval(payload)
             
         st.success("Prediction Generated Successfully")
         
@@ -199,8 +199,8 @@ if submit:
         unsafe_allow_html=True)
 
         st.metric(
-            label="Estimated House Price",
-            value=f"${result['House_price']:,.2f}")
+            label="loan_Status",
+            value=f"${result['prediction']:,.2f}")
 
     except Exception as e:
         st.error(str(e))
