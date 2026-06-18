@@ -41,7 +41,10 @@ with st.form("prediction_form"):
     with col1:
         gender = st.selectbox(
         "Gender",
-        ["Male","Female"])
+        ["Male","Female"],
+        index=None,
+        placeholder="Select Gender"
+)
 
     with col2:
         age = st.number_input(
@@ -106,7 +109,10 @@ with st.form("prediction_form"):
     with col6:
         bp_status = st.selectbox(
         "Hypertension",
-        ["stage1", "stage2", "normal"])
+        ["stage1", "stage2", "normal"],
+        index=None,
+        placeholder="Select Hypertension "
+)
 
   
     with col7:
@@ -134,17 +140,26 @@ with st.form("prediction_form"):
     with col1:
         smoke = st.selectbox(
         "Smoke",
-        ["Yes","No"])
+        ["Yes","No"],
+        index=None,
+        placeholder="Select OPtion"
+)
 
     with col2:
         alcohol_intake = st.selectbox(
         "Alcohol Intake",
-        ["Yes","No"])
+        ["Yes","No"],
+        index=None,
+        placeholder="Select Option"
+)
 
     with col2:
         Physical_activity = st.selectbox(
         "Physical Activity",
-        ["Yes","No"])
+        ["Yes","No"],
+        index=None,
+        placeholder="Select Option"
+)
 
 
 # -------------------------------
