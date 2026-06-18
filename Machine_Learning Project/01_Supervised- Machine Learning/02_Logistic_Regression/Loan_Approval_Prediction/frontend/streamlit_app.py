@@ -58,12 +58,18 @@ with st.form("prediction_form"):
     with col2:
         Gender = st.selectbox(
         "Gender",
-        ["Male","Female"])
+        ["Male","Female"],
+        index=None,
+        placeholder="Type Or Select Gender"
+)
       
     with col3:
         Education = st.selectbox(
         "Education",
-        ["High School", "Associate", "Bachelor", "Master", "Doctorate"])
+        ["High School", "Associate", "Bachelor", "Master", "Doctorate"],
+        index=None,
+        placeholder="Type Or Select Education"
+)
 
     
     col4, col5, col6 = st.columns(3)
@@ -84,7 +90,10 @@ with st.form("prediction_form"):
     with col6:
         Home_ownership = st.selectbox(
         "Home ownership",
-        home_ownership)
+        home_ownership,
+        index=None,
+        placeholder="Type Or Select Home Ownership"
+)
       
 
 
@@ -108,7 +117,10 @@ with st.form("prediction_form"):
     with col2:
         Loan_intent = st.selectbox(
         "Loan intent",
-        loan_intent)
+        loan_intent,
+        index=None,
+        placeholder="Type Or Select Loan Intent"
+)
       
     with col3:
         Loan_interest_rate = st.number_input(
@@ -150,7 +162,10 @@ with st.form("prediction_form"):
     with col7:
         Previous_loan_defaults_on_file = st.selectbox(
         "Previous loan defaults on file",
-        ["Yes","No"])
+        ["Yes","No"],
+        index=None,
+        placeholder="Type Or Select Taken Previous Loan"
+)
 
 
 # -------------------------------
