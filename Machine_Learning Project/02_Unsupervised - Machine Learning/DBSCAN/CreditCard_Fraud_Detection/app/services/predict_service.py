@@ -29,7 +29,7 @@ def prediction(data, db):
       is_fraud = "No"
         
 
-    db_obj = save_prediction(db, data, is_fraud)
+    db_obj = save_prediction(db, data, prediction)
 
     return {
         "prediction": is_fraud,
