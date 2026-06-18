@@ -47,7 +47,7 @@ def prediction(data, db):
     else:
       Group_into = "Impulse / Trend Buyers"
 
-    db_obj = save_prediction(db, data, Group_into)
+    db_obj = save_prediction(db, data, prediction)
     
     return {
         "prediction": Group_into,
