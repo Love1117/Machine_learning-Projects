@@ -58,7 +58,10 @@ with st.form("prediction_form"):
     with col2:
         Gender = st.selectbox(
         "Gender",
-        ["Male", "Female"])
+        ["Male", "Female"],
+        index=None,
+        placeholder="Type Or Select Gender"
+)
 
     with col3:
         Education_Level = st.number_input(
@@ -74,12 +77,18 @@ with st.form("prediction_form"):
     with col4:
         Country = st.selectbox(
         "Country",
-        country)
+        country,
+        index=None,
+        placeholder="Type or Select Country"
+)
 
     with col5:
         Race = st.selectbox(
         "Racism",
-        racism)
+        racism,
+        index=None,
+        placeholder="Type Or Select Segregation"
+)
 
 
 
@@ -96,7 +105,10 @@ with st.form("prediction_form"):
     with col1:
         Job_title = st.selectbox(
         "Job Title",
-        job_title)
+        job_title,
+        index=None,
+        placeholder="Type Or Select Job_title"
+)
 
     with col2:
         Years_of_Experience = st.number_input(
@@ -109,7 +121,10 @@ with st.form("prediction_form"):
     with col3:
         Senior = st.selectbox(
         "Senior Employee",
-        ["Yes", "No"])
+        ["Yes", "No"],
+        index=None,
+        placeholder="Type Or Select Senior Employee"
+)
 
 # -------------------------------
 # Prediction Button
