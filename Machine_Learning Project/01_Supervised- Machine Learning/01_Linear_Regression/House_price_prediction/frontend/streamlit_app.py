@@ -117,7 +117,10 @@ with st.form("prediction_form"):
     with col8:
         Address_And_City = st.selectbox(
         "Address and city",
-        address_and_city)
+        address_and_city,
+        index=None,
+        placeholder="Type Or Select Address And City"
+)
 
   
 
@@ -126,12 +129,18 @@ with st.form("prediction_form"):
     with col9:
         State = st.selectbox(
         "State",
-        state)
+        state,
+        index=None,
+        placeholder="Type Or Select State"
+)
 
     with col10:
         County = st.selectbox(
         "County",
-        county)
+        county,
+        index=None,
+        placeholder="Type or Select County"
+)
 
 
 # -------------------------------
