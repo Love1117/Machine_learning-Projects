@@ -48,16 +48,22 @@ with st.form("prediction_form"):
     )
 
     col1, col2 = st.columns(2)
-
+        
     with col1:
         car_ModelAndYear = st.selectbox(
-            "Car Model & Year",
-             models)
+            "Select Car_Model & Year",
+            models,
+            index=None,
+            placeholder="type or Select Car_Model & Year"
+)
 
     with col2:
         car_name = st.selectbox(
-            "Car Name",
-             car_names)
+            "Select Car_Name",
+             car_names,
+             index=None,
+             placeholder="Type or Select Car_Name"
+)
 
     col3, col4 = st.columns(2)
 
@@ -73,8 +79,10 @@ with st.form("prediction_form"):
     with col4:
         transmission = st.selectbox(
             "Transmission",
-            ["Manual", "Automatic"]
-        )
+            ["Manual", "Automatic"],
+            index=None,
+            placeholder="Select Transmission..."
+)
 
 
 # -------------------------------
@@ -138,18 +146,23 @@ with st.form("prediction_form"):
     with col1:
         fuel = st.selectbox(
         "Fuel Type",
-        ["Diesel", "Petrol", "LPG", "CNG"])
+        ["Diesel", "Petrol", "LPG", "CNG"],
+        index=None,
+        placeholder="Select fuel_type"
+)
 
     with col2:
         owner = st.selectbox(
         "Owner Type",
-        [
-            "First Owner",
+        ["First Owner",
             "Second Owner",
             "Third Owner",
             "Fourth & Above Owner",
             "Test Drive Car"
-        ])
+        ],
+        index=None,
+        placeholder="Select Owner type..."
+)
 
     with col3:
         seller_type = st.selectbox(
@@ -158,7 +171,10 @@ with st.form("prediction_form"):
             "Individual",
             "Dealer",
             "Trustmark Dealer"
-        ])
+        ],
+        index=None,
+        placeholder="Select seller type"
+)
 
 # -------------------------------
 # Prediction Button
