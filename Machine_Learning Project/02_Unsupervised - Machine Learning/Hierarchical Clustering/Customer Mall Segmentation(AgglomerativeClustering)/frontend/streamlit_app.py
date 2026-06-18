@@ -126,7 +126,7 @@ if submit:
         unsafe_allow_html=True)
 
         st.metric(
-            label="is fraud transaction",
+            label="Falls_into",
             value=f"{result['prediction']}")
 
     except Exception as e:
