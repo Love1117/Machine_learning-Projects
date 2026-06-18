@@ -1,6 +1,6 @@
 from app.database.models import Prediction
 
-def save_prediction(db, data, is_fraud):
+def save_prediction(db, data, prediction):
 
     db_obj = Prediction(
        step=data.step,
@@ -10,7 +10,7 @@ def save_prediction(db, data, is_fraud):
        oldbalanceDest=data.oldbalanceDest,
        newbalanceDest=data.oldbalanceDest,
        type_status=data.type_status,
-       Is_fraud=is_fraud
+       Is_fraud=prediction
     )
 
     db.add(db_obj)
