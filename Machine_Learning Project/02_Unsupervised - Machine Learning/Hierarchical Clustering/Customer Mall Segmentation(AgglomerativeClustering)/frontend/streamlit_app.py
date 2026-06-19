@@ -4,8 +4,8 @@ from pathlib import Path
 
 
 st.set_page_config(
-    page_title="Customers Spending Habit Prediction",
-    page_icon="💳",
+    page_title="Customers Mall Segmentation",
+    page_icon="🏬",
     layout="wide")
 
 
@@ -22,7 +22,7 @@ load_css()
 
 st.markdown("""
 <div class="main-header">
-    <h1>Customers_Spending_Habit</h1>
+    <h1>Customers_Mall_Segmentation</h1>
     <p>Predict >Predict customers spending habit using Machine Learning</p>
 </div>
 """, unsafe_allow_html=True)
@@ -77,7 +77,7 @@ with st.form("prediction_form"):
 # -------------------------------
             
     submit = st.form_submit_button(
-    "Predict Customer Spending Habit",
+    "Predict Customer",
     use_container_width=True)
 
     
@@ -126,7 +126,7 @@ if submit:
         unsafe_allow_html=True)
 
         st.metric(
-            label="Falls_into",
+            label="Group_into",
             value=f"{result['prediction']}")
 
     except Exception as e:
