@@ -14,4 +14,4 @@ class PredictionRequest(BaseModel):
     Physical_activity: Literal["Yes","No"]
     age: int= Field(..., example=50, description="put in your number of age")
     bmi: float= Field(..., example=21.967120, description="fil in bmi" )
-    bp_status: Literal["stage1", "stage2", "normal"]
+    bp_status: Literal["stage1", "stage2", "normal", "Elevated"]
