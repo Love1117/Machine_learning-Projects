@@ -109,7 +109,7 @@ with st.form("prediction_form"):
     with col6:
         bp_status = st.selectbox(
         "Hypertension",
-        ["stage1", "stage2", "normal"],
+        ["stage1", "stage2", "normal", "Elevated"],
         index=None,
         placeholder="Select Hypertension "
 )
