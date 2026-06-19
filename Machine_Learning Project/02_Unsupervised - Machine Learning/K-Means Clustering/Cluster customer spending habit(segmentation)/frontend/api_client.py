@@ -2,7 +2,7 @@ import requests
 
 FASTAPI_URL = "http://fastapi:8000"
 
-def predict_customers(data):
+def predict_spend_habit(data):
     response = requests.post(
         f"{FASTAPI_URL}/predict",
         json=data
