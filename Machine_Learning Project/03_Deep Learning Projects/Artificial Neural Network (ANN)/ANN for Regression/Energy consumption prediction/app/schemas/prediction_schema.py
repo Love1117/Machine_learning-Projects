@@ -8,7 +8,7 @@ class PredictionRequest(BaseModel):
   Year: int= Field(..., example=2023, description="Year")
   Month: int= Field(..., example=12, description="Month")
   Day: int= Field(..., example=2, description="Month")
-  Days_Of_The_Week: int= Field(..., example= 5, description="Days_Of_The_Week")
+  Days_Of_The_Week: Literal["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   Hour: float= Field(..., example=21, description="Hour")
   Weekend: Literal["Yes","No"]
   Appliance_Type_status: str= Field(..., example="Dishwasher", description="Appliance_Type")
