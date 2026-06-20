@@ -1,5 +1,5 @@
 from app.database.models import Prediction
-from app.core.constants import WEEKEND
+from app.core.constants import WEEKEND, DAYS_OF_WEEK
 
 def save_prediction(db, data, prediction):
   db_obj = Prediction(
@@ -9,7 +9,7 @@ def save_prediction(db, data, prediction):
         Year=data.Year,
         Month=data.Month,
         Day=data.Day,
-        Days_Of_The_Week=data.Days_Of_The_Week,
+        Days_Of_The_Week=DAYS_OF_WEEK[data.Days_Of_The_Week],
         Hour=data.Hour,
         Weekend=WEEKEND[data.Weekend],
         Appliance_Type_status=data.Appliance_Type_status,
