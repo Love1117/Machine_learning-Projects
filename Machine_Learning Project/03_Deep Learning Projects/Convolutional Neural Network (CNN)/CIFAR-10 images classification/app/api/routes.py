@@ -7,9 +7,6 @@ from app.database.session import get_db
 
 router = APIRouter()
 
-@router.get("/")
-def home():
-    return {"message": "CIFAR-10 images classification API is running"}
 
 @router.get("/model_check")
 def model_check():
