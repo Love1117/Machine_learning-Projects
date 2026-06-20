@@ -155,7 +155,7 @@ with st.form("prediction_form"):
 
     
     st.markdown(
-    '<div class="section-title">Temporal Markers</div>',
+    '<div class="section-title">Time & Schedule</div>',
     unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
