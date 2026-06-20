@@ -3,7 +3,7 @@ from fastapi import HTTPException
 
 from app.services.model_loader import model, scale
 from app.services.preprocessing import encode_device_type, encode_device_ip_reputation, encode_browser,  encode_operating_system, encode_ad_position
-from app.core.constants import VPN_USAGE, PROXY_USAGE, WEEKEND
+from app.core.constants import VPN_USAGE, PROXY_USAGE, WEEKEND, DAYS_OF_WEEK
 from app.database.crud import save_prediction
 
 
@@ -29,7 +29,7 @@ def prediction(data, db):
                                 "year": data.year,
                                 "month": data.month,
                                 "day": data.day,
-                                "days_of_the_week": data.days_of_the_week,
+                                "days_of_the_week": DAYS_OF_WEEK[data.days_of_the_week],
                                 "hour": data.hour,
                                 "weekend": WEEKEND[data.weekend],
                                 **device_type_encode,
