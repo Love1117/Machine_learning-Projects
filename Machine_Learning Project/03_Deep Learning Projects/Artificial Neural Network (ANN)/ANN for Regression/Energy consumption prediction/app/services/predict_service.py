@@ -3,7 +3,7 @@ from fastapi import HTTPException
 
 from app.services.model_loader import model, scale
 from app.services.preprocessing import encode_Season, encode_Appliance_Type
-from app.core.constants import WEEKEND
+from app.core.constants import WEEKEND, DAYS_OF_WEEK
 from app.database.crud import save_prediction
 
 
@@ -19,7 +19,7 @@ def prediction(data, db):
                                 "Year": data.Year,
                                 "Month": data.Month,
                                 "Day": data.Day,
-                                "Days_Of_The_Week": data.Days_Of_The_Week,
+                                "Days_Of_The_Week": DAYS_OF_WEEK[data.Days_Of_The_Week],
                                 "Hour": data.Hour,
                                 "Weekend": WEEKEND[data.Weekend],
                                 **Appliance_Type_encode,
