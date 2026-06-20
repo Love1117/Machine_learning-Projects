@@ -49,8 +49,8 @@ def prediction(data, db):
     db_obj = save_prediction(db, data, prediction_class, probability)
 
     return {
-        "prediction_probability": float(probability),
-        "is_fraudulent": "Yes" if prediction_class == 1 else "No",
+        "probability": float(probability),
+        "prediction_class": "Yes" if prediction_class == 1 else "No",
         "db_id": db_obj.id
     }
   except Exception as e:
