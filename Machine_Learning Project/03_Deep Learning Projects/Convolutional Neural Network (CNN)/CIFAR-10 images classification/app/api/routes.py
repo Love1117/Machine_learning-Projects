@@ -12,7 +12,7 @@ router = APIRouter()
 def model_check():
     return {"status": "ok"}
 
-@router.post("/predict",  response_model=PredictionResponse)
+@router.post("/predict",  response_model=PredictionRequest)
 async def predict_route(
     file: UploadFile = File(...),
     db: Session = Depends(get_db)
