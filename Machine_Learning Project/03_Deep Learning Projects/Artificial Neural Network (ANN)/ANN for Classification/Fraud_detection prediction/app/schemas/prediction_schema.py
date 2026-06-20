@@ -14,11 +14,11 @@ class PredictionRequest(BaseModel):
   year: int= Field(..., example=2024, description="What year")
   month: int= Field(..., example=8, description="What month")
   day: int= Field(..., example=23, description="What day")
-  days_of_the_week: int= Field(..., example=4, description="days of the week")
+  days_of_the_week: Literal["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   hour: float= Field(..., example=2, description="Which hour")
   weekend: Literal["Yes","No"]
-  device_type_status: str= Field(..., example="Mobile", description="Device type")
-  device_ip_reputation_status: str= Field(..., example="Good", description="Device ip reputation")
-  browser_status: str= Field(..., example="Edge", description="What browser")
-  operating_system_status: str= Field(..., example="Linux", description="Operating system")
-  ad_position_status: str= Field(..., example="Side", description="ad position")
+  device_type_status: Literal["Desktop", "Mobile", "Tablet"]
+  device_ip_reputation_status: Literal["Good", "Suspicious", "Bad"]
+  browser_status: Literal["Edge", "Firefox", "Opera", "Safari", "Chrome"]
+  operating_system_status: Literal["Linux", "iOS", "macOS", "Windows", "Android"]
+  ad_position_status: Literal["Side", "Bottom", "Top"]
