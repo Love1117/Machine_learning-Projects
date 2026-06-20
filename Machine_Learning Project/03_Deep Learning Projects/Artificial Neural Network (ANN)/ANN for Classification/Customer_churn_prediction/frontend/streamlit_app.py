@@ -362,7 +362,7 @@ if submit:
     f"""
     <div class="prediction-card">
         <h3>Prediction Result</h3>
-        <p><strong>Status:</strong> {result['prediction_class']}</p>
+        <p><strong>Customer_Status:</strong> {result['prediction_class']}</p>
         <p><strong>Probability:</strong> {result['probability']:.2%}</p>
     </div>
     """,
