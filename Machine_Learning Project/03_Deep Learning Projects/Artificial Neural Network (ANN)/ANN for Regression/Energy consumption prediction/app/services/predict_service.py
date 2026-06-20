@@ -35,7 +35,7 @@ def prediction(data, db):
     db_obj = save_prediction(db, data, prediction)
 
     return {
-        "Energy_Consumption_(kWh)": f"{prediction:.2f}",
+        "prediction": f"{prediction:.2f}",
         "db_id": db_obj.id
     }
   except Exception as e:
