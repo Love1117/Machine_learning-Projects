@@ -18,6 +18,6 @@ class PredictionRequest(BaseModel):
   PaperlessBilling: Literal["Yes","No"]
   MonthlyCharges: float= Field(..., example=29.85, description="What's your monthly charges")
   TotalCharges: float= Field(..., example=29.85, description="What's your total charges")
-  PaymentMethod_status: str= Field(..., example="Credit card (automatic)", description="Payment method")
-  Contract_status: str= Field(..., example="One year", description="Years of contract")
-  InternetService_status: str= Field(..., example="DSL", description="Internet Service")
+  PaymentMethod_status: Literal["Credit card (automatic)", "Electronic check", "Mailed check", "Bank transfer (automatic)"]
+  Contract_status: str= Literal["One year", "Two year", "Month-to-month"]
+  InternetService_status: Literal["DSL", "Fiber optic", "No"]
