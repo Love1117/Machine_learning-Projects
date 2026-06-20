@@ -13,7 +13,7 @@ def model_check():
     return {"status": "ok"}
 
 @router.post("/predict",  response_model=PredictionResponse)
-async def predict_image(
+async def predict_route(
     file: UploadFile = File(...),
     db: Session = Depends(get_db)
 ):
