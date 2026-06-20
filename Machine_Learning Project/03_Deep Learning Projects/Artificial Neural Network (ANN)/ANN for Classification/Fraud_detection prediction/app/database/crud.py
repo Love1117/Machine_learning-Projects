@@ -1,5 +1,5 @@
 from app.database.models import Prediction
-from app.core.constants import VPN_USAGE, PROXY_USAGE, WEEKEND
+from app.core.constants import VPN_USAGE, PROXY_USAGE, WEEKEND, DAYS_OF_WEEK
 
 def save_prediction(db, data, prediction_class, probability):
   db_obj = Prediction(
@@ -15,7 +15,7 @@ def save_prediction(db, data, prediction_class, probability):
         year=data.year,
         month=data.month,
         day=data.day,
-        days_of_the_week=data.days_of_the_week,
+        days_of_the_week=DAYS_OF_WEEK[data.days_of_the_week],
         hour=data.hour,
         weekend=WEEKEND[data.weekend],
         device_type_status=data.device_type_status,
