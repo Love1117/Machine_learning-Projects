@@ -11,5 +11,5 @@ class PredictionRequest(BaseModel):
   Days_Of_The_Week: Literal["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   Hour: float= Field(..., example=21, description="Hour")
   Weekend: Literal["Yes","No"]
-  Appliance_Type_status: str= Field(..., example="Dishwasher", description="Appliance_Type")
-  Season_status: str= Field(..., example="Spring", description="Season")
+  Appliance_Type_status: Literal["Air Conditioning", "Computer", "Dishwasher", "Fridge", "Heater", "Lights", "Microwave", Oven", "TV", "Washing Machine"]
+  Season_status: Literal["Spring", "Summer", "Winter", "Fall"]
