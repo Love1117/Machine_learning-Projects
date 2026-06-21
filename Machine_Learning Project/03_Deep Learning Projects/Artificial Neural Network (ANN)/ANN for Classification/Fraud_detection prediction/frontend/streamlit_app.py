@@ -44,14 +44,14 @@ with st.form("prediction_form"):
         "click duration",
         value=None,
         format="%.2f",
-        placeholder="Enter how long a person stays on a webpage after clicking a link. calculated in minutes per sec(e.g. 0.29)")
+        help="Enter how long a person stays on a webpage after clicking a link. calculated in minutes per sec(e.g. 0.29)")
 
     
     with col2:
         click_frequency = st.number_input(
         "click frequency",
         value=None,
-        placeholder="Enter how many times a single visitor clicks on the same link within a short period. (e.g. 7)")
+        help="Enter how many times a single visitor clicks on the same link within a short period. (e.g. 7)")
 
 
     col3, col4 = st.columns(2)
@@ -60,14 +60,14 @@ with st.form("prediction_form"):
         time_since_last_click = st.number_input(
         "time since last click",
         value=None,
-        placeholder="Enter how time gap between each click. meassured in milliseconds(Seconds)  (e.g. 72)")
+        help="Enter how time gap between each click. meassured in milliseconds(Seconds)  (e.g. 72)")
 
     with col4:
         scroll_depth = st.number_input(
         "scroll depth",
         value=None,
         format="%.2f",
-        placeholder="Enter what percentage of the page did they actually see.  (e.g. 15)")
+        help="Enter what percentage of the page did they actually see.  (e.g. 15)")
 
 
     col5, col6 = st.columns(2)
@@ -76,13 +76,13 @@ with st.form("prediction_form"):
         mouse_movement = st.number_input(
         "mouse movement",
         value=None,
-        placeholder="Enter time movement of mouse. meassured in milliseconds(Seconds)  (e.g. 111)")
+        help="Enter time movement of mouse. meassured in milliseconds(Seconds)  (e.g. 111)")
     
     with col6:
         keystrokes_detected = st.number_input(
         "keystrokes detected",
         value=None,
-        placeholder="Enter The time it takes to type from one key to another. calculated in milliseconds.  (e.g. 8)")
+        help="Enter The time it takes to type from one key to another. calculated in milliseconds.  (e.g. 8)")
 
   
     st.markdown(
@@ -131,7 +131,7 @@ with st.form("prediction_form"):
     with col1:
         device_type_status = st.selectbox(
         "device type",
-        g["Desktop", "Mobile", "Tablet"],
+        ["Desktop", "Mobile", "Tablet"],
         index=None,
         placeholder="Choose Option"
 )
@@ -164,13 +164,13 @@ with st.form("prediction_form"):
         year = st.number_input(
         "year",
         value=None,
-        placeholder="Enter Year (e.g. 2024)")
+        help="Enter Year (e.g. 2024)")
   
     with col2:
         month = st.number_input(
         "month",
         value=None,
-        placeholder="Enter Month (e.g. 5)")
+        help="Enter Month (e.g. 5)")
 
 
   
@@ -180,7 +180,7 @@ with st.form("prediction_form"):
         day = st.number_input(
         "day",
         value=None,
-        placeholder="Enter day (e.g. 23)")
+        help="Enter day (e.g. 23)")
   
     with col4:
         days_of_the_week = st.selectbox(
@@ -197,19 +197,19 @@ with st.form("prediction_form"):
         hour = st.number_input(
         "hour",
         value=None,
-        placeholder="Enter hour (e.g. 2)")
+        help="Enter hour (e.g. 2)")
   
     with col6:
         weekend = st.selectbox(
         "weekend",
         ["Yes", "No"],
         index=None,
-        placeholder="Choose Option"
+        placeholder="Choose Option")
 
 
-st.markdown(
-    '<div class="section-title">Risk Intelligence Scoring/Risk Intelligence Scoring</div>',
-    unsafe_allow_html=True)
+    st.markdown(
+        '<div class="section-title">Risk Intelligence Scoring/Risk Intelligence Scoring</div>',
+        unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
 
@@ -218,14 +218,14 @@ st.markdown(
         "ad position",
         ["Side", "Bottom", "Top"],
         index=None,
-        placeholder="Choose Option"
+        placeholder="Choose Option")
   
     with col2:
         bot_likelihood_score = st.number_input(
         "bot likelihood score",
         value=None,
         format="%.2f",
-        placeholder="Enter bot likelihood score per (e.g. 0.29)")
+        help="Enter bot likelihood score per (e.g. 0.29)")
 
 
 # -------------------------------
@@ -233,7 +233,7 @@ st.markdown(
 # -------------------------------
             
     submit = st.form_submit_button(
-    "Predict Customer Status",
+    "Predict Fraud Risk",
     use_container_width=True)
 
     
@@ -330,7 +330,7 @@ if submit:
         "device_type_status": device_type_status,
         "device_ip_reputation_status": device_ip_reputation_status,
         "browser_status": browser_status,
-        "operating_system": operating_system,
+        "operating_system_status": operating_system_status,
         "ad_position_status": ad_position_status
     }
 
