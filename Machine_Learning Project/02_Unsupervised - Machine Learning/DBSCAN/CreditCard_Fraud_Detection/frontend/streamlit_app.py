@@ -22,8 +22,8 @@ load_css()
 
 st.markdown("""
 <div class="main-header">
-    <h1>Credit-card_Fraud_Detection</h1>
-    <p>Predict >Credit-card Fraud using Machine Learning</p>
+    <h1>Credit-card Fraud Detection</h1>
+    <p>Predict Credit-card Fraud using Machine Learning</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -42,7 +42,7 @@ with st.form("prediction_form"):
         step = st.number_input(
         "Step",
         value=None,
-        placeholder="Enter No of step (e.g. 183)")
+        help="Enter No of step (e.g. 183)")
 
     with col2:
         type_status = st.selectbox(
@@ -58,7 +58,7 @@ with st.form("prediction_form"):
         "Amount",
         value=None,
         format="%.2f",
-        placeholder="Enter Amount $ (e.g. 22004.84)")
+        help="Enter Amount $ (e.g. 22004.84)")
       
 
 
@@ -74,7 +74,7 @@ with st.form("prediction_form"):
         "Old Balance of Sender",
         value=None,
         format="%.2f",
-        placeholder="Enter balance of the sender before the transaction (e.g. 87956.18)")
+        help="Enter balance of the sender before the transaction (e.g. 87956.18)")
 
   
     with col2:
@@ -82,7 +82,7 @@ with st.form("prediction_form"):
         "New Balance of Sender",
         value=None,
         format="%.2f",
-        placeholder="Enter balance of the sender after the transaction (e.g. 65951.34)")
+        help="Enter balance of the sender after the transaction (e.g. 65951.34)")
 
 
 
@@ -99,7 +99,7 @@ with st.form("prediction_form"):
         "Old Balance of Receiver",
         value=None,
         format="%.2f",
-        placeholder="Enter old balance of receiver account (e.g. 0.00)")
+        help="Enter old balance of receiver account (e.g. 0.00)")
 
   
     with col2:
@@ -107,7 +107,7 @@ with st.form("prediction_form"):
         "New Balance of Receiver",
         value=None,
         format="%.2f",
-        placeholder="Enter new balance of destination account (e.g. 0.00)")
+        help="Enter new balance of destination account (e.g. 0.00)")
 
 
 # -------------------------------
