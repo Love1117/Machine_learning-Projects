@@ -22,7 +22,7 @@ load_css()
 
 st.markdown("""
 <div class="main-header">
-    <h1>Customer_churn__prediction System</h1>
+    <h1>Customer churn prediction System</h1>
     <p>Predict if customer leaves or stayes using Machine Learning</p>
 </div>
 """, unsafe_allow_html=True)
@@ -191,7 +191,7 @@ with st.form("prediction_form"):
         tenure = st.number_input(
         "tenure",
         value=None,
-        placeholder="Enter years customer has stayed with the business (e.g. 5 represent 5years)")
+        help="Enter years customer has stayed with the business (example 5)")
 
 
   
@@ -200,7 +200,7 @@ with st.form("prediction_form"):
         "Contract",
         ["One year", "Two year", "Month-to-month"],
         index=None,
-        placeholder="Choose Contract"
+        placeholder="Choose Contract")
 
           
 
@@ -225,7 +225,7 @@ with st.form("prediction_form"):
         "Payment Method",
         ["Credit card (automatic)", "Electronic check", "Mailed check", "Bank transfer (automatic)"],
         index=None,
-        placeholder="Choose Contract"
+        placeholder="Choose Contract")
 
 
     col3, col4 = st.columns(2)
@@ -235,14 +235,14 @@ with st.form("prediction_form"):
         "Monthly Charges",
         value=None,
         format="%.2f",
-        placeholder="Enter Monthly Charges (e.g. 29.85)")
+        help="Enter Monthly Charges. Example: 29.85")
 
     with col4:
         TotalCharges = st.number_input(
         "Total Charges",
         value=None,
         format="%.2f",
-        placeholder="Enter the total charges (e.g. 29.85)")
+        help="Enter the total charges Example. 29.85")
 
 
 
@@ -272,7 +272,7 @@ if submit:
         missing_fields.append("Monthly Charges")
 
     if tenure is None:
-        missing_fields.append("Employment experience")
+        missing_fields.append("tenure")
 
     if gender is None:
         missing_fields.append("Gender")
