@@ -14,5 +14,11 @@ app = FastAPI(
 @app.on_event("startup")
 def on_startup():
     Base.metadata.create_all(bind=engine)
-    
+
+
+@app.get("/")
+def read_root():
+    return {"message": "FastAPI is Running!"}
+
+
 app.include_router(router)
