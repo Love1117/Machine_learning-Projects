@@ -2,7 +2,7 @@ import requests
 
 FASTAPI_URL = "http://fastapi:8000"
 
-def question(question_data):
+def ask_question(question_data):
     response = requests.post(
         f"{FASTAPI_URL}/predict_answer",
         json=question_data
