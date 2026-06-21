@@ -11,7 +11,7 @@ class Prediction(Base):
     car_name = Column(Float)
     year = Column(Integer)
     km_driven = Column(Float)
-    transmission = Column(Integer)
+    transmission = Column(String)
     mileage = Column(Float)
     engine = Column(Float)
     max_power = Column(Float)
