@@ -22,7 +22,7 @@ load_css()
 st.markdown("""
 <div class="main-header">
     <h1>Email Spam Detection System</h1>
-    <p>Predict if a mail is genuie or scam using deep learning model.</p>
+    <p>Predict whether an email is genuine or spam using a deep learning model.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -36,13 +36,9 @@ with st.form("prediction_form"):
     )
 
 
-    col1, = st.columns(1)
-
-    with col1:
-        text = st.text_area(
+    text = st.text_area(
         "Input Text",
-        placeholder="type in mail..."
-)
+        placeholder="Type in mail...")
 
 # -------------------------------
 # Prediction Button
@@ -84,8 +80,7 @@ if submit:
         st.markdown(
     f"""
     <div class="prediction-card">
-        <h3>Mail Status</h3>
-        <p>{result['prediction']}</p>
+        <p><strong>Status:</strong> {result['prediction']}</p>
     </div>
     """,
     unsafe_allow_html=True
