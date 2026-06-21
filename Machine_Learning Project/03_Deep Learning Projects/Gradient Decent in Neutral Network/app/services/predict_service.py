@@ -23,7 +23,7 @@ def prediction(data, db):
     prediction_class = int(np.round(prediction_proba))
 
 
-    db_obj = save_prediction(db, data, prediction_class, prediction_probability)
+    db_obj = save_prediction(db, data, prediction_probability, predicted_insurance_claim)
 
     return {
         "prediction_probability": float(prediction_probability),
