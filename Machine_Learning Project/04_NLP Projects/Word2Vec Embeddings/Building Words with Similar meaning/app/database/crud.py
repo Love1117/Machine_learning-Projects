@@ -1,11 +1,11 @@
 from app.database.models import Prediction, Prediction2
 
 
-def save_prediction(db, request, similar_words):
+def save_prediction(db, request, result):
   db_obj = Prediction(
         word=request.word,
         topn=request.topn,
-        similar_words=similar_words)
+        similar_words=result)
 
   db.add(db_obj)
   db.commit()
