@@ -22,7 +22,7 @@ load_css()
 
 st.markdown("""
 <div class="main-header">
-    <h1>Iris_flower-type_classification_System</h1>
+    <h1>Iris flower-type classification System</h1>
     <p>Predict iris flower-type using Machine Learning</p>
 </div>
 """, unsafe_allow_html=True)
@@ -42,14 +42,14 @@ with st.form("prediction_form"):
         "sepal length",
         value=None,
         format="%.2f",
-        placeholder="Enter sepal length CM (e.g. 4.7)")
+        help="Enter sepal length CM (e.g. 4.7)")
 
     with col2:
         sepal_width = st.number_input(
         "sepal width",
         value=None,
         format="%.2f",
-        placeholder="Enter sepal width CM (e.g. 3.2)")
+        help="Enter sepal width CM (e.g. 3.2)")
 
 
     
@@ -59,14 +59,14 @@ with st.form("prediction_form"):
         "petal length",
         value=None,
         format="%.2f",
-        placeholder="Enter sepal width CM (e.g. 1.3)")
+        help="Enter sepal width CM (e.g. 1.3)")
   
     with col4:
         petal_width = st.number_input(
         "petal width",
         value=None,
         format="%.2f",
-        placeholder="Enter sepal width CM (e.g. 0.2)")
+        help="Enter sepal width CM (e.g. 0.2)")
 
 
 
