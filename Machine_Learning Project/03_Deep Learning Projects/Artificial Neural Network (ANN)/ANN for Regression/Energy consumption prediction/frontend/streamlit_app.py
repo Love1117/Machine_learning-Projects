@@ -22,7 +22,7 @@ load_css()
 
 st.markdown("""
 <div class="main-header">
-    <h1Energy Consumption Prediction</h1>
+    <h1>Energy Consumption Prediction</h1>
     <p>Predict price of energy consumed using Machine Learning</p>
 </div>
 """, unsafe_allow_html=True)
