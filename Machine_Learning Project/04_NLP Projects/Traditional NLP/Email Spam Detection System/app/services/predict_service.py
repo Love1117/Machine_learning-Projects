@@ -13,7 +13,7 @@ def prediction(text_input, db):
 
     result = "Spam" if prediction[0] == 1 else "Not-Spam"
     
-    db_obj = save_prediction(db, text_input, result)
+    db_obj = save_prediction(db, text_input, prediction)
 
     return {
         "input_text": text_input.text, 
