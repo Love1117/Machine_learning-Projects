@@ -2,7 +2,7 @@ import requests
 
 FASTAPI_URL = "http://fastapi:8000"
 
-def image_animal(file):
+def predict_flower(file):
 
     files = {
         "file": (file.name,
