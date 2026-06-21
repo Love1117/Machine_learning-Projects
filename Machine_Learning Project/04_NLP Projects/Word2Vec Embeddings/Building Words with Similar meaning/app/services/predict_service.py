@@ -18,12 +18,15 @@ def prediction(request, db):
             "similarity": float(score) # Convert numpy float to standard float
         } for word, score in similar_words]
 
-    db_obj = save_prediction(db, request, "similar_words": result)
+    db_obj = save_prediction(db, request, result)
 
-    return {request,
-            "similar_words": result,
-            "db_id": db_obj.id
-    }
+    return {
+    "word": request.word,
+    "topn": request.topn,
+    "similar_words": result,
+    "db_id": db_obj.id}
+
+  
   except Exception as e:
     raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
 
@@ -43,10 +46,11 @@ def next_prediction(request, db):
     
     db_obj_one = save_prediction2(db, request, similarity)
 
-    return {request,
-            "similarity": float(similarity),
-            "db_id": db_obj_one.id
-    }
-
+    return {
+    "word1": request.word1,
+    "word2": request.word2,
+    "similarity": float(similarity),
+    "db_id": db_obj_one.id}
+    
   except Exception as e:
     raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
