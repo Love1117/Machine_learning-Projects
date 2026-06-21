@@ -1,10 +1,10 @@
 from app.database.models import Prediction
 
 
-def save_prediction(db, text_input, result):
+def save_prediction(db, text_input, prediction):
   db_obj = Prediction(
         text=text_input.text,
-        prediction=result
+        prediction=prediction
     )
 
   db.add(db_obj)
