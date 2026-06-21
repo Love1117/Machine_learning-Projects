@@ -1,11 +1,11 @@
 from app.database.models import Prediction
-from app.core.constants import Gend, Senio
+from app.core.constants import Gend, Senio, EDUCATION
 def save_prediction(db, data, Employee_Salary):
 
     db_obj = Prediction(
         Age=data.Age,
         Gender=Gend[data.Gender],
-        Education_Level=data.Education_Level,
+        Education_Level=EDUCATION[data.Education_Level],
         Years_of_Experience=data.Years_of_Experience,
         Country=data.Country,
         Race=data.Race,
