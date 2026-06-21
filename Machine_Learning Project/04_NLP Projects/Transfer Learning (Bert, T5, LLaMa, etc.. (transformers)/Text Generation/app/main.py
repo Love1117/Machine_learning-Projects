@@ -7,5 +7,9 @@ app = FastAPI(
     title="LLaMA 3.2 Text Generation API",
     description="API for Meta LLaMA 3.2 Chatbot",
     version="1.0.0")
+
+@app.get("/")
+def home():
+    return {"message": "FastAPI is running"}
     
 app.include_router(router)
