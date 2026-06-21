@@ -13,5 +13,11 @@ app = FastAPI(title="API Loan Approval Prediction",
 @app.on_event("startup")
 def on_startup():
     Base.metadata.create_all(bind=engine)
-    
+
+
+@app.get("/")
+def home():
+    return {"message": "Loan Approval API is running"}
+
+
 app.include_router(router)
