@@ -22,8 +22,8 @@ load_css()
 
 st.markdown("""
 <div class="main-header">
-    <h1>Customers_Mall_Segmentation</h1>
-    <p>Predict >Predict customers spending habit using Machine Learning</p>
+    <h1>Customers Mall Segmentation</h1>
+    <p>Segment customers into spending groups using Machine Learning.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -51,7 +51,7 @@ with st.form("prediction_form"):
         Age = st.number_input(
         "Age",
         value=None,
-        placeholder="Enter Age (e.g. 44)")
+        help="Enter Age (e.g. 44)")
       
             
     col3, col4 = st.columns(2)
@@ -60,14 +60,14 @@ with st.form("prediction_form"):
         Annual_Income_k = st.number_input(
         "Annual Income",
         value=None,
-        placeholder="Enter your annual income in thousands (e.g., enter 50 for $50,000).")
+        help="Enter your annual income in thousands (e.g., enter 50 for $50,000).")
 
   
     with col4:
         Spending_Score_1_100 = st.number_input(
         "Spending Score",
         value=None,
-        placeholder="Enter Spending Score from 1-100 (e.g. 5 )")
+        help="Enter Spending Score from 1-100 (e.g. 5 )")
 
 
 
@@ -126,7 +126,7 @@ if submit:
         unsafe_allow_html=True)
 
         st.metric(
-            label="Group_into",
+            label="Customer Segment",
             value=f"{result['prediction']}")
 
     except Exception as e:
