@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException
 from sqlalchemy.orm import Session
 
-from app.schemas.prediction_schema import PredictionRequest
+from app.schemas.prediction_schema import PredictionResponse
 from app.services.predict_service import predict_image
 from app.database.session import get_db
 
@@ -12,7 +12,7 @@ router = APIRouter()
 def model_check():
     return {"status": "ok"}
 
-@router.post("/predict",  response_model=PredictionRequest)
+@router.post("/predict",  response_model=PredictionResponse)
 async def predict_route(
     file: UploadFile = File(...),
     db: Session = Depends(get_db)
