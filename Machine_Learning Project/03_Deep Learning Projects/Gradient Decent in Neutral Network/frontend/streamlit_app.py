@@ -68,7 +68,7 @@ with st.form("prediction_form"):
         "bmi",
         value=None,
         format="%.2f",
-        help="Enter Body Mass Inde. (e.g. 27.900)")
+        help="Enter Body Mass Index. (e.g. 27.900)")
   
     with col2:
         smoker = st.selectbox(
