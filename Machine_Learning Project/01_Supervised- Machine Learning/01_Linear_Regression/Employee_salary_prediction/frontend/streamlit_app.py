@@ -33,7 +33,7 @@ load_css()
 
 st.markdown("""
 <div class="main-header">
-    <h1>Employee_salary_prediction System</h1>
+    <h1>Employee Salary Prediction System</h1>
     <p>Predict Employee Salary using Machine Learning</p>
 </div>
 """, unsafe_allow_html=True)
@@ -53,23 +53,22 @@ with st.form("prediction_form"):
         Age = st.number_input(
         "Age",
         value=None,
-        placeholder="Enter Age (e.g. 35)")
+        help="Enter Age (e.g. 35)")
         
     with col2:
         Gender = st.selectbox(
         "Gender",
         ["Male", "Female"],
         index=None,
-        placeholder="Type Or Select Gender"
+        placeholder="Select Gender"
 )
 
     with col3:
-        Education_Level = st.number_input(
+        Education_Level = st.selectbox(
         "Education Level",
-        min_value=0,
-        max_value=3,
-        value=None,
-        placeholder="Enter Education_Level (e.g. 3)")
+        ["High School", "Bachelor's", "Master's", "PhD"],
+        index=None,
+        placeholder="Select Education Level")
 
             
     col4, col5 = st.columns(2)
@@ -79,15 +78,15 @@ with st.form("prediction_form"):
         "Country",
         country,
         index=None,
-        placeholder="Type or Select Country"
+        placeholder="Select Country"
 )
 
     with col5:
         Race = st.selectbox(
-        "Racism",
+        "Race",
         racism,
         index=None,
-        placeholder="Type Or Select Segregation"
+        placeholder="Select Race"
 )
 
 
@@ -107,7 +106,7 @@ with st.form("prediction_form"):
         "Job Title",
         job_title,
         index=None,
-        placeholder="Type Or Select Job_title"
+        placeholder="Select Job_title"
 )
 
     with col2:
@@ -116,14 +115,14 @@ with st.form("prediction_form"):
         min_value=0,
         max_value=32,
         value=None,
-        placeholder="Enter Years_of_Experience (e.g. 10)")
+        help="Enter Years_of_Experience (e.g. 10)")
 
     with col3:
         Senior = st.selectbox(
         "Senior Employee",
         ["Yes", "No"],
         index=None,
-        placeholder="Type Or Select Senior Employee"
+        placeholder="Select Senior Employee"
 )
 
 # -------------------------------
@@ -131,7 +130,7 @@ with st.form("prediction_form"):
 # -------------------------------
             
     submit = st.form_submit_button(
-    "Predict Salary",
+    "Predict Employee Salary",
     use_container_width=True)
 
     
@@ -151,6 +150,21 @@ if submit:
     if Years_of_Experience is None:
         missing_fields.append("Years of Experience")
 
+    if Gender is None:
+        missing_fields.append("Gender")
+
+    if Country is None:
+        missing_fields.append("Country")
+
+    if Race is None:
+        missing_fields.append("Race")
+
+    if Job_title is None:
+        missing_fields.append("Job Title")
+
+    if Senior is None:
+        missing_fields.append("Senior Employee")
+        
     if missing_fields:
         st.warning(
             f"⚠️ Please complete the following fields: {', '.join(missing_fields)}"
