@@ -9,13 +9,15 @@ app = FastAPI(
         title="Image classification API",
         version="1.0.0")
 
+@app.on_event("startup")
+def on_startup():
+    Base.metadata.create_all(bind=engine)
+
+
+
 @app.get("/")
 def read_root():
     return {"message": "Image classification FastAPI is Running!"}
 
 
-@app.on_event("startup")
-def on_startup():
-    Base.metadata.create_all(bind=engine)
-    
 app.include_router(router)
