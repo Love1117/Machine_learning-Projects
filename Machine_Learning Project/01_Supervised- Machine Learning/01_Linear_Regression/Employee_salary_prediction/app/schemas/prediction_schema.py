@@ -4,7 +4,7 @@ from typing import Literal
 class PredictionRequest(BaseModel):
   Age: float
   Gender: Literal["Male","Female"]
-  Education_Level: int
+  Education_Level: Literal["High School", "Bachelor's", "Master's", "PhD"]
   Years_of_Experience: float
   Country: str
   Race: str
