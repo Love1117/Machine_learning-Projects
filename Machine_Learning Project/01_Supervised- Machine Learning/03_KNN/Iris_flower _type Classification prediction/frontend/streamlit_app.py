@@ -42,31 +42,31 @@ with st.form("prediction_form"):
         "sepal length",
         value=None,
         format="%.2f",
-        help="Enter sepal length CM (e.g. 4.7)")
+        help="Enter sepal length in cm (e.g. 4.7)")
 
     with col2:
         sepal_width = st.number_input(
         "sepal width",
         value=None,
         format="%.2f",
-        help="Enter sepal width CM (e.g. 3.2)")
+        help="Enter sepal width in cm (e.g. 3.2)")
 
 
     
-    co3, col4 = st.columns(2)
+    col3, col4 = st.columns(2)
     with col3:
         petal_length = st.number_input(
         "petal length",
         value=None,
         format="%.2f",
-        help="Enter sepal width CM (e.g. 1.3)")
+        help="Enter petal length in cm (e.g. 1.3)")
   
     with col4:
         petal_width = st.number_input(
         "petal width",
         value=None,
         format="%.2f",
-        help="Enter sepal width CM (e.g. 0.2)")
+        help="Enter petal width in cm (e.g. 0.2)")
 
 
 
