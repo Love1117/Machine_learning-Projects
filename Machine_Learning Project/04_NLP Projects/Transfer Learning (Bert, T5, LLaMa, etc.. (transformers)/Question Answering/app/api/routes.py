@@ -15,7 +15,7 @@ def model_check():
 
 @router.get("/questions")
 def get_questions():
-    return list(qa_data.keys())
+    return {"Questions": list(qa_data.keys())}
 
 
 
