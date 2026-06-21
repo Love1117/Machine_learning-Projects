@@ -20,7 +20,7 @@ class Prediction(Base):
   year = Column(Integer)
   month = Column(Integer)
   day = Column(Integer)
-  days_of_the_week = Column(Integer)
+  days_of_the_week = Column(String)
   hour = Column(Float)
   weekend = Column(String)
   device_type_status = Column(String)
