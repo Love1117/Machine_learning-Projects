@@ -15,7 +15,7 @@ class Prediction(Base):
 
 
 class Prediction2(Base):
-  __tablename__ = "predictions for word_similarity"
+  __tablename__ = "predictions for the similarity between two given words."
 
   id = Column(Integer, primary_key=True, index=True)
   word1 = Column(String)
