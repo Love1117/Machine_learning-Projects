@@ -12,5 +12,9 @@ app = FastAPI(title= "FastAPI for iris Flower type prediction",
 @app.on_event("startup")
 def on_startup():
     Base.metadata.create_all(bind=engine)
+
+@app.get("/")
+def home():
+    return {"message": "Iris flower type is running"}
     
 app.include_router(router)
