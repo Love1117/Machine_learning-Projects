@@ -9,5 +9,5 @@ class Prediction(Base):
 
   id = Column(Integer, primary_key=True, index=True)
   input_word = Column(String)
-  len_of_words = Column(String)
+  len_of_words = Column(Integer)
   generated_text = Column(String)
