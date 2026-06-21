@@ -34,7 +34,7 @@ load_css()
 
 st.markdown("""
 <div class="main-header">
-    <h1>House_price_prediction System</h1>
+    <h1>House Price Prediction System</h1>
     <p>Predict the price of house using Machine Learning</p>
 </div>
 """, unsafe_allow_html=True)
@@ -56,7 +56,7 @@ with st.form("prediction_form"):
         min_value=1,
         max_value=54,
         value=None,
-        placeholder="Enter No of Bedrooms (e.g. 5)")
+        help="Enter No of Bedrooms (e.g. 5)")
 
     with col2:
         Bathrooms = st.number_input(
@@ -64,7 +64,7 @@ with st.form("prediction_form"):
         min_value=1,
         max_value=66,
         value=None,
-        placeholder="Enter No of Bathrooms (e.g. 5)")
+        help="Enter No of Bathrooms (e.g. 5)")
       
 
             
@@ -74,7 +74,7 @@ with st.form("prediction_form"):
         Living_Space = st.number_input(
         "Living Space",
         value=None,
-        placeholder="Enter Living_Space size sq. ft. (e.g. 1538)")
+        help="Enter Living_Space size sq. ft. (e.g. 1538)")
 
   
     with col4:
@@ -82,7 +82,7 @@ with st.form("prediction_form"):
         "Median Household Income",
         value=None,
         format="%.2f",
-        placeholder="Enter Median Household Income $ (e.g. 370046.00)")
+        help="Enter Median Household Income $ (e.g. 370046.00)")
       
 
 
@@ -92,15 +92,15 @@ with st.form("prediction_form"):
         Zip_Code = st.number_input(
         "Zip Code",
         value=None,
-        placeholder="Enter  Zip Code. (e.g. 1538)")
+        help="Enter  Zip Code. (e.g. 1538)")
 
   
     with col6:
         Latitude = st.number_input(
         "Latitude",
         value=None,
-        format="%.2f",
-        placeholder="Enter Latitude. (e.g. 40.72)")
+        format="%.6f",
+        help="Enter Latitude. (e.g. 40.72)")
 
 
   
@@ -110,8 +110,8 @@ with st.form("prediction_form"):
         Longitude = st.number_input(
         "Longitude",
         value=None,
-        format="%.2f",
-        placeholder="Enter  Longitude (e.g. 74.00)")
+        format="%.6f",
+        help="Enter  Longitude (e.g. 74.00)")
 
   
     with col8:
@@ -119,7 +119,7 @@ with st.form("prediction_form"):
         "Address and city",
         address_and_city,
         index=None,
-        placeholder="Type Or Select Address And City"
+        placeholder="Select Address And City"
 )
 
   
@@ -131,7 +131,7 @@ with st.form("prediction_form"):
         "State",
         state,
         index=None,
-        placeholder="Type Or Select State"
+        placeholder="Select State"
 )
 
     with col10:
@@ -139,7 +139,7 @@ with st.form("prediction_form"):
         "County",
         county,
         index=None,
-        placeholder="Type or Select County"
+        placeholder="Select County"
 )
 
 
@@ -180,6 +180,15 @@ if submit:
     if Longitude is None:
         missing_fields.append("Longitude")
 
+    if Address_And_City is None:
+        missing_fields.append("Address and City")
+
+    if State is None:
+        missing_fields.append("State")
+
+    if County is None:
+        missing_fields.append("County")
+    
     if missing_fields:
         st.warning(
             f"⚠️ Please complete the following fields: {', '.join(missing_fields)}"
