@@ -20,7 +20,10 @@ def prediction(question_data, db):
         return {"error": "Question not found in database"}
 
     result = qa_pipeline(question=question, context=context)
-
+    
+    answer = result["answer"]
+    score = result["score"]
+    
     db_obj = save_prediction(db, question_data, context, answer, score)
 
     return {
