@@ -1,11 +1,18 @@
 import streamlit as st
-from api_client import predict_next_word
+from api_client import (ask_question, get_main_questions)
 from pathlib import Path
 
 
 st.set_page_config(
-    page_title="Next Word Prediction",
+    page_title="Question And Answering",
     layout="wide")
+
+
+@st.cache_data
+def load_questions():
+    return get_main_questions()["Questions"]
+
+Questions = load_questions()
 
 
 def load_css():
@@ -21,46 +28,37 @@ load_css()
 
 st.markdown("""
 <div class="main-header">
-    <h1>Next Word Prediction</h1>
-    <p>Generate the next words in a sentence using a LSTM deep learning model.</p>
-    <p>This model was trained on the novel <em>crime and punishment</em> from Project Gutenberg and may perform best on text with a similar writing style.</p>
+    <h1>Question Answering</h1>
+    <p>This model was fine-tuned on the biography of
+        <em>Loveday Shadrack</em> and answers questions
+        based on the provided information.</p>
 </div>
 """, unsafe_allow_html=True)
 
 
-# Personal Info
+# Question
 with st.form("prediction_form"):
-
+    
     st.markdown(
-        '<div class="section-title">type a word and input the length of next words to predict</div>',
+        '<div class="section-title">Question</div>',
         unsafe_allow_html=True
     )
-
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-        input_word = st.text_area(
-        "Input Text",
-        placeholder="Write a sentence..."
+    
+    selected_question = st.selectbox(
+    "Question",
+    Questions,
+    index= None,
+    placeholder="Select Question"
 )
 
-    with col2:
-        len_of_words = st.number_input(
-        "Number of Words to Predict",
-        min_value=1,
-        value=None,
-        help="Example: 5"        
-)
-  
 
   
 # -------------------------------
 # Prediction Button
 # -------------------------------
-            
+    
     submit = st.form_submit_button(
-    "Predict Next Word",
+    "Answer Question",
     use_container_width=True)
 
     
@@ -71,11 +69,8 @@ if submit:
     # -----------------------------------
     missing_fields = []
 
-    if not input_word.strip():
-        missing_fields.append("Input Text")
-
-    if len_of_words is None:
-        missing_fields.append("Number of Words to Predict")
+    if selected_question is None:
+        missing_fields.append("Question")
 
     if missing_fields:
         st.warning(
@@ -85,26 +80,26 @@ if submit:
 
 
     payload = {
-        "input_word": input_word,
-        "len_of_words": len_of_words
+        "question": selected_question
     }
 
 
     try:
         with st.spinner("Generating prediction..."):
-            result = predict_next_word(payload)
+            result = question(payload)
             
-        st.success("Prediction Generated Successfully")
-        
         st.markdown(
     f"""
     <div class="prediction-card">
         <h3>Prediction Result</h3>
-        <p>{result['generated_text']}</p>
+        <p><strong>Question:</strong> {result['question']}</p>
+        <p><strong>Answer:</strong> {result['answer']}</p>
+        <p><strong>Score:</strong> {result['score']:.2%}</p>
     </div>
     """,
     unsafe_allow_html=True
 )
+
 
     except Exception as e:
         st.error(str(e))
