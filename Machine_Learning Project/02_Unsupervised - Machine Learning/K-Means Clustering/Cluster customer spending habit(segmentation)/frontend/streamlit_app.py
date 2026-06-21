@@ -23,7 +23,7 @@ load_css()
 st.markdown("""
 <div class="main-header">
     <h1>Customers_Spending_Habit</h1>
-    <p>Predict >Predict customers spending habit using Machine Learning</p>
+    <p>Predict customers spending habit using Machine Learning</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -51,7 +51,7 @@ with st.form("prediction_form"):
         Age = st.number_input(
         "Age",
         value=None,
-        placeholder="Enter Age (e.g. 44)")
+        help="Enter Age (e.g. 44)")
       
             
     col3, col4 = st.columns(2)
@@ -70,14 +70,14 @@ with st.form("prediction_form"):
         "Family Size",
         value=None,
         format="%.2f",
-        placeholder="Enter Family Size (e.g. 3.0 )")
+        help="Enter Family Size (e.g. 3.0 )")
 
 
 
   
     st.markdown(
-        '<div class="section-title">Demographic Features</div>',
-        unsafe_allow_html=True
+        '<div class="section-title">Education & Career Features</div>',
+        unsafe_allow_html=True)
       
     col1, col2, col3 = st.columns(3)
     
@@ -95,15 +95,15 @@ with st.form("prediction_form"):
         "Profession",
         ["Doctor", "Engineer", "Entertainment", "Executive", "Healthcare", "Homemaker", "Lawyer", "Marketing", "Artist"],
         index=None,
-        placeholder="Type or search profession"
+        placeholder="search profession"
 )
     
     with col3:
         Work_Experience = st.number_input(
         "Work Experience",
         value=None,
-         format="%.2f",
-        placeholder="Enter Work Experience (e.g. 8 years and 6 Months (8.6) )")
+        format="%.2f",
+        help="Enter Work Experience (e.g. 8 years and 6 Months (8.6) )")
 
 
   
@@ -118,7 +118,7 @@ with st.form("prediction_form"):
         Spending_Score  = st.number_input(
         "Spending Score",
         value=None,
-        placeholder="Enter Spending Score (e.g. 3)")
+        help="Enter Spending Score (e.g. 3)")
 
 
     with col2:
