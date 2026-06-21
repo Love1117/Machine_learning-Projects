@@ -43,14 +43,14 @@ with st.form("prediction_form"):
         Home_ID = st.number_input(
         "Home ID",
         value=None,
-        placeholder="Enter home id(e.g. 94)")
+        help="Enter home id(e.g. 94)")
 
     
     with col2:
         Household_Size = st.number_input(
         "Household Size",
         value=None,
-        placeholder="Enter household size. (e.g. 2)")
+        help="Enter household size. (e.g. 2)")
 
 
     
@@ -66,7 +66,7 @@ with st.form("prediction_form"):
         "Outdoor Temperature_C",
         value=None,
         format="%.2f",
-        placeholder="Enter household size. (e.g. 1.0)")
+        help="Enter household size. (e.g. 1.0)")
   
     with col2:
         Season_status = st.selectbox(
@@ -80,7 +80,7 @@ with st.form("prediction_form"):
     with col3:
         Appliance_Type_status = st.selectbox(
         "Appliance Type",
-        ["Air Conditioning", "Computer", "Dishwasher", "Fridge", "Heater", "Lights", "Microwave", Oven", "TV", "Washing Machine"],
+        ["Air Conditioning", "Computer", "Dishwasher", "Fridge", "Heater", "Lights", "Microwave", "Oven", "TV", "Washing Machine"],
         index=None,
         placeholder="Choose Option"
 )
@@ -100,13 +100,13 @@ with st.form("prediction_form"):
         Year = st.number_input(
         "Year",
         value=None,
-        placeholder="Enter Year (e.g. 2024)")
+        help="Enter Year (e.g. 2024)")
   
     with col2:
         Month = st.number_input(
         "Month",
         value=None,
-        placeholder="Enter Month (e.g. 5)")
+        help="Enter Month (e.g. 5)")
 
 
   
@@ -116,7 +116,7 @@ with st.form("prediction_form"):
         Day = st.number_input(
         "Day",
         value=None,
-        placeholder="Enter day (e.g. 23)")
+        help="Enter day (e.g. 23)")
   
     with col4:
         Days_Of_The_Week = st.selectbox(
@@ -133,14 +133,14 @@ with st.form("prediction_form"):
         Hour = st.number_input(
         "Hour",
         value=None,
-        placeholder="Enter hour (e.g. 2)")
+        help="Enter hour (e.g. 2)")
   
     with col6:
         Weekend = st.selectbox(
         "Weekend",
         ["Yes", "No"],
         index=None,
-        placeholder="Choose Option"
+        placeholder="Choose Option")
 
 
 # -------------------------------
