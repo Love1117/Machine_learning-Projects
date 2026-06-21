@@ -22,8 +22,8 @@ load_css()
 
 st.markdown("""
 <div class="main-header">
-    <h1>Heart_disease_prediction_System</h1>
-    <p>Predict if a heart disease exist using Machine Learning</p>
+    <h1>Heart Disease Prediction System</h1>
+    <p>Predict if a heart disease exist or not using Machine Learning</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -50,7 +50,7 @@ with st.form("prediction_form"):
         age = st.number_input(
         "Age",
         value=None,
-        placeholder="Enter your age (e.g. 50)")
+        help="Enter your age (e.g. 50)")
 
 
   
@@ -65,17 +65,17 @@ with st.form("prediction_form"):
     with col1:
         height = st.number_input(
         "Height",
-        value=None,
+        value=0.0,
         format="%.2f",
-        placeholder="Enter hieght CM. (e.g. 168.0)")
+        help="Enter hieght CM. (e.g. 168.0)")
 
-  
+      
     with col2:
         weight = st.number_input(
         "Weight",
-        value=None,
+        value=0.0,
         format="%.2f",
-        placeholder="Enter hieght CM. (e.g. 62.0)")
+        help="Enter hieght CM. (e.g. 62.0)")
       
 
 
@@ -86,20 +86,20 @@ with st.form("prediction_form"):
         "Bmi",
         value=None,
         format="%.2f",
-        placeholder="Enter  Bmi. (e.g. 21.967120)")
+        help="Enter  Bmi. (e.g. 21.967120)")
 
   
     with col4:
         systolic_blood_pressure = st.number_input(
         "Systolic Blood Pressure",
         value=None,
-        placeholder="Enter Systolic Blood Pressure. (e.g. 110)")
+        help="Enter Systolic Blood Pressure. (e.g. 110)")
 
     with col5:
         diastolic_blood_pressure = st.number_input(
         "Diastolic Blood Pressure",
         value=None,
-        placeholder="Enter Diastolic Blood Pressure. (e.g. 80)")
+        help="Enter Diastolic Blood Pressure. (e.g. 80)")
 
 
   
@@ -119,14 +119,14 @@ with st.form("prediction_form"):
         cholesterol = st.number_input(
         "Cholesterol",
         value=None,
-        placeholder="Enter Cholesterol (e.g. 1")
+        help="Enter Cholesterol (e.g. 1)")
 
   
     with col8:
         gluc = st.number_input(
         "Glucose",
         value=None,
-        placeholder="Enter Glucose (e.g. 1")
+        help="Enter Glucose (e.g. 1)")
 
 
 
@@ -153,8 +153,8 @@ with st.form("prediction_form"):
         placeholder="Select Option"
 )
 
-    with col2:
-        Physical_activity = st.selectbox(
+    with col3:
+        Physical_activity  = st.selectbox(
         "Physical Activity",
         ["Yes","No"],
         index=None,
@@ -214,7 +214,7 @@ if submit:
     if alcohol_intake is None:
         missing_fields.append("Alcohol Intake")
 
-    if physical_activity is None:
+    if Physical_activity is None:
         missing_fields.append("Physical Activity")
 
     if missing_fields:
