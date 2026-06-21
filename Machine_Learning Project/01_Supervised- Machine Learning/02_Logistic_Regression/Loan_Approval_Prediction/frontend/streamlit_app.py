@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 st.set_page_config(
-    page_title="House_price_prediction",
+    page_title="Loan Approval Prediction",
     page_icon="💰",
     layout="wide")
 
@@ -33,7 +33,7 @@ load_css()
 
 st.markdown("""
 <div class="main-header">
-    <h1>Loan_approval_prediction System</h1>
+    <h1>Loan Approval Prediction System</h1>
     <p>Predict user Loan status using Machine Learning</p>
 </div>
 """, unsafe_allow_html=True)
@@ -53,14 +53,14 @@ with st.form("prediction_form"):
         Age = st.number_input(
         "Age",
         value=None,
-        placeholder="Enter your Age (e.g. 48)")
+        help="Enter your Age (e.g. 48)")
 
     with col2:
         Gender = st.selectbox(
         "Gender",
         ["Male","Female"],
         index=None,
-        placeholder="Type Or Select Gender"
+        placeholder="Select Gender"
 )
       
     with col3:
@@ -68,7 +68,7 @@ with st.form("prediction_form"):
         "Education",
         ["High School", "Associate", "Bachelor", "Master", "Doctorate"],
         index=None,
-        placeholder="Type Or Select Education"
+        placeholder="Select Education"
 )
 
     
@@ -78,14 +78,14 @@ with st.form("prediction_form"):
         "Income",
         value=None,
         format="%.2f",
-        placeholder="Enter Income $. (e.g. 66135.0)")
+        help="Enter Income $. (e.g. 66135.0)")
   
     with col5:
         Employment_experience = st.number_input(
         "Employment experience",
         value=None,
         format="%.2f",
-        placeholder="Enter your years of employment experience (e.g. 25)")
+        help="Enter your years of employment experience (e.g. 25)")
 
     with col6:
         Home_ownership = st.selectbox(
@@ -112,7 +112,7 @@ with st.form("prediction_form"):
         "Loan amount",
         value=None,
         format="%.2f",
-        placeholder="Enter Loan amount $ (e.g. 35000.0)")
+        help="Enter Loan amount $ (e.g. 35000.0)")
 
     with col2:
         Loan_intent = st.selectbox(
@@ -127,7 +127,7 @@ with st.form("prediction_form"):
         "Loan interest rate",
         value=None,
         format="%.2f",
-        placeholder="Enter Loan interset rate % (e.g. 6.25)")
+        help="Enter Loan interset rate % (e.g. 6.25)")
 
 
 
@@ -138,16 +138,16 @@ with st.form("prediction_form"):
         "Loan percent income",
         value=None,
         format="%.2f",
-        placeholder="Enter  Loan percent income % (e.g. o.25)")
+        help="Enter  Loan percent income % (e.g. 0.25)")
 
   
     with col5:
         Credit_history_length = st.number_input(
         "Credit history length",
         min_value=2,
-        max_value=30
+        max_value=30,
         value=None,
-        placeholder="Enter your Credit history length (e.g. 5)")
+        help="Enter your Credit history length (e.g. 5)")
 
 
     
@@ -157,7 +157,7 @@ with st.form("prediction_form"):
         Credit_score = st.number_input(
         "Credit score",
         value=None,
-        placeholder="Enter your Credit score (e.g. 586)")
+        help="Enter your Credit score (e.g. 586)")
 
     with col7:
         Previous_loan_defaults_on_file = st.selectbox(
@@ -208,6 +208,21 @@ if submit:
     if Credit_score is None:
         missing_fields.append("Credit score")
 
+    if Gender is None:
+        missing_fields.append("Gender")
+
+    if Education is None:
+        missing_fields.append("Education")
+
+    if Home_ownership is None:
+        missing_fields.append("Home ownership")
+
+    if Loan_intent is None:
+        missing_fields.append("Loan intent")
+
+    if Previous_loan_defaults_on_file is None:
+        missing_fields.append("Previous loan defaults on file")
+
     if missing_fields:
         st.warning(
             f"⚠️ Please complete the following fields: {', '.join(missing_fields)}"
@@ -244,7 +259,7 @@ if submit:
 
         st.metric(
             label="loan_Status",
-            value=f"{result['prediction']}")
+            value={result['prediction']})
 
     except Exception as e:
         st.error(str(e))
