@@ -23,7 +23,7 @@ load_css()
 st.markdown("""
 <div class="main-header">
     <h1>Customer Insurance Prediction</h1>
-    <p>Predict if a customer has insurance or not using Machine Learning</p>
+    <p>Predict whether a customer is likely to have insurance coverage using Machine Learning.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -32,7 +32,7 @@ st.markdown("""
 with st.form("prediction_form"):
 
     st.markdown(
-        '<div class="section-title"Personal Info</div>',
+        '<div class="section-title">Personal Info</div>',
         unsafe_allow_html=True
     )
 
@@ -43,7 +43,7 @@ with st.form("prediction_form"):
         age = st.number_input(
         "age",
         value=None,
-        placeholder="Enter age (e.g. 53)")
+        help="Enter age (e.g. 53)")
 
     
     with col2:
@@ -68,7 +68,7 @@ with st.form("prediction_form"):
         "bmi",
         value=None,
         format="%.2f",
-        placeholder="Enter Body Mass Inde. (e.g. 27.900)")
+        help="Enter Body Mass Inde. (e.g. 27.900)")
   
     with col2:
         smoker = st.selectbox(
@@ -93,13 +93,13 @@ with st.form("prediction_form"):
         children = st.number_input(
         "children",
         value=None,
-        placeholder="Enter number of children (e.g. 2)")
+        help="Enter number of children (e.g. 2)")
   
     with col2:
         region = st.number_input(
         "region",
         value=None,
-        placeholder="Enter region (e.g. 1)")
+        help="Enter region (e.g. 1)")
 
 
     with col3:
@@ -107,14 +107,14 @@ with st.form("prediction_form"):
         "charges",
         value=None,
         format="%.2f",
-        placeholder="Enter charges (e.g. 16884.92)")
+        help="Enter charges (e.g. 16884.92)")
 
 # -------------------------------
 # Prediction Button
 # -------------------------------
             
     submit = st.form_submit_button(
-    "Predict Insurace",
+    "Predict Insurance",
     use_container_width=True)
 
     
