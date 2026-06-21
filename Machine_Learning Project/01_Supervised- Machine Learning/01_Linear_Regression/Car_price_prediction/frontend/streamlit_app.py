@@ -73,7 +73,7 @@ with st.form("prediction_form"):
         min_value=1990,
         max_value=2030,
         value=None,
-        placeholder="Enter Year (e.g. 2015)"
+        help="Enter Year (e.g. 2015)"
     )
 
     with col4:
@@ -100,37 +100,37 @@ with st.form("prediction_form"):
         "Mileage",
         value=None,
         format="%.2f",
-        placeholder="Enter mileage (e.g. 20.0)")
+        help="Enter mileage (e.g. 20.0)")
 
     with col2:
         engine = st.number_input(
         "Engine Capacity",
         value=None,
         format="%.2f",
-        placeholder="Enter engine capacity (e.g. 1200.0)")
+        help="Enter engine capacity (e.g. 1200.0)")
 
     with col3:
         max_power = st.number_input(
         "Max Power",
         value=None,
         format="%.2f",
-        placeholder="Enter max_power (e.g. 80.0)")
+        help="Enter max_power (e.g. 80.0)")
 
     col4, col5 = st.columns(2)
 
     with col4:
         seats = st.number_input(
         "Seats",
+        min_value=1,
         value=None,
-        format="%.2f",
-        placeholder="Enter No of seats (e.g. 5)")
+        help="Enter No of seats (e.g. 5)")
 
     with col5:
         km_driven = st.number_input(
         "KM Driven",
         value=None,
         format="%.2f",
-        placeholder="Enter Km driven (e.g. 50000)")
+        help="Enter Km driven (e.g. 50000)")
 
 
 # -------------------------------
@@ -181,7 +181,7 @@ with st.form("prediction_form"):
 # -------------------------------
 
     submit = st.form_submit_button(
-    "🚗 Predict Price",
+    "🚗 Predict Car Price",
     use_container_width=True)
 
     
@@ -202,9 +202,52 @@ if submit:
         "seller_type": seller_type
     }
 
+    missing_fields = []
 
+    if car_ModelAndYear is None:
+        missing_fields.append("Select Car_Model & Year")
+
+    if car_name is None:
+        missing_fields.append("Select Car_Name")
+
+    if year is None:
+        missing_fields.append("Year")
+
+    if transmission is None:
+        missing_fields.append("Transmission")
+
+    if mileage is None:
+        missing_fields.append("Mileage")
+
+    if engine is None:
+        missing_fields.append("Engine Capacity")
+
+    if max_power is None:
+        missing_fields.append("Max Power")
+
+    if seats is None:
+        missing_fields.append("Seats")
+
+    if km_driven is None:
+        missing_fields.append("KM Driven")
+
+    if fuel is None:
+        missing_fields.append("Fuel Type")
+
+    if owner is None:
+        missing_fields.append("Owner Type")
+
+    if seller_type is None:
+        missing_fields.append("Seller Type")
+
+    if missing_fields:
+        st.warning(
+        f"⚠️ Please complete the following fields: {', '.join(missing_fields)}"
+    )
+        st.stop()
+           
     try:
-         with st.spinner("Generating prediction..."):
+        with st.spinner("Generating prediction..."):
              result = predict_car(payload)
 
         st.success("Prediction Generated Successfully")
