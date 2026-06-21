@@ -14,7 +14,7 @@ class Prediction(Base):
   Year = Column(Integer)
   Month = Column(Integer)
   Day = Column(Integer)
-  Days_Of_The_Week = Column(Integer)
+  Days_Of_The_Week = Column(Days_Of_The_Week)
   Hour = Column(Float)
   Weekend = Column(String)
   Appliance_Type_status = Column(String)
