@@ -9,13 +9,16 @@ app = FastAPI(
         title="Handwritten Digit Image Recognition API",
         version="1.0.0")
 
-@router.get("/")
-def home():
-    return {"message": "Digit Image Recognition API is running"}
 
 
 @app.on_event("startup")
 def on_startup():
     Base.metadata.create_all(bind=engine)
-    
+
+
+@app.get("/")
+def home():
+    return {"message": "Digit Image Recognition API is running"}
+
+
 app.include_router(router)
