@@ -63,7 +63,7 @@ if submit:
     try:
         
         with st.spinner("Generating prediction..."):
-            result = image_animal(payload)
+            result = image_animal(file)
             
         st.success("Prediction Generated Successfully")
         
