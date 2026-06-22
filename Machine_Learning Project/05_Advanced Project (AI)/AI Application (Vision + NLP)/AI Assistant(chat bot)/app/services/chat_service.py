@@ -3,7 +3,7 @@ from app.core.config import HF_TOKEN, client
 from app.services.preprocessing import encode_image, transcribe_audio
 
 
-async def predict_chat(question, image):  
+async def predict_chat(question, image, audio):  
   try:
     content = [{"type": "text", "text": question}]
 
