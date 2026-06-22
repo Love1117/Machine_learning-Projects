@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from app.core.config import HF_TOKEN, client 
-from app.services.preprocessing import encode_image
+from app.services.preprocessing import encode_image, transcribe_audio
 
 
 async def predict_chat(question, image):  
@@ -16,6 +16,12 @@ async def predict_chat(question, image):
                 "type": "image_url",
                 "image_url": {
                     "url": f"data:image/png;base64,{image_b64}"}})
+            
+    # Audio
+    if audio:
+        audio_bytes = await audio.read()
+        speech_text = transcribe_audio(audio_bytes)
+        content[0]["text"] += (f"\n\nVoice message: {speech_text}")
 
     response = client.chat.completions.create(
             model="google/gemma-3-27b-it",
