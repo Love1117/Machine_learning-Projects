@@ -7,3 +7,4 @@ pillow==10.3.0
 python-dotenv==1.0.1
 nest-asyncio==1.6.0
 faster-whisper
+audio-recorder-streamlit
