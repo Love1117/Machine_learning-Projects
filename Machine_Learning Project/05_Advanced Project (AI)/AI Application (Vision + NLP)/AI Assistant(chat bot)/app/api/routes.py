@@ -13,9 +13,10 @@ def model_check():
 @router.post("/chat")
 async def chat_with_model(
     question: str = Form(...),
-    image: Optional[UploadFile] = File(None)
+    image: Optional[UploadFile] = File(None),
+    audio: Optional[UploadFile] = File(None)
 ):
     """
     Generates a chat/image response using the gemma-3-27b-it model.
     """
-    return await predict_chat(question, image)
+    return await predict_chat(question, image, audio)
