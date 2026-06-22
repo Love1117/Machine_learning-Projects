@@ -26,6 +26,9 @@ def prediction(request, db):
     "similar_words": result,
     "db_id": db_obj.id}
 
+
+  except HTTPException:
+    raise
   
   except Exception as e:
     raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
@@ -51,6 +54,9 @@ def next_prediction(request, db):
     "word2": request.word2,
     "similarity": float(similarity),
     "db_id": db_obj_one.id}
+
+  except HTTPException:
+    raise
     
   except Exception as e:
     raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
