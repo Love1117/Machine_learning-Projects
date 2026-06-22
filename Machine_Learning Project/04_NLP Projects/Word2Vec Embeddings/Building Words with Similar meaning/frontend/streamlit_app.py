@@ -45,7 +45,7 @@ with st.form("Similar_word_prediction_form"):
 )
 
   
-    col2, = st.colums(1)
+    col2, = st.columns(1)
   
     with col2:
         topn = st.number_input(
@@ -137,7 +137,7 @@ with st.form("similarity_prediction_form"):
 )
 
   
-    col2, = st.colums(1)
+    col2, = st.columns(1)
   
     with col2:
         word2 = st.text_area(
@@ -149,12 +149,12 @@ with st.form("similarity_prediction_form"):
 # Prediction Button
 # -------------------------------
             
-    submit = st.form_submit_button(
+    similarity_submit = st.form_submit_button(
     "Word Similarity Score",
     use_container_width=True)
 
     
-if submit:
+if similarity_submit:
 
     # -----------------------------------
     # Validate Required Fields
@@ -190,7 +190,7 @@ if submit:
     f"""
     <div class="prediction-card">
         <p><strong>word1:</strong> {word1}</p>
-        <p><strong>word2:</strong> {word2]}</p>
+        <p><strong>word2:</strong> {word2}</p>
         <p><strong>Similarity Score:</strong> {result['similarity']:.2%}</p>
     </div>
     """,
