@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPExceptiopn, Depends
+from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
 
 from app.schemas.prediction_schema import SimilarWordsRequest, WordSimilarityRequest
@@ -29,6 +29,6 @@ def get_similar_words(request: SimilarWordsRequest, db: Session = Depends(get_db
 
 
 @router.post("/word_similarity")
-def def get_word_similarity(request: WordSimilarityRequest, db: Session = Depends(get_db)):
+def get_word_similarity(request: WordSimilarityRequest, db: Session = Depends(get_db)):
     """Calculates the similarity between two given words."""
     return next_prediction(request, db)
