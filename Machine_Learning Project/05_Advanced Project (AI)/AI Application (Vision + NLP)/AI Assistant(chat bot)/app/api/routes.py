@@ -19,4 +19,7 @@ async def chat_with_model(
     """
     Generates a chat/image response using the gemma-3-27b-it model.
     """
-    return await predict_chat(question, image, audio)
+    return await predict_chat(
+        question=question,
+        image=image,
+        audio=audio)
