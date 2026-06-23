@@ -1,6 +1,7 @@
 import streamlit as st
 from api_client import chat_bot
 from pathlib import Path
+from streamlit_mic_recorder import mic_recorder
 
 
 st.set_page_config(
@@ -17,7 +18,8 @@ def load_css():
         
 load_css()
 
-
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
 st.markdown("""
 <div class="main-header">
@@ -25,6 +27,12 @@ st.markdown("""
     <p>Generates a chat/image/record response using the gemma-3-27b-it model.</p>
 </div>
 """, unsafe_allow_html=True)
+
+
+# Display old chats
+for msg in st.session_state.messages:
+    with st.chat_message(msg["role"]):
+        st.write(msg["content"])
 
 
 # Text
@@ -36,17 +44,37 @@ with st.form("prediction_form"):
     )
 
 
-    text = st.text_area(
-        "Input Text",
-        placeholder="Ask question...")
+    col1, col2, col3, col4 = st.columns([1,8,1,1])
 
-# -------------------------------
-# Prediction Button
-# -------------------------------
-            
-    submit = st.form_submit_button(
-    "Generate Answer",
-    use_container_width=True)
+    with col1:
+        with st.popover("➕"):
+            uploaded_file = st.file_uploader(
+                "Upload Image",
+                type=["png","jpg","jpeg"])
+
+            camera_image = st.camera_input(
+                "Take Picture")
+
+    with col2:
+        prompt = st.text_area(
+            "Ask Anything",
+            label_visibility="collapsed",
+            placeholder="Ask anything...",
+            height=70)
+
+    with col3:
+        audio = mic_recorder(
+            start_prompt="🎤",
+            stop_prompt="⏹")
+
+    with col4:
+        submit = st.form_submit_button("➤")
+
+
+    
+if audio:
+    st.audio(audio["bytes"])
+    
 
     
 if submit:
@@ -56,8 +84,8 @@ if submit:
     # -----------------------------------
     missing_fields = []
 
-    if not text.strip():
-        missing_fields.append("Input Text")
+    if not prompt.strip() and not audio:
+        missing_fields.append("Ask Question or Voice Recording")
 
     if missing_fields:
         st.warning(
@@ -66,25 +94,29 @@ if submit:
         st.stop()
 
 
-    payload = {
-        "text": text
-    }
-
-
     try:
         with st.spinner("Generating Answer..."):
-            result = chat_bot(payload)
-            
+            image = uploaded_file if uploaded_file else camera_image
+
+            result = chat_bot(
+                question=prompt,
+                image=image,
+                audio=audio)
+
+        
         st.success("Response Generated Successfully")
         
-        st.markdown(
-    f"""
-    <div class="prediction-card">
-        <p><strong>Prompt:</strong> {text}</p>
-        <p><strong>Answer:</strong> {result['response']}</p>
-    </div>
-    """,
-    unsafe_allow_html=True)
+        # Save user message
+        st.session_state.messages.append({
+            "role": "user",
+            "content": prompt if prompt else "🎤 Voice Message"})
+
+        # Save assistant response
+        st.session_state.messages.append({
+        "role": "assistant",
+        "content": result["response"]})
+
+        st.rerun()
       
     except Exception as e:
         st.error(str(e))
