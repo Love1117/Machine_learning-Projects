@@ -8,3 +8,5 @@ scipy==1.13.1
 numpy==1.26.4
 sqlalchemy==2.0.32
 python-dotenv==1.0.1
+streamlit
+requests
