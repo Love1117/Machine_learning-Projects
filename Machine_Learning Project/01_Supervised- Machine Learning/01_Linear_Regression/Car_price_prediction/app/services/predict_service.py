@@ -66,7 +66,8 @@ def prediction(data, db):
     df = pd.DataFrame([input_dict]).reindex(columns=columns, fill_value=0)
 
     scaled = scaler.transform(df)
-    prediction = float(round(model.predict(scaled)[0], 2))
+    
+    Car_Price = float(round(model.predict(scaled)[0], 2))
 
     db_obj = save_prediction(db, data, Car_Price)
 
