@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import HTTPException
 from app.core.config import HF_TOKEN, client 
 from app.services.preprocessing import encode_image, transcribe_audio
 
