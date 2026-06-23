@@ -5,3 +5,5 @@ numpy
 pillow
 python-multipart
 tensorflow_hub
+streamlit
+requests
