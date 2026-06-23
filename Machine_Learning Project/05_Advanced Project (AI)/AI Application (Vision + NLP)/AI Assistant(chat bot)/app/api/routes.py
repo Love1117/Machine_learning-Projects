@@ -12,7 +12,7 @@ def model_check():
 
 @router.post("/chat")
 async def chat_with_model(
-    question: str = Form(...),
+    question: str = Form(""),
     image: Optional[UploadFile] = File(None),
     audio: Optional[UploadFile] = File(None)
 ):
