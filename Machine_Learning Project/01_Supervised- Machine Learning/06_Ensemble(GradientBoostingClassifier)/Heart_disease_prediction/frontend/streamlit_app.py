@@ -50,7 +50,7 @@ with st.form("prediction_form"):
         age = st.number_input(
         "Age",
         value=None,
-        help="Enter your age (e.g. 50)")
+        placeholder="Enter your age (e.g. 50)")
 
 
   
@@ -67,7 +67,7 @@ with st.form("prediction_form"):
         "Height",
         value=0.0,
         format="%.2f",
-        help="Enter hieght CM. (e.g. 168.0)")
+        placeholder="Enter hieght CM. (e.g. 168.0)")
 
       
     with col2:
@@ -75,7 +75,7 @@ with st.form("prediction_form"):
         "Weight",
         value=0.0,
         format="%.2f",
-        help="Enter hieght CM. (e.g. 62.0)")
+        placeholder="Enter hieght CM. (e.g. 62.0)")
       
 
 
@@ -86,20 +86,20 @@ with st.form("prediction_form"):
         "Bmi",
         value=None,
         format="%.2f",
-        help="Enter  Bmi. (e.g. 21.967120)")
+        placeholder="Enter  Bmi. (e.g. 21.967120)")
 
   
     with col4:
         systolic_blood_pressure = st.number_input(
         "Systolic Blood Pressure",
         value=None,
-        help="Enter Systolic Blood Pressure. (e.g. 110)")
+        placeholder="Enter Systolic Blood Pressure. (e.g. 110)")
 
     with col5:
         diastolic_blood_pressure = st.number_input(
         "Diastolic Blood Pressure",
         value=None,
-        help="Enter Diastolic Blood Pressure. (e.g. 80)")
+        placeholder="Enter Diastolic Blood Pressure. (e.g. 80)")
 
 
   
@@ -119,14 +119,14 @@ with st.form("prediction_form"):
         cholesterol = st.number_input(
         "Cholesterol",
         value=None,
-        help="Enter Cholesterol (e.g. 1)")
+        placeholder="Enter Cholesterol (e.g. 1)")
 
   
     with col8:
         gluc = st.number_input(
         "Glucose",
         value=None,
-        help="Enter Glucose (e.g. 1)")
+        placeholder="Enter Glucose (e.g. 1)")
 
 
 
