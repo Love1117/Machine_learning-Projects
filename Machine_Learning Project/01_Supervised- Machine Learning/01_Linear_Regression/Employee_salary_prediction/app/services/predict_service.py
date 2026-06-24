@@ -62,12 +62,12 @@ def prediction(data, db):
                              "Job_title"]]
 
     Scaled = scale.transform(input_data)
-    prediction = float(round(model.predict(scaled)[0], 2))
+    Employee_Salary = float(round(model.predict(scaled)[0], 2))
 
     db_obj = save_prediction(db, data, Employee_Salary)
 
     return {
-        "Employee_Salary": prediction,
+        "Employee_Salary": Employee_Salary,
         "db_id": db_obj.id
     }
   except Exception as e:
