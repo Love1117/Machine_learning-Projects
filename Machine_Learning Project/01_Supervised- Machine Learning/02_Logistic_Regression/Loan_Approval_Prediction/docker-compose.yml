@@ -4,8 +4,6 @@ services:
 
     build: .
 
-    container_name: fastapi_app
-
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000
 
     ports:
@@ -17,9 +15,7 @@ services:
   streamlit:
 
     build: .
-
-    container_name: streamlit_app
-
+    
     command: streamlit run frontend/streamlit_app.py --server.port 8501 --server.address 0.0.0.0
 
     ports:
