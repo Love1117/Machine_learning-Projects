@@ -53,7 +53,7 @@ with st.form("prediction_form"):
         Age = st.number_input(
         "Age",
         value=None,
-        help="Enter Age (e.g. 35)")
+        placeholder="Enter Age (e.g. 35)")
         
     with col2:
         Gender = st.selectbox(
@@ -115,7 +115,7 @@ with st.form("prediction_form"):
         min_value=0,
         max_value=32,
         value=None,
-        help="Enter Years_of_Experience (e.g. 10)")
+        placeholder="Enter Years_of_Experience (e.g. 10)")
 
     with col3:
         Senior = st.selectbox(
