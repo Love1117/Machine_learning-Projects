@@ -27,7 +27,8 @@ def prediction(data, db):
 
     else:
       is_fraud = "No"
-        
+
+    prediction = is_fraud
 
     db_obj = save_prediction(db, data, prediction)
 
