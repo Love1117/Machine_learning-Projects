@@ -32,6 +32,9 @@ def prediction(data, db):
     else:
       Falls_into = "Falls_into: Low-income, Low-spending customers"
 
+
+    prediction = Falls_into
+    
     db_obj = save_prediction(db, data, prediction)
     
     return {
