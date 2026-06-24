@@ -30,12 +30,12 @@ def prediction(data, db):
 
 
     prediction = model.predict(scaled_df)[0][0]
-
+    prediction =  f"{prediction:,.2f}"
 
     db_obj = save_prediction(db, data, prediction)
 
     return {
-        "prediction": f"{prediction:.2f}",
+        "prediction": prediction,
         "db_id": db_obj.id
     }
   except Exception as e:
