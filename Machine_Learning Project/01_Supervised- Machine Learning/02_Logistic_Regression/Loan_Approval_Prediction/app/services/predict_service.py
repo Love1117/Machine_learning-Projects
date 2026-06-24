@@ -67,11 +67,11 @@ def prediction(data, db):
     scaled_input = scale.transform(input_data)
 
     prediction = model.predict(scaled_input)[0]
-
+    prediction = ("Loan_Approved" if prediction == 1 else "Loan_Decline")
     db_obj = save_prediction(db, data, prediction)
 
     return {
-        "prediction": "Loan_Approved" if prediction == 1 else "Loan_Decline",
+        "prediction": prediction,
         "db_id": db_obj.id
     }
   except Exception as e:
