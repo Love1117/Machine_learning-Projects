@@ -40,14 +40,13 @@ def prediction(data, db):
     scaled_df = input_data
 
     probability = model.predict(scaled_df)[0][0]
-    prediction_class = 1 if probability >= 0.5 else 0
-
+    prediction_class = ("Customer Left" if probability >= 0.5 else "Customer Retained")
 
     db_obj = save_prediction(db, data, probability, prediction_class)
 
     return {
         "probability": float(probability),
-        "prediction_class": "Customer Left" if prediction_class == 1 else "Customer Retained",
+        "prediction_class": prediction_class,
         "db_id": db_obj.id
     }
   except Exception as e:
