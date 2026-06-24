@@ -53,7 +53,7 @@ with st.form("prediction_form"):
         Age = st.number_input(
         "Age",
         value=None,
-        help="Enter your Age (e.g. 48)")
+        placeholder="Enter your Age (e.g. 48)")
 
     with col2:
         Gender = st.selectbox(
@@ -78,14 +78,14 @@ with st.form("prediction_form"):
         "Income",
         value=None,
         format="%.2f",
-        help="Enter Income $. (e.g. 66135.0)")
+        placeholder="Enter Income $. (e.g. 66135.0)")
   
     with col5:
         Employment_experience = st.number_input(
         "Employment experience",
         value=None,
         format="%.2f",
-        help="Enter your years of employment experience (e.g. 25)")
+        placeholder="Enter your years of employment experience (e.g. 25)")
 
     with col6:
         Home_ownership = st.selectbox(
@@ -112,7 +112,7 @@ with st.form("prediction_form"):
         "Loan amount",
         value=None,
         format="%.2f",
-        help="Enter Loan amount $ (e.g. 35000.0)")
+        placeholder="Enter Loan amount $ (e.g. 35000.0)")
 
     with col2:
         Loan_intent = st.selectbox(
@@ -127,7 +127,7 @@ with st.form("prediction_form"):
         "Loan interest rate",
         value=None,
         format="%.2f",
-        help="Enter Loan interset rate % (e.g. 6.25)")
+        placeholder="Enter Loan interset rate % (e.g. 6.25)")
 
 
 
@@ -138,7 +138,7 @@ with st.form("prediction_form"):
         "Loan percent income",
         value=None,
         format="%.2f",
-        help="Enter  Loan percent income % (e.g. 0.25)")
+        placeholder="Enter  Loan percent income % (e.g. 0.25)")
 
   
     with col5:
@@ -147,7 +147,7 @@ with st.form("prediction_form"):
         min_value=2,
         max_value=30,
         value=None,
-        help="Enter your Credit history length (e.g. 5)")
+        placeholder="Enter your Credit history length (e.g. 5)")
 
 
     
@@ -157,7 +157,7 @@ with st.form("prediction_form"):
         Credit_score = st.number_input(
         "Credit score",
         value=None,
-        help="Enter your Credit score (e.g. 586)")
+        placeholder="Enter your Credit score (e.g. 586)")
 
     with col7:
         Previous_loan_defaults_on_file = st.selectbox(
