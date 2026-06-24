@@ -62,7 +62,7 @@ def prediction(data, db):
                              "Job_title"]]
 
     Scaled = scale.transform(input_data)
-    prediction = float(round(model.predict(scaled)[0], 2))
+    prediction = float(round(model.predict(Scaled)[0], 2))
     Employee_Salary =  f"{prediction:,.2f}"
     
     db_obj = save_prediction(db, data, Employee_Salary)
