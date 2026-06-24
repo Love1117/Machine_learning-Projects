@@ -56,7 +56,7 @@ with st.form("prediction_form"):
         min_value=1,
         max_value=54,
         value=None,
-        help="Enter No of Bedrooms (e.g. 5)")
+        placeholder="Enter No of Bedrooms (e.g. 5)")
 
     with col2:
         Bathrooms = st.number_input(
@@ -64,7 +64,7 @@ with st.form("prediction_form"):
         min_value=1,
         max_value=66,
         value=None,
-        help="Enter No of Bathrooms (e.g. 5)")
+        placeholder="Enter No of Bathrooms (e.g. 5)")
       
 
             
@@ -74,7 +74,7 @@ with st.form("prediction_form"):
         Living_Space = st.number_input(
         "Living Space",
         value=None,
-        help="Enter Living_Space size sq. ft. (e.g. 1538)")
+        placeholder="Enter Living_Space size sq. ft. (e.g. 1538)")
 
   
     with col4:
@@ -82,7 +82,7 @@ with st.form("prediction_form"):
         "Median Household Income",
         value=None,
         format="%.2f",
-        help="Enter Median Household Income $ (e.g. 370046.00)")
+        placeholder="Enter Median Household Income $ (e.g. 370046.00)")
       
 
 
@@ -92,7 +92,7 @@ with st.form("prediction_form"):
         Zip_Code = st.number_input(
         "Zip Code",
         value=None,
-        help="Enter  Zip Code. (e.g. 1538)")
+        placeholder="Enter  Zip Code. (e.g. 1538)")
 
   
     with col6:
@@ -100,7 +100,7 @@ with st.form("prediction_form"):
         "Latitude",
         value=None,
         format="%.6f",
-        help="Enter Latitude. (e.g. 40.72)")
+        placeholder="Enter Latitude. (e.g. 40.72)")
 
 
   
@@ -111,7 +111,7 @@ with st.form("prediction_form"):
         "Longitude",
         value=None,
         format="%.6f",
-        help="Enter  Longitude (e.g. 74.00)")
+        placeholder="Enter  Longitude (e.g. 74.00)")
 
   
     with col8:
