@@ -258,7 +258,7 @@ if submit:
 
         st.metric(
             label="Estimated Car Price",
-            value=f"${result['Car_Price']:,.2f}")
+            value=f"{result['Car_Price']}")
 
     except Exception as e:
         st.error(str(e))
