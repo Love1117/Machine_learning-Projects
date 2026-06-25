@@ -197,7 +197,8 @@ if submit:
 
         st.metric(
             label="Estimated Employee Salary",
-            value=f"{result['Employee_Salary']}")
+            value=f"{result['Employee_Salary']}"
+        )
 
     except Exception as e:
         st.error(str(e))
