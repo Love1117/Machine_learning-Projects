@@ -66,12 +66,12 @@ def prediction(data, db):
     Employee_Salary =  f"{prediction:,.2f}"
     
     db_obj = save_prediction(db, data, Employee_Salary)
-
+    
     return {
         "Employee_Salary": Employee_Salary,
         "db_id": db_obj.id
     }
-    
+  
   except Exception as e:
     traceback.print_exc()
     raise HTTPException(status_code=500, detail=str(e))
