@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import Literal
 
-class Base(BaseModel):
+class PredictionRequest(BaseModel):
   Bedrooms: int= Field(..., example=2, description="fill in numbers of bedroom")
   Bathrooms: int= Field(..., example=3, description="fill in numbers of bathroom")
   Living_Space: int= Field(..., example=1538, description="fill in the size of Living Space")
