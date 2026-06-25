@@ -222,7 +222,7 @@ if submit:
 
         st.metric(
             label="Estimated House Price",
-            value=f"${result['House_price']:,.2f}")
+            value=f"{result['House_price']}")
 
     except Exception as e:
         st.error(str(e))
