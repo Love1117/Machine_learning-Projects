@@ -77,7 +77,7 @@ def prediction(data, db):
     db_obj = save_prediction(db, data, House_price)
     
     return {
-        "House_price": House_price,
+        "House_price": prediction,
         "db_id": db_obj.id
     }
 except Exception as e:
