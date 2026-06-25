@@ -68,12 +68,12 @@ def prediction(data, db):
     scaled = scaler.transform(df)
     
     prediction = float(round(model.predict(scaled)[0], 2))
-    Car_Price =  f"{prediction:,.2f}"
+    Car_Price =  f"${prediction:,.2f}"
     
     db_obj = save_prediction(db, data, Car_Price)
 
     return {
-        "Car_Price": prediction,
+        "Car_Price": Car_Price,
         "db_id": db_obj.id
     }
   except Exception as e:
