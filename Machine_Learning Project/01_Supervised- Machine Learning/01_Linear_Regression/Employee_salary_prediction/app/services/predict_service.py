@@ -1,6 +1,6 @@
 import pandas as pd
 from fastapi import HTTPException
-
+import traceback
 from app.services.model_loader import model, scale, Country_freq, Race_freq, Job_title_encoder
 from app.core.constants import Gend, Senio, EDUCATION
 from app.database.crud import save_prediction
@@ -71,5 +71,7 @@ def prediction(data, db):
         "Employee_Salary": Employee_Salary,
         "db_id": db_obj.id
     }
+    
   except Exception as e:
+    traceback.print_exc()
     raise HTTPException(status_code=500, detail=str(e))
