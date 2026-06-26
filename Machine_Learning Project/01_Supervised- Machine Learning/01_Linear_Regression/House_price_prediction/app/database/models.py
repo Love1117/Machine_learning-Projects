@@ -11,7 +11,7 @@ class Prediction(Base):
     Bathrooms = Column(Integer)
     Living_Space = Column(Integer)
     Median_Household_Income = Column(Float)
-    Zip_Code = Column(Float)
+    Zip_Code = Column(Integer)
     Latitude = Column(Float)
     Longitude = Column(Float)
     Address_And_City = Column(String)
