@@ -2,7 +2,7 @@ from pydantic import BaseModel, Field
 from typing import Literal
 
 class PredictionRequest(BaseModel):
-  Age: float= Field(..., example=25, description="Fill in the space")
+  Age: int= Field(..., example=25, description="Fill in the space")
   Gender: Literal["Male","Female"]
   Education: Literal["High School", "Associate", "Bachelor", "Master", "Doctorate"]
   Income: float= Field(..., example=66135.0, description="Fill in the space")
