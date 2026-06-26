@@ -84,7 +84,6 @@ with st.form("prediction_form"):
         Employment_experience = st.number_input(
         "Employment experience",
         value=None,
-        format="%.2f",
         placeholder="Enter your years of employment experience (e.g. 25)")
 
     with col6:
