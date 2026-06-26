@@ -258,7 +258,7 @@ if submit:
 
         st.metric(
             label="loan_Status",
-            value={result['prediction']})
+            value=result['prediction'])
 
     except Exception as e:
         st.error(str(e))
