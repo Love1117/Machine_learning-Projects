@@ -16,7 +16,7 @@ def save_prediction(db, data, prediction):
         Loan_percent_income=data.Loan_percent_income,
         Credit_history_length=data.Credit_history_length,
         Credit_score=data.Credit_score,
-        Previous_loan_defaults_on_file=PREVIOUS_LOAN[data.Previous_loan_defaults_on_file]
+        Previous_loan_defaults_on_file=PREVIOUS_LOAN[data.Previous_loan_defaults_on_file],
         Outcome_status=prediction
     )
 
