@@ -23,7 +23,7 @@ def prediction(data, db):
     else:
       iris_flower = "Verginca"
 
-    db_obj = save_prediction(db, data, prediction)
+    db_obj = save_prediction(db, data, iris_flower)
 
     return {
         "prediction": iris_flower,
