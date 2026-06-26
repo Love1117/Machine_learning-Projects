@@ -11,7 +11,7 @@ class Prediction(Base):
     Gender = Column(String)
     Education = Column(String)
     Income = Column(Float)
-    Employment_experience  = Column(Float)
+    Employment_experience  = Column(Integer)
     Home_ownership = Column(String)
     Loan_amount = Column(Float)
     Loan_intent = Column(String)
