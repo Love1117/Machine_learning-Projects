@@ -1,6 +1,9 @@
 from fastapi import FastAPI, UploadFile, File, Form
 from typing import Optional
 from app.services.chat_service import predict_chat
+from fastapi import APIRouter
+
+
 router = APIRouter()
 
 
