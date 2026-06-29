@@ -1,6 +1,6 @@
 import requests
 
-FASTAPI_URL = "http://fastapi:8000"
+FASTAPI_URL = "https://employee-salary-prediction-1mmm.onrender.com"
 
 def predict_salary(data):
     response = requests.post(
