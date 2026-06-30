@@ -12,6 +12,6 @@ class PredictionRequest(BaseModel):
   Loan_intent: str
   Loan_interest_rate: float= Field(..., example=16.02, description="Fill in the space")
   Loan_percent_income: float= Field(..., example=0.53, description="Fill in the space")
-  Credit_history_length: float= Field(..., example=3.0, description="Fill in the space")
+  Credit_history_length: int= Field(..., example=3, description="Fill in the space")
   Credit_score: int= Field(..., example=617, description="Fill in the space")
   Previous_loan_defaults_on_file: Literal["Yes","No"]
