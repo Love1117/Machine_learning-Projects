@@ -22,9 +22,9 @@ def chat_bot(question, image=None, audio=None):
     # Audio
     if audio is not None:
         files["audio"] = (
-            "voice.wav",
+            "voice.webm",
             audio["bytes"],
-            "audio/wav"
+            "audio/webm"
         )
 
     response = requests.post(
