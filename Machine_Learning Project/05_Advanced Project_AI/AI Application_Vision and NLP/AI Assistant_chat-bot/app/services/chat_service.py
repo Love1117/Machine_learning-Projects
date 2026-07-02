@@ -10,6 +10,7 @@ async def predict_chat(question, image=None, audio=None):
     # Handle image if present
     if image:
         image_bytes = await image.read()
+        print(f"Image bytes: {len(image_bytes)}")
         image_b64 = encode_image(image_bytes)
 
         content.append({
@@ -20,8 +21,10 @@ async def predict_chat(question, image=None, audio=None):
     # Audio
     if audio:
         audio_bytes = await audio.read()
+        print(f"Audio bytes: {len(audio_bytes)}")
         speech_text = transcribe_audio(audio_bytes)
-        content[0]["text"] += (f"\n\nVoice message: {speech_text}")
+        if speech_text.strip():
+            content[0]["text"] += (f"\n\nVoice message: {speech_text}")
 
     response = client.chat.completions.create(
             model="google/gemma-3-27b-it",
