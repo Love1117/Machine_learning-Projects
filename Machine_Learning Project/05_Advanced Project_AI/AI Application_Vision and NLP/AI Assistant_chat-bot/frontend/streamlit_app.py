@@ -31,7 +31,7 @@ if "camera_version" not in st.session_state:
 if "mic_version" not in st.session_state:
     st.session_state.mic_version = 0
 
-if "prompt" not in st.session_state:
+if "prompt_version" not in st.session_state:
     st.session_state.prompt_version = 0
 
 
