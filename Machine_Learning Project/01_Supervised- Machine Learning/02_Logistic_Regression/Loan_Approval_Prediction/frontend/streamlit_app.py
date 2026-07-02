@@ -257,7 +257,7 @@ if submit:
         unsafe_allow_html=True)
 
         st.metric(
-            label="loan_Status",
+            label="Loan Status",
             value=result['prediction'])
 
     except Exception as e:
