@@ -21,6 +21,20 @@ load_css()
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+
+if "upload_version" not in st.session_state:
+    st.session_state.upload_version = 0
+
+if "camera_version" not in st.session_state:
+    st.session_state.camera_version = 0
+
+if "mic_version" not in st.session_state:
+    st.session_state.mic_version = 0
+
+if "prompt" not in st.session_state:
+    st.session_state.prompt_version = 0
+
+
 st.markdown("""
 <div class="main-header">
     <h1>AI Assistant(chat bot)</h1>
@@ -50,22 +64,26 @@ with st.form("prediction_form"):
         with st.popover("➕"):
             uploaded_file = st.file_uploader(
                 "Upload Image",
-                type=["png","jpg","jpeg"])
+                type=["png","jpg","jpeg"],
+                key=f"upload_{st.session_state.upload_version}")
 
             camera_image = st.camera_input(
-                "Take Picture")
+                "Take Picture",
+                key=f"camera_{st.session_state.camera_version}")
 
     with col2:
         prompt = st.text_area(
             "Ask Anything",
             label_visibility="collapsed",
             placeholder="Ask anything...",
-            height=70)
+            height=70,
+            key=f"prompt_{st.session_state.prompt_version}")
 
     with col3:
         audio = mic_recorder(
             start_prompt="🎤",
-            stop_prompt="⏹")
+            stop_prompt="⏹",
+            key=f"mic_{st.session_state.mic_version}")
 
     with col4:
         submit = st.form_submit_button("➤")
@@ -84,7 +102,10 @@ if submit:
     # -----------------------------------
     missing_fields = []
 
-    if not prompt.strip() and not audio:
+    if (not prompt.strip()
+        and audio is None
+        and uploaded_file is None
+        and camera_image is None):
         missing_fields.append("Ask Question or Voice Recording")
 
     if missing_fields:
@@ -116,6 +137,11 @@ if submit:
         "role": "assistant",
         "content": result["response"]})
 
+        st.session_state.upload_version += 1
+        st.session_state.camera_version += 1
+        st.session_state.mic_version += 1
+        st.session_state.prompt_version += 1
+        
         st.rerun()
       
     except Exception as e:
