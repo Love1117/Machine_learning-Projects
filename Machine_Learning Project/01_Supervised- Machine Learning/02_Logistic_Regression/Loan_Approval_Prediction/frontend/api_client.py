@@ -1,6 +1,6 @@
 import requests
 
-FASTAPI_URL = "http://fastapi:8000"
+FASTAPI_URL = "https://loan-prediction-api-eu4s.onrender.com"
 
 def loan_approval(data):
     response = requests.post(

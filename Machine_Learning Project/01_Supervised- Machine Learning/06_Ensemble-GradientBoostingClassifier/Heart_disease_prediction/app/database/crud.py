@@ -11,7 +11,8 @@ def save_prediction(db, data, Heart_Disease):
       diastolic_blood_pressure=data.diastolic_blood_pressure,
       cholesterol=data.cholesterol, # Corrected typo here
       gluc=data.gluc,
-      salcohol_intake=ALCOHOL[data.alcohol_intake],
+      smoke=SMOKE[data.smoke],
+      alcohol_intake=ALCOHOL[data.alcohol_intake],
       Physical_activity=PHYSICAL[data.Physical_activity],
       age=data.age,
       bmi=data.bmi,

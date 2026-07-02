@@ -253,7 +253,7 @@ if submit:
 
         st.metric(
             label="Heart_Disease",
-            value=f"{result['Heart_Disease']}")
+            value=result['Heart_Disease'])
 
     except Exception as e:
         st.error(str(e))
