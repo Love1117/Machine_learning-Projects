@@ -22,7 +22,7 @@ def transcribe_audio(audio_bytes):
 
 
 def encode_image(img_bytes: bytes) -> str:
-    img = Image.open(io.BytesIO(img_bytes))
+    img = Image.open(io.BytesIO(img_bytes)).convert("RGB")
     buffered = io.BytesIO()
     img.save(buffered, format="PNG")
     return base64.b64encode(buffered.getvalue()).decode("utf-8")
