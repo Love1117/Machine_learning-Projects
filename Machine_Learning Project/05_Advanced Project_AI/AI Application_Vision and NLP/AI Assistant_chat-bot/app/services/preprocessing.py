@@ -9,7 +9,7 @@ import io
 model = WhisperModel("base", device="cpu", compute_type="int8")
 
 def transcribe_audio(audio_bytes):
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_file:
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".webm") as temp_file:
         temp_file.write(audio_bytes)
         temp_path = temp_file.name
     segments, info = model.transcribe(temp_path)
