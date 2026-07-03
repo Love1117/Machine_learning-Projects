@@ -27,7 +27,7 @@ async def predict_chat(question, image=None, audio=None):
             content[0]["text"] += (f"\n\nVoice message: {speech_text}")
 
     response = client.chat.completions.create(
-            model="google/gemma-3-27b-it",
+            model="meta-llama/Llama-3.3-70B-Instruct",
             messages=[
                 {"role": "user", "content": content}],
             max_tokens=200)
