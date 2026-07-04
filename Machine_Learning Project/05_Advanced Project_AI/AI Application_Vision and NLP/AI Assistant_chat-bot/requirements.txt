@@ -10,3 +10,4 @@ nest-asyncio==1.6.0
 faster-whisper
 streamlit
 requests
+streamlit-mic-recorder
