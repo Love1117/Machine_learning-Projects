@@ -6,7 +6,9 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 # Install ffmpeg
-RUN apt-get update && \
+RUN rm -rf /var/lib/apt/lists/* && \
+    apt-get clean && \
+    apt-get update --fix-missing && \
     apt-get install -y ffmpeg && \
     rm -rf /var/lib/apt/lists/*
 
