@@ -22,7 +22,11 @@ async def predict_chat(question, image=None, audio=None):
     if audio:
         audio_bytes = await audio.read()
         print(f"Audio bytes: {len(audio_bytes)}")
+      
         speech_text = transcribe_audio(audio_bytes)
+        print(f"Speech Text: {speech_text}")
+        print("=" * 50)
+      
         if speech_text.strip():
             content[0]["text"] += (f"\n\nVoice message: {speech_text}")
 
