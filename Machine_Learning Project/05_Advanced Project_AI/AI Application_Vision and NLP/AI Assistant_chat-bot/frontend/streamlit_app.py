@@ -91,6 +91,8 @@ with st.form("prediction_form"):
 
     
 if audio:
+    print(audio)
+    print(audio.keys())
     st.audio(audio["bytes"])
     
 
