@@ -38,7 +38,7 @@ if "prompt_version" not in st.session_state:
 st.markdown("""
 <div class="main-header">
     <h1>AI Assistant(🗨️chat bot)</h1>
-    <p>Generates a chat/image/record response using the meta-llama 3.3 model.</p>
+    <p>Generates a chat/image/record response using meta-llama 3.3 model.</p>
 </div>
 """, unsafe_allow_html=True)
 
