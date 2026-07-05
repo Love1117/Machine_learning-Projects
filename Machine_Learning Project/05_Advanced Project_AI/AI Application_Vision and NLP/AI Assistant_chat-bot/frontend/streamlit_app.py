@@ -148,7 +148,7 @@ if submit:
         # Save user message
         st.session_state.messages.append({
             "role": "user",
-            "content": prompt if prompt else "🎤 Voice Message"})
+            "content": prompt if prompt else "🎙️ Voice Message"})
 
         # Save assistant response
         st.session_state.messages.append({
