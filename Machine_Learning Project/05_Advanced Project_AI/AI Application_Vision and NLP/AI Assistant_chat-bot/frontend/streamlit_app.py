@@ -34,6 +34,11 @@ if "mic_version" not in st.session_state:
 if "prompt_version" not in st.session_state:
     st.session_state.prompt_version = 0
 
+if "image_source" not in st.session_state:
+    st.session_state.image_source = None
+
+
+
 
 st.markdown("""
 <div class="main-header">
@@ -62,16 +67,20 @@ with st.form("prediction_form"):
 
     with col1:
         with st.popover("➕"):
-            upload_clicked = st.button("📁 Upload")
-            camera_clicked = st.button("📷 Camera")
+            if st.button("📁 Upload"):
+                st.session_state.image_source = "upload"
 
-            if upload_clicked:
+            if st.button("📷 Camera"):
+                st.session_state.image_source = "camera"
+
+
+            if st.session_state.image_source == "upload":
                 uploaded_file = st.file_uploader(
                     "Upload Image",
                     type=["png","jpg","jpeg"],
                     key=f"upload_{st.session_state.upload_version}")
                 
-            if camera_clicked:
+            elif st.session_state.image_source == "camera":
                 camera_image = st.camera_input(
                     "Take Picture",
                     key=f"camera_{st.session_state.camera_version}")
@@ -148,6 +157,7 @@ if submit:
         st.session_state.camera_version += 1
         st.session_state.mic_version += 1
         st.session_state.prompt_version += 1
+        st.session_state.image_source += 1
         
         st.rerun()
       
