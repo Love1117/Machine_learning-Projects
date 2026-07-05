@@ -86,7 +86,7 @@ with st.form("prediction_form"):
 
     with col3:
         audio = mic_recorder(
-            start_prompt="🎤",
+            start_prompt="🎙️",
             stop_prompt="⏹",
             key=f"mic_{st.session_state.mic_version}")
 
