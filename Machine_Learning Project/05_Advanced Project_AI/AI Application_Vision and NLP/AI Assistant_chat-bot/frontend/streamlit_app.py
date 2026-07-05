@@ -68,23 +68,32 @@ col1, col2, col3, col4 = st.columns([1,8,1,1])
 
 with col1:
     with st.popover("➕"):
-        if st.button("📁 Upload"):
-            st.session_state.image_source = "upload"
+        if st.session_state.image_source is None:
+            if st.button("📁 Upload"):
+                st.session_state.image_source = "upload"
 
-        if st.button("📷 Camera"):
-            st.session_state.image_source = "camera"
+            if st.button("📷 Camera"):
+                st.session_state.image_source = "camera"
 
 
-        if st.session_state.image_source == "upload":
+        elif st.session_state.image_source == "upload":
             uploaded_file = st.file_uploader(
                 "Upload Image",
                 type=["png","jpg","jpeg"],
                 key=f"upload_{st.session_state.upload_version}")
+
+            if st.button("⬅ Back"):
+                st.session_state.image_source = None
+                st.rerun()
                 
         elif st.session_state.image_source == "camera":
             camera_image = st.camera_input(
                 "Take Picture",
                 key=f"camera_{st.session_state.camera_version}")
+
+            if st.button("⬅ Back"):
+                st.session_state.image_source = None
+                st.rerun()
 
 with col2:
     prompt = st.text_area(
