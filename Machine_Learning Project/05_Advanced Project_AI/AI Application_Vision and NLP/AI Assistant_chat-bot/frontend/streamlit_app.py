@@ -70,10 +70,10 @@ with st.form("prediction_form"):
 
     with col1:
         with st.popover("➕"):
-            if st.button("📁 Upload"):
+            if st.button("Upload"):
                 st.session_state.image_source = "upload"
 
-            if st.button("📷 Camera"):
+            if st.button("Camera"):
                 st.session_state.image_source = "camera"
 
 
