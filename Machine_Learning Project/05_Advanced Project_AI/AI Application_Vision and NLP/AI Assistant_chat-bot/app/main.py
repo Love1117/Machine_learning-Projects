@@ -3,7 +3,7 @@ from app.api.routes import router
 
 app = FastAPI(
     title="AI Assistant(chat bot) API",
-    description="API for google/gemma-3-27b-it Chatbot/AI Assistant",
+    description="API for meta-llama 3.3 Chatbot/AI Assistant",
     version="1.0.0")
 
 
