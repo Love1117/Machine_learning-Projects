@@ -58,53 +58,51 @@ for msg in st.session_state.messages:
 
 
 # Text
-with st.form("prediction_form"):
 
-    st.markdown(
+st.markdown(
         '<div class="section-title">Ask a Question</div>',
-        unsafe_allow_html=True
-    )
+        unsafe_allow_html=True)
 
 
-    col1, col2, col3, col4 = st.columns([1,8,1,1])
+col1, col2, col3, col4 = st.columns([1,8,1,1])
 
-    with col1:
-        with st.popover("➕"):
-            if st.button("Upload"):
-                st.session_state.image_source = "upload"
+with col1:
+    with st.popover("➕"):
+        if st.button("Upload"):
+            st.session_state.image_source = "upload"
 
-            if st.button("Camera"):
-                st.session_state.image_source = "camera"
+        if st.button("Camera"):
+            st.session_state.image_source = "camera"
 
 
-            if st.session_state.image_source == "upload":
-                uploaded_file = st.file_uploader(
-                    "Upload Image",
-                    type=["png","jpg","jpeg"],
-                    key=f"upload_{st.session_state.upload_version}")
+        if st.session_state.image_source == "upload":
+            uploaded_file = st.file_uploader(
+                "Upload Image",
+                type=["png","jpg","jpeg"],
+                key=f"upload_{st.session_state.upload_version}")
                 
-            elif st.session_state.image_source == "camera":
-                camera_image = st.camera_input(
-                    "Take Picture",
-                    key=f"camera_{st.session_state.camera_version}")
+        elif st.session_state.image_source == "camera":
+            camera_image = st.camera_input(
+                "Take Picture",
+                key=f"camera_{st.session_state.camera_version}")
 
-    with col2:
-        prompt = st.text_area(
-            "Ask Anything",
-            label_visibility="collapsed",
-            placeholder="Ask anything...",
-            height=70,
-            key=f"prompt_{st.session_state.prompt_version}")
+with col2:
+    prompt = st.text_area(
+        "Ask Anything",
+        label_visibility="collapsed",
+        placeholder="Ask anything...",
+        height=70,
+        key=f"prompt_{st.session_state.prompt_version}")
 
-    with col3:
-        audio = mic_recorder(
-            start_prompt="🎙️",
-            stop_prompt="⏹",
-            key=f"mic_{st.session_state.mic_version}")
+with col3:
+    audio = mic_recorder(
+        start_prompt="🎙️",
+        stop_prompt="⏹",
+        key=f"mic_{st.session_state.mic_version}")
 
     
-    with col4:
-        submit = st.form_submit_button("➤")
+with col4:
+    submit = st.form_submit_button("➤")
 
 
     
