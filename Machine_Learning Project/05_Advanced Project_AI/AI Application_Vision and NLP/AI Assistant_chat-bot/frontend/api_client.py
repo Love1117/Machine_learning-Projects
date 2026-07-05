@@ -1,6 +1,6 @@
 import requests
 
-FASTAPI_URL = "http://fastapi:8000"
+FASTAPI_URL = "https://chat-bot-api-ncg1.onrender.com"
 
 
 def chat_bot(question, image=None, audio=None):
