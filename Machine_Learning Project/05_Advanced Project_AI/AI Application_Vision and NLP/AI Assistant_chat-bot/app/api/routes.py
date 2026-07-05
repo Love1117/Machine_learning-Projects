@@ -20,7 +20,7 @@ async def chat_with_model(
     audio: Optional[UploadFile] = File(None)
 ):
     """
-    Generates a chat/image response using the gemma-3-27b-it model.
+    Generates a chat/image response using meta-llama 3.3 model.
     """
     return await predict_chat(
         question=question,
