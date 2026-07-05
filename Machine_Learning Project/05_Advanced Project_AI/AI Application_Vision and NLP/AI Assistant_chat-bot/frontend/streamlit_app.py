@@ -40,6 +40,9 @@ if "image_source" not in st.session_state:
 
 
 
+uploaded_file = None
+camera_image = None
+
 st.markdown("""
 <div class="main-header">
     <h1>AI Assistant(🗨️chat bot)</h1>
