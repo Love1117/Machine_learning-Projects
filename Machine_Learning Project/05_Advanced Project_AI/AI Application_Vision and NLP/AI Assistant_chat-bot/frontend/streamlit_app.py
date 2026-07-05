@@ -35,7 +35,7 @@ if "prompt_version" not in st.session_state:
     st.session_state.prompt_version = 0
 
 if "image_source" not in st.session_state:
-    st.session_state.image_source = None
+    st.session_state.image_source = 0
 
 
 
@@ -99,6 +99,7 @@ with st.form("prediction_form"):
             stop_prompt="⏹",
             key=f"mic_{st.session_state.mic_version}")
 
+    
     with col4:
         submit = st.form_submit_button("➤")
 
