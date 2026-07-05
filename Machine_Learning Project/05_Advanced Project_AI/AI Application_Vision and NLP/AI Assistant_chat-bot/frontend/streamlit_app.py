@@ -62,14 +62,19 @@ with st.form("prediction_form"):
 
     with col1:
         with st.popover("➕"):
-            uploaded_file = st.file_uploader(
-                "Upload Image",
-                type=["png","jpg","jpeg"],
-                key=f"upload_{st.session_state.upload_version}")
+            upload_clicked = st.button("📁 Upload")
+            camera_clicked = st.button("📷 Camera")
 
-            camera_image = st.camera_input(
-                "Take Picture",
-                key=f"camera_{st.session_state.camera_version}")
+            if upload_clicked:
+                uploaded_file = st.file_uploader(
+                    "Upload Image",
+                    type=["png","jpg","jpeg"],
+                    key=f"upload_{st.session_state.upload_version}")
+                
+            if camera_clicked:
+                camera_image = st.camera_input(
+                    "Take Picture",
+                    key=f"camera_{st.session_state.camera_version}")
 
     with col2:
         prompt = st.text_area(
