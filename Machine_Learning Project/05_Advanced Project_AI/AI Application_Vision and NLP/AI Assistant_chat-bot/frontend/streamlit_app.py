@@ -35,7 +35,7 @@ if "prompt_version" not in st.session_state:
     st.session_state.prompt_version = 0
 
 if "image_source" not in st.session_state:
-    st.session_state.image_source = 0
+    st.session_state.image_source = None
 
 
 
@@ -68,10 +68,10 @@ col1, col2, col3, col4 = st.columns([1,8,1,1])
 
 with col1:
     with st.popover("➕"):
-        if st.button("Upload"):
+        if st.button("📁 Upload"):
             st.session_state.image_source = "upload"
 
-        if st.button("Camera"):
+        if st.button("📷 Camera"):
             st.session_state.image_source = "camera"
 
 
@@ -102,7 +102,7 @@ with col3:
 
     
 with col4:
-    submit = st.form_submit_button("➤")
+    submit = st.button("➤", use_container_width=True)
 
 
     
@@ -159,7 +159,7 @@ if submit:
         st.session_state.camera_version += 1
         st.session_state.mic_version += 1
         st.session_state.prompt_version += 1
-        st.session_state.image_source += 1
+        st.session_state.image_source = None
         
         st.rerun()
       
