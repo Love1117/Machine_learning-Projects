@@ -78,7 +78,7 @@ with col1:
 
         elif st.session_state.image_source == "upload":
             uploaded_file = st.file_uploader(
-                "Upload Image",
+                "Upload Image, files",
                 type=["png","jpg","jpeg"],
                 key=f"upload_{st.session_state.upload_version}")
 
