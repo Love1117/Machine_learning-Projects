@@ -11,7 +11,7 @@ def is_valid_image(url):
         return False
 
 
-API_URL = "http://fastapi:8000"
+API_URL = "https://movie-recommendation-api-t5jh.onrender.com"
 
 st.set_page_config(
     page_title="Movie Recommender",
