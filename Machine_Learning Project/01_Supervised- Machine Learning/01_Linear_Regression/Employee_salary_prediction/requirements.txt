@@ -11,3 +11,4 @@ httpx
 streamlit
 requests
 sqladmin
+sqladmin[itsdangerous]
