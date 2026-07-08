@@ -8,7 +8,8 @@ numpy
 
 python-dotenv==1.0.1
 sqlalchemy==2.0.32
-sqladmin[itsdangerous]
+sqladmin
+itsdangerous
 psycopg2-binary
 
 httpx
