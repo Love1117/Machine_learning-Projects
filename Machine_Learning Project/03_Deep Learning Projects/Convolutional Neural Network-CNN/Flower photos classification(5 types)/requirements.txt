@@ -6,3 +6,4 @@ pillow
 python-multipart
 streamlit
 requests
+python-dotenv==1.0.1
