@@ -4,6 +4,11 @@ from app.database.models import Base
 from app.database.session import engine
 from app.database.models import Prediction
 from sqladmin import Admin, ModelView
+from sqladmin.authentication import AuthenticationBackend
+from starlette.requests import Request
+from starlette.responses import RedirectResponse
+
+
 
 app = FastAPI(title="Employee Salary Prediction",
               description="Production Style, ML Project for Employees Salary Prediction",
@@ -19,7 +24,34 @@ def home():
     return{"message": "FastAPI is running successfully"}
 
 
-admin = Admin(app, engine)
+
+# 2. Create a Secure Admin Login System
+class AdminAuth(AuthenticationBackend):
+    async def login(self, request: Request) -> bool:
+        form = await request.form()
+        username = form.get("username")
+        password = form.get("password")
+
+        # Set your secret admin credentials here.
+        if username == "admin" and password == "Love@090":
+            request.session.update({"token": "authenticated_admin_user"})
+            return True
+        return False
+
+    async def logout(self, request: Request) -> bool:
+        request.session.clear()
+        return RedirectResponse(url="/admin/login")
+
+    async def authenticate(self, request: Request) -> bool:
+        token = request.session.get("token")
+        if token == "authenticated_admin_user":
+            return True
+        return False
+
+# Initialize the secure authentication backend
+authentication_backend = AdminAuth(secret_key="change-this-to-a-very-long-random-string")
+
+admin = Admin(app, engine, authentication_backend=authentication_backend)
 
 # 4. Tell SQLAdmin how to display your Product table
 class EmployeeAdmin(ModelView, model=Prediction):
