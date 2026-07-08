@@ -4,6 +4,7 @@ from app.database.models import Base
 from app.database.session import engine
 from app.database.models import Prediction
 from sqladmin import Admin, ModelView
+from app.core.config import SECRET_KEY
 from sqladmin.authentication import AuthenticationBackend
 from starlette.requests import Request
 from starlette.responses import RedirectResponse
@@ -49,7 +50,7 @@ class AdminAuth(AuthenticationBackend):
         return False
 
 # Initialize the secure authentication backend
-authentication_backend = AdminAuth(secret_key="change-this-to-a-very-long-random-string")
+authentication_backend = AdminAuth(secret_key=SECRET_KEY)
 
 admin = Admin(app, engine, authentication_backend=authentication_backend)
 
