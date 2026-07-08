@@ -4,17 +4,19 @@ from app.database.models import Base
 from app.database.session import engine
 from app.database.models import Prediction
 from sqladmin import Admin, ModelView
-from app.core.config import SECRET_KEY
+from app.core.config import SECRET_KEY, ADMIN_USERNAME, ADMIN_PASSWORD
 from sqladmin.authentication import AuthenticationBackend
 from starlette.requests import Request
 from starlette.responses import RedirectResponse
-
+from starlette.middleware.sessions import SessionMiddleware
 
 
 app = FastAPI(title="Employee Salary Prediction",
               description="Production Style, ML Project for Employees Salary Prediction",
               version= "v1.0.0")
 
+
+app.add_middleware(SessionMiddleware, secret_key=SECRET_KEY)
 
 @app.on_event("startup")
 def on_startup():
@@ -34,14 +36,14 @@ class AdminAuth(AuthenticationBackend):
         password = form.get("password")
 
         # Set your secret admin credentials here.
-        if username == "admin" and password == "Love@090":
+        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
             request.session.update({"token": "authenticated_admin_user"})
             return True
         return False
 
     async def logout(self, request: Request) -> bool:
         request.session.clear()
-        return RedirectResponse(url="/admin/login")
+        return True
 
     async def authenticate(self, request: Request) -> bool:
         token = request.session.get("token")
