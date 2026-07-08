@@ -21,10 +21,10 @@ if not SECRET_KEY:
 
 
 ADMIN_USERNAME = os.getenv("USERNAME")
-if not USERNAME:
+if not ADMIN_USERNAME:
     raise ValueError("USERNAME not found. Check your .env file.")
 
 
 ADMIN_PASSWORD = os.getenv("PASSWORD")
-if not PASSWORD:
+if not ADMIN_PASSWORD:
     raise ValueError("PASSWORD not found. Check your .env file.")
