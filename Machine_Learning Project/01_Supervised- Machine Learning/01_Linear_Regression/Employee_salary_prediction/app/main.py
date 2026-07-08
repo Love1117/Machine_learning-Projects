@@ -22,12 +22,29 @@ def home():
 admin = Admin(app, engine)
 
 # 4. Tell SQLAdmin how to display your Product table
-class Employee_Admin(ModelView, model=Prediction):
-    column_list = [Product.id, Product.name, Product.price]
-    searchable_columns = [Product.name]
+class EmployeeAdmin(ModelView, model=Prediction):
+    column_list = [
+        Prediction.id,
+        Prediction.Age,
+        Prediction.Gender,
+        Prediction.Education_Level,
+        Prediction.Years_of_Experience,
+        Prediction.Country,
+        Prediction.Race,
+        Prediction.Senior,
+        Prediction.Job_title,
+        Prediction.Employee_Salary,
+    ]
+
+    searchable_columns = [
+        Prediction.Country,
+        Prediction.Job_title,
+        Prediction.Gender,
+    ]
+
     page_size = 50
 
 # Add the view to your admin dashboard
-admin.add_view(ProductAdmin)
+admin.add_view(EmployeeAdmin)
 
 app.include_router(router)
