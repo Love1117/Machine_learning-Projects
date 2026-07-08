@@ -5,10 +5,12 @@ joblib
 pandas
 scikit-learn
 numpy
-sqlalchemy==2.0.32
+
 python-dotenv==1.0.1
+sqlalchemy==2.0.32
+sqladmin[itsdangerous]
+psycopg2-binary
+
 httpx
 streamlit
 requests
-sqladmin
-sqladmin[itsdangerous]
