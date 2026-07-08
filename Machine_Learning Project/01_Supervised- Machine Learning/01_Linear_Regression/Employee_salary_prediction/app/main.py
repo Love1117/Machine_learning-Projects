@@ -1,8 +1,7 @@
 from fastapi import FastAPI
 from app.api.routes import router
-from app.database.models import Base
+from app.database.models import Base, Prediction 
 from app.database.session import engine
-from app.database.models import Prediction
 from sqladmin import Admin, ModelView
 from app.core.config import SECRET_KEY, ADMIN_USERNAME, ADMIN_PASSWORD
 from sqladmin.authentication import AuthenticationBackend
