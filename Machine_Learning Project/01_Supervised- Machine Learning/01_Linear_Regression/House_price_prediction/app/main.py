@@ -56,7 +56,7 @@ admin = Admin(app, engine, authentication_backend=authentication_backend)
 
 
 # 4. Tell SQLAdmin how to display your Product table
-class EmployeeAdmin(ModelView, model=Prediction):
+class SalaryPredictAdmin(ModelView, model=Prediction):
     column_list = [
         Prediction.id,
         Prediction.Age,
@@ -79,7 +79,7 @@ class EmployeeAdmin(ModelView, model=Prediction):
     page_size = 50
 
 # Add the view to your admin dashboard
-admin.add_view(EmployeeAdmin)                          
+admin.add_view(SalaryPredictAdmin)                          
 
 
 app.include_router(router)
