@@ -6,11 +6,14 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 MODEL_DIR = BASE_DIR / "models" / "1st_version"
-DATABASE_URL = "sqlite:///./employee_salary_prediction.db"
-
 
 
 load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL not found. Check your .env file.")
+        
 
 SECRET_KEY = os.getenv("MY_SECRET_KEY")
 if not SECRET_KEY:
@@ -25,4 +28,3 @@ if not USERNAME:
 ADMIN_PASSWORD = os.getenv("PASSWORD")
 if not PASSWORD:
     raise ValueError("PASSWORD not found. Check your .env file.")
-    
