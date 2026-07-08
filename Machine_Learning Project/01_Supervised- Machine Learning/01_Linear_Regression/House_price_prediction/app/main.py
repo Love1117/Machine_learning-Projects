@@ -59,21 +59,23 @@ admin = Admin(app, engine, authentication_backend=authentication_backend)
 class SalaryPredictAdmin(ModelView, model=Prediction):
     column_list = [
         Prediction.id,
-        Prediction.Age,
-        Prediction.Gender,
-        Prediction.Education_Level,
-        Prediction.Years_of_Experience,
-        Prediction.Country,
-        Prediction.Race,
-        Prediction.Senior,
-        Prediction.Job_title,
-        Prediction.Employee_Salary,
+        Prediction.Bedrooms,
+        Prediction.Bathrooms,
+        Prediction.Living_Space,
+        Prediction.Median_Household_Income,
+        Prediction.Zip_Code,
+        Prediction.Latitude,
+        Prediction.Longitude,
+        Prediction.Address_And_City,
+        Prediction.State,
+        Prediction.County
+        Prediction.House_price,
     ]
 
     searchable_columns = [
-        Prediction.Country,
-        Prediction.Job_title,
-        Prediction.Gender,
+        Prediction.Address_And_City,
+        Prediction.State,
+        Prediction.County,
     ]
 
     page_size = 50
