@@ -8,3 +8,4 @@ joblib
 tensorflow_hub
 streamlit
 requests
+python-dotenv==1.0.1
