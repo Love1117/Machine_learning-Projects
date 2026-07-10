@@ -5,7 +5,7 @@ from datetime import datetime
 Base = declarative_base()
 
 class Prediction(Base):
-    __tablename__ = "predictions"
+    __tablename__ = "written_digit_predictions_table"
 
     id = Column(Integer, primary_key=True, index=True)
     filename = Column(String, nullable=False)
