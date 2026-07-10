@@ -5,7 +5,7 @@ Base = declarative_base()
   
 
 class Prediction(Base):
-  __tablename__ = "predictions"
+  __tablename__ = "energy_comsuption_prediction_table"
 
   id = Column(Integer, primary_key=True, index=True)
   Home_ID = Column(Integer)
