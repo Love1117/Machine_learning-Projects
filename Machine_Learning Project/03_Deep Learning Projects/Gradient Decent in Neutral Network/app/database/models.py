@@ -5,7 +5,7 @@ Base = declarative_base()
 
 
 class Prediction(Base):
-  __tablename__ = "predictions"
+  __tablename__ = "gradient_churn_prediction_table"
 
   id = Column(Integer, primary_key=True, index=True)
   age = Column(Integer)
