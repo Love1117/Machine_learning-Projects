@@ -4,7 +4,7 @@ from sqlalchemy.orm import declarative_base
 Base = declarative_base()
 
 class Prediction(Base):
-    __tablename__ = "predictions"
+    __tablename__ = "heart_disease_prediction_table"
 
     id = Column(Integer, primary_key=True, index=True)
     gender = Column(String)
