@@ -4,7 +4,7 @@ from sqlalchemy.orm import declarative_base
 Base = declarative_base()
 
 class Prediction(Base):
-    __tablename__ = "loan_approval_predictions"
+    __tablename__ = "loan_approval_table"
 
     id = Column(Integer, primary_key=True, index=True)
     Age  = Column(Integer)
