@@ -7,7 +7,7 @@ Base = declarative_base()
 
 
 class Prediction(Base):
-  __tablename__ = "similar_word_predictions"
+  __tablename__ = "similar_word_prediction_table"
 
   id = Column(Integer, primary_key=True, index=True)
   word = Column(String)
@@ -17,7 +17,7 @@ class Prediction(Base):
 
 
 class Prediction2(Base):
-  __tablename__ = "word_similarity_predictions"
+  __tablename__ = "word_similarity_prediction_table"
 
   id = Column(Integer, primary_key=True, index=True)
   word1 = Column(String)
