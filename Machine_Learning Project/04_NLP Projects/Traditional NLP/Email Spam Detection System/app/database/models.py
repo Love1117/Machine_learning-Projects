@@ -5,7 +5,7 @@ Base = declarative_base()
 
 
 class Prediction(Base):
-  __tablename__ = "predictions"
+  __tablename__ = "email_spam_detection_table"
 
   id = Column(Integer, primary_key=True, index=True)
   text = Column(String)
