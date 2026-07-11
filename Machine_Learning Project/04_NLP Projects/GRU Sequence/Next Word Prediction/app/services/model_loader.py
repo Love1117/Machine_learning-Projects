@@ -3,6 +3,7 @@ import tensorflow as tf
 from tensorflow import keras
 import gdown
 from app.core.config import MODEL_DIR
+from pathlib import Path
 import os
 
 BASE_DIR = Path.cwd()
