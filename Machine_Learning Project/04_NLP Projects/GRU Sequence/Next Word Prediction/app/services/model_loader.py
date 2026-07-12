@@ -3,6 +3,11 @@ import tensorflow as tf
 from tensorflow import keras
 from huggingface_hub import hf_hub_download
 import os
+from dotenv import load_dotenv
+
+
+
+load_dotenv()
 
 HF_GRU_TOKEN = os.getenv("HF_GRU_TOKEN")
 
