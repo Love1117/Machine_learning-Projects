@@ -37,6 +37,13 @@ if "prompt_version" not in st.session_state:
 if "image_source" not in st.session_state:
     st.session_state.image_source = None
 
+if "recorded_audio" not in st.session_state:
+    st.session_state.recorded_audio = None
+
+
+
+audio = st.session_state.recorded_audio
+
 
 
 
@@ -104,10 +111,16 @@ with col2:
         key=f"prompt_{st.session_state.prompt_version}")
 
 with col3:
-    audio = mic_recorder(
+    new_audio = mic_recorder(
         start_prompt="🎙️",
         stop_prompt="⏹",
         key=f"mic_{st.session_state.mic_version}")
+            
+    if new_audio:
+        st.session_state.recorded_audio = new_audio
+
+    audio = st.session_state.recorded_audio
+
 
     
 with col4:
@@ -116,9 +129,16 @@ with col4:
 
     
 if audio:
-    print(audio)
-    print(audio.keys())
-    st.audio(audio["bytes"])
+    col_audio, col_delete = st.columns([8,1])
+
+    with col_audio:
+        st.audio(audio["bytes"])
+
+    with col_delete:
+        if st.button("🗑", help="Delete recording"):
+            st.session_state.recorded_audio = None
+            st.session_state.mic_version += 1
+            st.rerun()    
     
 
     
@@ -169,7 +189,8 @@ if submit:
         st.session_state.mic_version += 1
         st.session_state.prompt_version += 1
         st.session_state.image_source = None
-        
+        st.session_state.recorded_audio = None
+
         st.rerun()
       
     except Exception as e:
