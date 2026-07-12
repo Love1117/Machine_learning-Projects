@@ -1,48 +1,24 @@
 import joblib
 import tensorflow as tf
 from tensorflow import keras
-import gdown
-from app.core.config import MODEL_DIR
-from pathlib import Path
+from huggingface_hub import hf_hub_download
 import os
 
-BASE_DIR = Path.cwd()
-MODEL_DIR = BASE_DIR / "models" / "1st_version"
+HF_GRU_TOKEN = os.getenv("HF_GRU_TOKEN")
 
-MODEL_PATH = MODEL_DIR / "GRU_model.keras"
-TOKENIZER_PATH = MODEL_DIR / "GRU_tokenizer.pkl"
+REPO_ID = "Love117/gru-word-prediction"
 
-# 🔹 Google Drive File IDs
-MODEL_FILE_ID = "1ZbZ6Hlesmi4MzgmHZIe216-o4LrDMCOi"
-TOKENIZER_FILE_ID = "1ZbZ6Hlesmi4MzgmHZIe216-o4LrDMCOi"
+MODEL_PATH = hf_hub_download(
+    repo_id=REPO_ID,
+    filename="GRU_model.keras",
+    token=HF_GRU_TOKEN,
+)
 
-def download_from_drive(file_id, output_path):
-    url = f"https://drive.google.com/uc?id={file_id}"
-    gdown.download(url, str(output_path), quiet=False)
+TOKENIZER_PATH = hf_hub_download(
+    repo_id=REPO_ID,
+    filename="GRU_tokenizer.pkl",
+    token=HF_GRU_TOKEN,
+)
 
-def ensure_files_exist():
-    MODEL_DIR.mkdir(parents=True, exist_ok=True)
-
-    # Download model if not exists
-    if not MODEL_PATH.exists():
-        print("Downloading model from Google Drive...")
-        download_from_drive(MODEL_FILE_ID, MODEL_PATH)
-
-    # Download tokenizer if not exists
-    if not TOKENIZER_PATH.exists():
-        print("Downloading tokenizer from Google Drive...")
-        download_from_drive(TOKENIZER_FILE_ID, TOKENIZER_PATH)
-
-@app.on_event("startup")
-def load_resources():
-    global model, tokenizer
-
-    ensure_files_exist()
-
-    print("Loading model...")
-    model = keras.models.load_model(MODEL_PATH)
-
-    print("Loading tokenizer...")
-    tokenizer = joblib.load(TOKENIZER_PATH)
-
-    print("✅ Model and Tokenizer loaded successfully!")
+model = keras.models.load_model(MODEL_PATH)
+tokenizer = joblib.load(TOKENIZER_PATH)
