@@ -2,11 +2,11 @@ import streamlit as st
 import requests
 import pandas as pd
 import joblib
-from app.services.model_loader import songs
+
 
 
 # Load songs
-songs = joblib.load("models/songs.joblib")
+songs = joblib.load("models/1st_version/songs.joblib")
 
 # Remove null values
 song_list = sorted(
