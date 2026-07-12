@@ -21,6 +21,8 @@ app.add_middleware(SessionMiddleware, secret_key=SECRET_KEY)
 @app.on_event("startup")
 def on_startup():
     Base.metadata.create_all(bind=engine)
+    # Load ML model and tokenizer
+    load_resources()
 
 
 @app.get("/")
