@@ -23,4 +23,4 @@ def get_songs():
 
 @router.post("/recommend")
 def get_song_recommendations(request: MusicRequest):
-    return recommend_music(request.track_name)
+    return recommend_music(request)
