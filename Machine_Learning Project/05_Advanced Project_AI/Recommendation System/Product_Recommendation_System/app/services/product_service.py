@@ -11,7 +11,7 @@ def strikethrough_text(text):
 
 
 
-def recommend_products(request: ProductRequest):
+def recommend_products(request):
   try:
     requested_category = request.category
 
