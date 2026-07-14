@@ -59,7 +59,7 @@ if st.button("Recommend Phones"):
             st.error("Could not fetch recommendations.")
             st.stop()
 
-        recommendations  = response.json()
+        recommendations = response.json()["recommendations"]
 
         st.subheader(
                 f"Top Recommendations for {selected_brand}"
