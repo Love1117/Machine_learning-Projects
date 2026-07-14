@@ -23,4 +23,4 @@ def get_brands():
 
 @router.post("/recommend")
 def get_mobile_recommendations(request: MobileRequest):
-    return recommend_phones(request.brand)
+    return recommend_phones(request)
