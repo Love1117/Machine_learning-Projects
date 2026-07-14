@@ -24,4 +24,4 @@ def get_categories():
     }
 @router.post("/recommend")
 def get_product_recommendations(request: ProductRequest):
-    return recommend_products(request.category)
+    return recommend_products(request)
