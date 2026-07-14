@@ -1,6 +1,8 @@
 import streamlit as st
 import requests
 
+
+
 DEFAULT_IMAGE = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
 def is_valid_image(url):
     try:
@@ -17,7 +19,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🎬 AI Mobile Recommendation System")
+st.title("📱 AI Mobile Recommendation System")
 
 # GET MOBILES FROM FASTAPI
 try:
@@ -69,7 +71,7 @@ if st.button("Recommend Phones"):
 
         for idx, phone in enumerate(recommendations):
 
-            with cols[idx % 5]:
+            with cols[idx % 5]:-
 
                 img_url = phone.get("image_url")
 
@@ -80,28 +82,27 @@ if st.button("Recommend Phones"):
                              img_url,
                              use_container_width=True)
 
+
                 st.markdown(
-                f"""
-                <div style="
-                border:1px solid #ddd;
-                border-radius:12px;
-                padding:10px;
-                margin-bottom:15px;
-                min-height:200px;
-                ">
-                <h5>{phone['product_name']}</h5>
+        f"<h4>{phone['product_name']}</h4>",
+        unsafe_allow_html=True
+    )
 
-                <p>{phone['rating']}</p>
+                st.write(phone["rating"])
 
-                <p>
-                    <b>{phone['sale_price']}</b>
-                </p>
+                st.markdown(
+        f"<b>Discount:</b> {phone['discount']}",
+        unsafe_allow_html=True
+    )
 
-                <p>
-                    {phone['market_price']}
-                </p>
 
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+
+                st.markdown(
+        f"<b>Sale Price:</b> {phone['sale_price']}",
+        unsafe_allow_html=True
+    )
+
+                st.markdown(
+        f"<b>Market Price:</b> {phone['market_price']}",
+        unsafe_allow_html=True
+    )
