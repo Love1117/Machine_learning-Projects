@@ -7,5 +7,4 @@ joblib
 spotipy
 python-dotenv
 streamlit
-requests
-streamlit-searchbox
+request
