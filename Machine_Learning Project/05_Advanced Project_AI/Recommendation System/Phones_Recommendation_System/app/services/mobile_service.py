@@ -7,7 +7,7 @@ from app.services.preprocessing import strikethrough_text, rating_to_stars
 
 
 
-def recommend_phones(request: MobileRequest):
+def recommend_phones(request):
   try:
     requested_brand = request.brand
 
