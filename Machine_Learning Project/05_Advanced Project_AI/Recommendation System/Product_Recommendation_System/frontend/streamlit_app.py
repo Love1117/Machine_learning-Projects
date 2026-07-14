@@ -59,7 +59,7 @@ if st.button("Recommend Products"):
             st.error("Could not fetch recommendations.")
             st.stop()
 
-        recommendations  = response.json()
+        recommendations = response.json()["recommendations"]
 
         st.subheader(
                 f"Top Recommendations for {selected_category}"
@@ -80,25 +80,18 @@ if st.button("Recommend Products"):
                              img_url,
                              use_container_width=True)
 
+
                 st.markdown(
-                f"""
-                <div style="
-                border:1px solid #ddd;
-                border-radius:12px;
-                padding:10px;
-                margin-bottom:15px;
-                min-height:200px;
-                ">
-                 <h5>{product['product_name']}</h5>
+        f"<h4>{product['product_name']}</h4>",
+        unsafe_allow_html=True
+    )
 
-                        <p>
-                            <b>{product['sale_price']}</b>
-                        </p>
+                st.markdown(
+        f"<b>Sale Price:</b> {product['sale_price']}",
+        unsafe_allow_html=True
+    )
 
-                        <p>
-                            {product['market_price']}
-                        </p>
-
-                    </div>
-                    """,
-                    unsafe_allow_html=True)
+                st.markdown(
+        f"<b>Market Price:</b> {product['market_price']}",
+        unsafe_allow_html=True
+    )
