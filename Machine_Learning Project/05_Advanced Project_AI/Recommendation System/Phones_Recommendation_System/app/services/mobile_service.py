@@ -41,7 +41,8 @@ def recommend_phones(request):
                 "product_name": recommended_phone['name'],
                 # Include both star emojis and the numerical rating with 'out of 5 stars;
                 "rating": f"{star_rating} {recommended_phone['rating']} ({recommended_phone['ratings_reviews']})Comments",
-                "sale_price": f"{recommended_phone['discount']} ${recommended_phone['Sale_Price']}",
+                "discount": f"{recommended_phone['discount']}",
+                "sale_price": f"${recommended_phone['Sale_Price']}",
                 "market_price": f"${market_price_formatted}"
             })
     
