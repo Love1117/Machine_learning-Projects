@@ -1,13 +1,13 @@
 <img width="858" height="457" alt="image" src="https://github.com/user-attachments/assets/8d42b176-f66b-4121-a977-56e7cb0821e2" />
 
-**Used Car 🚗 Price Prediction using LinearRegression**
+# Used Car 🚗 Price Prediction using LinearRegression**
 
 **📘 Project Overview**
 *An end-to-end Machine Learning application that predicts vehicle prices based on user inputs. The project includes a FastAPI backend, an interactive Streamlit frontend, Docker support, and a trained machine learning model for real-time predictions.*
 
 
-#**Technologies Used**
-Python
+# Technologies Used
+*Python
 Scikit-learn
 Pandas
 NumPy
@@ -19,16 +19,16 @@ Pydantic
 Docker & Docker Compose
 Uvicorn
 Joblib
-Git & GitHub
+Git & GitHub*
 
-#**Features**
-Predicts vehicle prices using a trained Machine Learning model
+#Features
+*Predicts vehicle prices using a trained Machine Learning model
 Interactive Streamlit web interface
 FastAPI REST API for real-time predictions
 PostgreSQL database for storing prediction history
 SQLAlchemy ORM for database operations
 Dockerized application for consistent deployment
-Input validation with Pydantic
+Input validation with Pydantic*
 
 
 
