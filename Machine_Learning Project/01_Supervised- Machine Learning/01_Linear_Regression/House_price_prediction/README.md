@@ -62,7 +62,7 @@ Input validation with Pydantic*
 1. Clone the repository
 git clone https://github.com/YourUsername/Machine_learning-Projects.git
 2. Navigate to the project
-cd Machine_learning-Projects/Machine_Learning_Project/01_Supervised-_Machine_Learning/01_Linear_Regression/Employee_salaryaa-prediction
+cd Machine_learning-Projects/Machine_Learning_Project/01_Supervised-_Machine_Learning/01_Linear_Regression/House_price_prediction
 3. Create a virtual environment
 
 ~ Windows
