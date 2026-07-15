@@ -1,10 +1,10 @@
-<img width="858" height="457" alt="image" src="https://github.com/user-attachments/assets/8d42b176-f66b-4121-a977-56e7cb0821e2" />
+Machine_Learning Project/01_Supervised- Machine Learning/01_Linear_Regression/Employee_salary_prediction/salarypicture.jpeg
 
-# Used Car 🚗 House Prediction using LinearRegression
+# USA Employee Salary prediction
 
 **📘 Project Overview**:
 
-*An end-to-end Machine Learning application that predicts vehicle prices based on user inputs. The project includes a FastAPI backend, an interactive Streamlit frontend, Docker support, and a trained machine learning model for real-time predictions.*
+*This project involves an end-to-end data processing and feature engineering workflow designed to build a robust model for predicting an employee's salary based on various professional and features. The project includes a FastAPI backend, an interactive Streamlit frontend, Docker support, and a trained machine learning model for real-time predictions.*
 
 
 # Technologies Used
@@ -23,7 +23,7 @@ Joblib
 Git & GitHub*
 
 # Features
-*Predicts vehicle prices using a trained Machine Learning model
+*Predicts Employee salary using a trained Machine Learning model
 Interactive Streamlit web interface
 FastAPI REST API for real-time predictions
 PostgreSQL database for storing prediction history
@@ -60,7 +60,7 @@ Input validation with Pydantic*
 1. Clone the repository
 git clone https://github.com/YourUsername/Machine_learning-Projects.git
 2. Navigate to the project
-cd Machine_learning-Projects/Machine_Learning_Project/01_Supervised-_Machine_Learning/01_Linear_Regression/Car_price_prediction
+cd Machine_learning-Projects/Machine_Learning_Project/01_Supervised-_Machine_Learning/01_Linear_Regression/Employee_salaryaa-prediction
 3. Create a virtual environment
 
 ~ Windows
