@@ -1,4 +1,5 @@
-Machine_Learning Project/01_Supervised- Machine Learning/01_Linear_Regression/Employee_salary_prediction/salarypicture.jpeg
+![Uploading image.png…]()
+
 
 # USA Employee Salary prediction
 
