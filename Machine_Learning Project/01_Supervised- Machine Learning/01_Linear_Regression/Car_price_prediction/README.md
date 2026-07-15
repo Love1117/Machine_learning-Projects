@@ -2,7 +2,8 @@
 
 # Used Car 🚗 Price Prediction using LinearRegression**
 
-**📘 Project Overview**
+**📘 Project Overview**:
+
 *An end-to-end Machine Learning application that predicts vehicle prices based on user inputs. The project includes a FastAPI backend, an interactive Streamlit frontend, Docker support, and a trained machine learning model for real-time predictions.*
 
 
