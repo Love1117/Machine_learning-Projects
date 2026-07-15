@@ -91,3 +91,7 @@ streamlit run frontend/streamlit_app.py
 
 The application will open at
 http://localhost:8501
+
+
+# Live Demo For Testing
+visit the live demo folder on this app
