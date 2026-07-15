@@ -10,18 +10,18 @@
 
 
 # Technologies Used
-*Python
-Scikit-learn
-Pandas
-NumPy
-FastAPI
-Streamlit
-PostgreSQL
-SQLAlchemy
-Pydantic
-Docker & Docker Compose
-Uvicorn
-Joblib
+*Python, 
+Scikit-learn, 
+Pandas, 
+NumPy, 
+FastAPI, 
+Streamlit, 
+PostgreSQL, 
+SQLAlchemy, 
+Pydantic, 
+Docker & Docker Compose,
+Uvicorn,
+Joblib, 
 Git & GitHub*
 
 # Features
