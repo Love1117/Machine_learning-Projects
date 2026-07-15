@@ -21,7 +21,7 @@ Uvicorn
 Joblib
 Git & GitHub*
 
-#Features
+# Features
 *Predicts vehicle prices using a trained Machine Learning model
 Interactive Streamlit web interface
 FastAPI REST API for real-time predictions
