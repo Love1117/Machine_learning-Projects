@@ -13,5 +13,5 @@ def model_check():
 
 
 @router.post("/summarize")
-def def summarize_text(input_data: TextInput, db: Session = Depends(get_db)):
+def summarize_text(input_data: TextInput, db: Session = Depends(get_db)):
     return prediction(input_data, db)
