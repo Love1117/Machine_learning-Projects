@@ -1,6 +1,6 @@
 <img width="858" height="457" alt="image" src="https://github.com/user-attachments/assets/8d42b176-f66b-4121-a977-56e7cb0821e2" />
 
-# Used Car 🚗 Price Prediction using LinearRegression**
+# Used Car 🚗 Price Prediction using LinearRegression
 
 **📘 Project Overview**:
 
