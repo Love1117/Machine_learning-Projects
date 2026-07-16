@@ -1,14 +1,17 @@
-<img width="1024" height="731" alt="image" src="https://github.com/user-attachments/assets/17035fb7-74db-4cf9-ae4e-9cca330ec1e8" />
+<img width="927" height="331" alt="image" src="https://github.com/user-attachments/assets/9a0b092c-ad34-41a6-a74b-79fb0cc4131c" />
 
 
 
-# Customer Mall Segmentation using Agglomerative Clustering
+
+# 🧠 Customer Churn Prediction using Artificial Neural Network (ANN)
 
 **📘 Project Overview**:
 
-*The main aim is to analyze customer data and group similar customers together based on thier behavior (annual income and spending score), to support targeted marketing strategies, improve customer retention, and enhance decision-making for personalized product recommendations.
+*This project uses a Deep Learning Artificial Neural Network (ANN) to predict customer churn — that is, whether a customer is likely to stop or continue using a company’s services.
 
+# 🎯 Aim of the Project:
 
+The main aim is to build an intelligent system that predicts customer churn in advance, allowing businesses to take proactive actions such as offering discounts, improving customer service, or launching retention campaigns to reduce customer loss.
 
 
 # Technologies Used
@@ -26,8 +29,10 @@ Uvicorn
 Joblib
 Git & GitHub*
 
+
+
 # Features
-*Predicts Customer Mall Segmentation using a trained Machine Learning model
+*Predicts Customer Churn using a trained Machine Learning model
 Interactive Streamlit web interface
 FastAPI REST API for real-time predictions
 PostgreSQL database for storing prediction history
@@ -64,7 +69,7 @@ Input validation with Pydantic*
 1. Clone the repository
 git clone https://github.com/YourUsername/Machine_learning-Projects.git
 2. Navigate to the project
-cd Machine_learning-Projects/Machine_Learning_Project/02_Unsupervised - Machine Learning/Hierarchical Clustering/Customer Mall Segmentation-AgglomerativeClusterings
+cd Machine_learning-Projects/Machine_Learning_Project/03_Deep Learning Projects/Artificial Neural Network-ANN/ANN for Classification/Customer_churn_prediction
 
 3. Create a virtual environment
 
