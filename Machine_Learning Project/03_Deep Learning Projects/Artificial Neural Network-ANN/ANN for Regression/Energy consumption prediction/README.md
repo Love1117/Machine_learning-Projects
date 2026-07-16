@@ -1,17 +1,20 @@
-<img width="927" height="331" alt="image" src="https://github.com/user-attachments/assets/9a0b092c-ad34-41a6-a74b-79fb0cc4131c" />
+<img width="764" height="401" alt="image" src="https://github.com/user-attachments/assets/19068380-7f08-40d3-89d5-94d61355e1a5" />
 
 
 
-
-# 🧠 Customer Churn Prediction using Artificial Neural Network (ANN)
-
-**📘 Project Overview**:
-
-*This project uses a Deep Learning Artificial Neural Network (ANN) to predict customer churn — that is, whether a customer is likely to stop or continue using a company’s services.
+# Smart Home Energy Consumption Prediction using Artificial Neural Network (ANN)
 
 # 🎯 Aim of the Project:
 
-The main aim is to build an intelligent system that predicts customer churn in advance, allowing businesses to take proactive actions such as offering discounts, improving customer service, or launching retention campaigns to reduce customer loss.
+*The main aim of this project is to develop an intelligent model that predicts future energy consumption in smart homes. This helps homeowners and energy providers to:*
+
+* Monitor and manage energy usage efficiently
+
+* Identify consumption patterns and peak usage hours
+
+* Reduce unnecessary energy costs
+
+* Support sustainability and smart grid initiatives*
 
 
 # Technologies Used
