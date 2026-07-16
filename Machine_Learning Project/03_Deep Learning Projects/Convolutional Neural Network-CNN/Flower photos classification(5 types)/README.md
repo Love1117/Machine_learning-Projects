@@ -1,17 +1,13 @@
-<img width="700" height="345" alt="image" src="https://github.com/user-attachments/assets/502c1977-e3df-40a4-a55b-189dbe29a206" />
-
+![Uploading image.png…]()
 
 
 
 # flower Photo Image Classification using Convolutional Neural Network (CNN)
 
-**📘 Project Overview**:
-
-*This project uses a Deep Learning Artificial Neural Network (ANN) to predict customer churn — that is, whether a customer is likely to stop or continue using a company’s services.
 
 # 🎯 Aim of the Project:
 
-The main aim is to build a robust image classification model capable of identifying and categorizing real-world objects automatically. This project showcases how CNNs can be used to power computer vision applications such as object detection, autonomous systems, and image recognition.
+The main aim is to build a robust image classification model capable of identifying and categorizing 5 types of flower photos. This project showcases how CNNs can be used to power computer vision applications such as object detection, autonomous systems, and image recognition.
 
 
 # Technologies Used
@@ -34,7 +30,7 @@ Git & GitHub*
 
 
 # Features
-*Predicts Customer Ci-far 10 image using a deep learning trained model
+*Predicts flower photos image using a deep learning trained model
 Interactive Streamlit web interface
 FastAPI REST API for real-time predictions
 PostgreSQL database for storing prediction history
@@ -71,7 +67,7 @@ Input validation with Pydantic*
 1. Clone the repository
 git clone https://github.com/YourUsername/Machine_learning-Projects.git
 2. Navigate to the project
-cd Machine_learning-Projects/Machine_Learning_Project/03_Deep Learning Projects/Convolutional Neural Network-CNN/CIFAR-10 images classification
+cd Machine_learning-Projects/Machine_Learning_Project/03_Deep Learning Projects/Convolutional Neural Network-CNN/Flower photos classification(5 types)
 
 3. Create a virtual environment
 
