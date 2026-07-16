@@ -15,9 +15,7 @@ Scikit-learn
 Pandas
 NumPy
 FastAPI
-Pillow
-Tensorflow
-tensorflow_hub
+huggingface_hub
 Streamlit
 PostgreSQL
 SQLAlchemy
