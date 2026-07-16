@@ -72,7 +72,7 @@ Input validation with Pydantic*
 1. Clone the repository
 git clone https://github.com/YourUsername/Machine_learning-Projects.git
 2. Navigate to the project
-cd Machine_learning-Projects/Machine_Learning_Project/03_Deep Learning Projects/Artificial Neural Network-ANN/ANN for Classification/Customer_churn_prediction
+cd Machine_learning-Projects/Machine_Learning_Project/03_Deep Learning Projects/Artificial Neural Network-ANN/ANN for Regression/Energy consumption prediction
 
 3. Create a virtual environment
 
