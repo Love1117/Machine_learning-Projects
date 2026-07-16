@@ -1,5 +1,4 @@
-![Uploading image.png…]()
-
+<img width="268" height="148" alt="image" src="https://github.com/user-attachments/assets/a796b73a-15a2-431e-b57f-f478d5ee5332" />
 
 
 # flower Photo Image Classification using Lightweight(feature extractor) models
@@ -18,6 +17,7 @@ NumPy
 FastAPI
 Pillow
 Tensorflow
+tensorflow_hub
 Streamlit
 PostgreSQL
 SQLAlchemy
