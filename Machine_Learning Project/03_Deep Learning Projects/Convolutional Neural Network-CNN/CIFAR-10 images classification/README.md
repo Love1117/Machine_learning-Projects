@@ -5,10 +5,6 @@
 
 # CIFAR-10 Image Classification using Convolutional Neural Network (CNN)
 
-**📘 Project Overview**:
-
-*This project uses a Deep Learning Artificial Neural Network (ANN) to predict customer churn — that is, whether a customer is likely to stop or continue using a company’s services.
-
 # 🎯 Aim of the Project:
 
 The main aim is to build a robust image classification model capable of identifying and categorizing real-world objects automatically. This project showcases how CNNs can be used to power computer vision applications such as object detection, autonomous systems, and image recognition.
