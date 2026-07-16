@@ -1,4 +1,4 @@
-
+<img width="700" height="345" alt="image" src="https://github.com/user-attachments/assets/502c1977-e3df-40a4-a55b-189dbe29a206" />
 
 
 
@@ -20,6 +20,8 @@ Scikit-learn
 Pandas
 NumPy
 FastAPI
+Pillow
+Tensorflow
 Streamlit
 PostgreSQL
 SQLAlchemy
