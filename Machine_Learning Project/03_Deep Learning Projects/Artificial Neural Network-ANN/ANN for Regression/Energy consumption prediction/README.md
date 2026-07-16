@@ -23,6 +23,7 @@ Scikit-learn
 Pandas
 NumPy
 FastAPI
+Tensorflow
 Streamlit
 PostgreSQL
 SQLAlchemy
