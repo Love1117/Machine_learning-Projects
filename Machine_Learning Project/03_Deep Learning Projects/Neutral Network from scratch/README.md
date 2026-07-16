@@ -1,7 +1,7 @@
 <img width="640" height="480" alt="image" src="https://github.com/user-attachments/assets/bc32aaf4-20ac-4d01-a4da-33e01d12700d" />
 
 
-# 
+# Neural Network from Scratch for Insurance cost Prediction
 
 **📘 Project Overview**:
 
