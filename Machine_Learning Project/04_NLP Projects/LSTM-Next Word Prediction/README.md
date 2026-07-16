@@ -2,10 +2,10 @@
 
 
 
-# Next Word Prediction Language Model using RNN–LSTM
+## Next Word Prediction Language Model using RNN–LSTM
 
 
-# Project Overview:
+## Project Overview:
 
 This project builds a Recurrent Neural Network (RNN) using LSTM (Long Short-Term Memory) layers to perform next-word prediction on text data sourced from Project Gutenberg. The dataset used is the classic novel “Crime and Punishment” by Fyodor Dostoevsky.
 
@@ -21,7 +21,7 @@ Designing and training language models
 
 Applying LSTM networks for sequential tasks
 
-# Technologies Used
+## Technologies Used
 *Python
 Scikit-learn
 Pandas
@@ -39,7 +39,7 @@ Git & GitHub*
 
 
 
-# Features
+## Features
 *Predicts Next word on the classic novel “Crime and Punishment” using a RNN model
 Interactive Streamlit web interface
 FastAPI REST API for real-time predictions
@@ -51,7 +51,7 @@ Input validation with Pydantic*
 
 
 
-# Project structure
+## Project structure
                    +----------------------+
                    |  Streamlit Frontend  |
                    +----------+-----------+
@@ -72,7 +72,7 @@ Input validation with Pydantic*
 
 
 
- # Installation Guide
+ ## Installation Guide
  
 1. Clone the repository
 git clone https://github.com/YourUsername/Machine_learning-Projects.git
