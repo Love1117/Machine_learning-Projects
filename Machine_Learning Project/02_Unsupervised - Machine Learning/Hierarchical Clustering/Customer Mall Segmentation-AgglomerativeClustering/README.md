@@ -27,13 +27,27 @@ Joblib
 Git & GitHub*
 
 # Features
-*Predicts Customer Mall Segmentation using a trained Machine Learning model
+*Predicts Customer Mall Segmentation using a unsupervised trained Machine Learning model
 Interactive Streamlit web interface
 FastAPI REST API for real-time predictions
 PostgreSQL database for storing prediction history
 SQLAlchemy ORM for database operations
 Dockerized application for consistent deployment
 Input validation with Pydantic*
+
+
+📊 Results & Insights:
+The clustering visualization revealed five distinct customer groups such as:
+
+High-income, high-spending customers
+
+High-income, low-spending customers
+
+Low-income, high-spending customers
+
+Low-income, low-spending customers
+
+Average-income, moderate-spending customers
 
 
 
