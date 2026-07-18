@@ -8,9 +8,9 @@
 
 This project implements a content-based product recommendation system using text vectorization and cosine similarity. 
 ### When deployed, this recommendation system can:
-*Recommend songs with similar styles, moods, or characteristics in real time.
-Improve user engagement and listening experience on music platforms. 
-Serve as a scalable recommendation module for streaming services, playlists, or AI-driven entertainment applications.*
+*Recommend relevant products in real time based on user interests or selected items.
+Improve product discovery, cross-selling, and customer engagement on e-commerce platforms.
+Support personalized shopping experiences by delivering data-driven recommendations.*
 
 ## Technologies Used
 *Python
