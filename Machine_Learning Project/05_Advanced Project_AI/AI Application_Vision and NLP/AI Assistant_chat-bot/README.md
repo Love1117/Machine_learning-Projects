@@ -1,4 +1,4 @@
-<img width="800" height="418" alt="image" src="https://github.com/user-attachments/assets/8ba2bdce-88f4-4843-a789-8af34830e8e2" />
+<img width="800" height="418" alt="image" src="https://github.com/user-attachments/assets/aff1ccdd-c2de-4370-97ca-f83bfd854169" />
 
 
 
@@ -7,19 +7,25 @@
 
 ## Project Overview:
 
-This project showcases a text-generation and conversational AI system built using Meta LLaMA 3.2. The model was implemented as a chatbot capable of generating human-like responses, answering questions, and engaging in open-ended dialogue. 
+This project integrates Vision and Natural Language Processing within a single AI application powered by Llama 3.2. The system functions as an intelligent assistant capable of interpreting images, responding to audio records and generating high-quality text responses, enabling it to answer questions, describe visual content, and engage in natural, human-like conversation. The result is a flexible multimodal AI tool that demonstrates advanced reasoning across both text, audio and images.
 
 
 ## Technologies Used
 *Python
 openai
+python-multipart
+openai
+httpx
+pillow
+nest-asyncio
+faster-whisper
+streamlit-mic-recorder
 python-dotenv
 FastAPI
 Streamlit
 Pydantic
 Docker & Docker Compose
 Uvicorn
-Joblib
 Git & GitHub*
 
 
@@ -60,9 +66,7 @@ Input validation with Pydantic*
 1. Clone the repository
 git clone https://github.com/YourUsername/Machine_learning-Projects.git
 2. Navigate to the project
-cd Machine_learning-Projects/Machine_Learning_Project/04_NLP Projects/Transfer Learning-Bert, T5, LLaMa, etc.._transformers/Text Generation
-
-
+cd Machine_learning-Projects/Machine_Learning_Project/05_Advanced Project_AI/AI Application_Vision and NLP/AI Assistant_chat-bot
 
 
 3. Create a virtual environment
