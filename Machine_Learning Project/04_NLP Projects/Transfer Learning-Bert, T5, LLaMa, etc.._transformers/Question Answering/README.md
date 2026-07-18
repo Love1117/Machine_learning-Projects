@@ -28,7 +28,7 @@ Git & GitHub*
 
 
 ## Features
-*Summarizing text using spaCy+TextRank.
+*Question and anwsering on a custom dataset.
 Interactive Streamlit web interface
 FastAPI REST API for real-time predictions
 PostgreSQL database for storing prediction history
@@ -65,7 +65,7 @@ Input validation with Pydantic*
 1. Clone the repository
 git clone https://github.com/YourUsername/Machine_learning-Projects.git
 2. Navigate to the project
-cd Machine_learning-Projects/Machine_Learning_Project/04_NLP Projects/Traditional NLP/Text Summarization using_spaCy+TextRank
+cd Machine_learning-Projects/Machine_Learning_Project/04_NLP Projects/Transfer Learning-Bert, T5, LLaMa, etc.._transformers/Question Answering
 
 
 
