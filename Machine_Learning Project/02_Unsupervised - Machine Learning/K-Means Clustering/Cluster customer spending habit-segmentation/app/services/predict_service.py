@@ -2,7 +2,7 @@ import pandas as pd
 from fastapi import HTTPException
 
 from app.services.model_loader import model, scale
-from app.services.preprocessing import encode_Profession. encode_Variable
+from app.services.preprocessing import encode_Profession, encode_Variable
 from app.core.constants import GENDER, EVER_MARRIED, GRADUATED
 from app.database.crud import save_prediction
 
