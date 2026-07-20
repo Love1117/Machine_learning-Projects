@@ -8,6 +8,7 @@ from app.database.crud import save_prediction
 
 
 def prediction(data, db):
+  
   try:
     bp_Profession = encode_Profession(data.Profession_status)
     bp_Variable = encode_Variable(data.Variable_status)
@@ -50,7 +51,8 @@ def prediction(data, db):
 
     prediction = Group_into
     
-    db_obj = save_prediction(db, data, prediction)
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=str(e))
     
     return {
         "prediction": Group_into,
