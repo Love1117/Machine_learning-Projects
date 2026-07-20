@@ -9,7 +9,7 @@ class Prediction(Base):
     id = Column(Integer, primary_key=True, index=True)
     Gender = Column(String)
     Ever_Married = Column(String)
-    Age = Column(Strig)
+    Age = Column(String)
     Graduated = Column(String)
     Work_Experience = Column(Float)
     Spending_Score = Column(Integer)
