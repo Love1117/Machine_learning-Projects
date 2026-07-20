@@ -3,7 +3,7 @@ from app.core.constants import GRADUATED, EVER_MARRIED, GENDER
 def save_prediction(db, data, prediction):
 
     db_obj = Prediction(
-       Gender: GENDER[data.Gender],
+       Gender=GENDER[data.Gender],
        Ever_Married=EVER_MARRIED[data.Ever_Married],
        Age=data.Age,
        Graduated=GRADUATED[data.Graduated],
