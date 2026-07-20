@@ -11,7 +11,7 @@ class Prediction(Base):
   gender = Column(String)
   SeniorCitizen = Column(String)
   Partner = Column(String)
-  Dependents = Column(string)
+  Dependents = Column(String)
   tenure = Column(Integer)
   PhoneService = Column(String)
   MultipleLines = Column(String)
