@@ -68,7 +68,7 @@ with st.form("prediction_form"):
     with col4:
         Family_Size = st.number_input(
         "Family Size",
-        value=None,,
+        value=None,
         placeholder="Enter Family Size (e.g. 3.0 )")
 
 
