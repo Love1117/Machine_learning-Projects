@@ -51,7 +51,7 @@ with st.form("prediction_form"):
         Age = st.number_input(
         "Age",
         value=None,
-        help="Enter Age (e.g. 44)")
+        placeholder="Enter Age (e.g. 44)")
       
             
     col3, col4 = st.columns(2)
@@ -68,9 +68,8 @@ with st.form("prediction_form"):
     with col4:
         Family_Size = st.number_input(
         "Family Size",
-        value=None,
-        format="%.2f",
-        help="Enter Family Size (e.g. 3.0 )")
+        value=None,,
+        placeholder="Enter Family Size (e.g. 3.0 )")
 
 
 
@@ -102,8 +101,7 @@ with st.form("prediction_form"):
         Work_Experience = st.number_input(
         "Work Experience",
         value=None,
-        format="%.2f",
-        help="Enter Work Experience (e.g. 8 years and 6 Months (8.6) )")
+        placeholder="Enter Work Experience (e.g. 8 years and 6 Months (8.6) )")
 
 
   
@@ -118,7 +116,7 @@ with st.form("prediction_form"):
         Spending_Score  = st.number_input(
         "Spending Score",
         value=None,
-        help="Enter Spending Score (e.g. 3)")
+        placeholder="Enter Spending Score (e.g. 3)")
 
 
     with col2:
