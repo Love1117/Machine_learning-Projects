@@ -5,10 +5,9 @@ from app.services.model_loader import model, scale
 from app.services.preprocessing import encode_Profession, encode_Variable
 from app.core.constants import GENDER, EVER_MARRIED, GRADUATED
 from app.database.crud import save_prediction
-
-
-def prediction(data, db):
   
+    
+def prediction(data, db):
   try:
     bp_Profession = encode_Profession(data.Profession_status)
     bp_Variable = encode_Variable(data.Variable_status)
@@ -51,10 +50,12 @@ def prediction(data, db):
 
     prediction = Group_into
     
-  except Exception as e:
-    raise HTTPException(status_code=500, detail=str(e))
+    db_obj = save_prediction(db, data, prediction)
     
     return {
         "prediction": Group_into,
         "db_id": db_obj.id
     }
+    
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=str(e))
