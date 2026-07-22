@@ -39,13 +39,13 @@ def prediction(data, db):
 
     scaled_df = input_data
 
-    probability = model.predict(scaled_df)[0][0]
+    probability = float(model.predict(scaled_df)[0][0])
     prediction_class = ("Customer Left" if probability >= 0.5 else "Customer Retained")
 
     db_obj = save_prediction(db, data, probability, prediction_class)
 
     return {
-        "probability": float(probability),
+        "probability": probability,
         "prediction_class": prediction_class,
         "db_id": db_obj.id
     }
