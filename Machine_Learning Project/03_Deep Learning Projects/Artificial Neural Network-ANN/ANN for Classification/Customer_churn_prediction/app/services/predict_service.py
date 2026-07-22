@@ -43,7 +43,7 @@ def prediction(data, db):
 
     prediction_class = ("Customer Left" if probability >= 0.5 else "Customer Retained")
 
-    db_obj = save_prediction(db, data, probability, prediction_class)
+    db_obj = save_prediction(db, data, prediction_class, probability)
 
     return {
         "probability": probability,
