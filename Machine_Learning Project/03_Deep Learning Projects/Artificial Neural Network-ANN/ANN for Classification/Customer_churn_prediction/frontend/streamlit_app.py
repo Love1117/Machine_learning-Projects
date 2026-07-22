@@ -191,7 +191,7 @@ with st.form("prediction_form"):
         tenure = st.number_input(
         "tenure",
         value=None,
-        help="Enter years customer has stayed with the business (example 5)")
+        placeholder="Enter years customer has stayed with the business (example 5)")
 
 
   
@@ -235,14 +235,14 @@ with st.form("prediction_form"):
         "Monthly Charges",
         value=None,
         format="%.2f",
-        help="Enter Monthly Charges. Example: 29.85")
+        placeholder="Enter Monthly Charges. Example: 29.85")
 
     with col4:
         TotalCharges = st.number_input(
         "Total Charges",
         value=None,
         format="%.2f",
-        help="Enter the total charges Example. 29.85")
+        placeholder="Enter the total charges Example. 29.85")
 
 
 
