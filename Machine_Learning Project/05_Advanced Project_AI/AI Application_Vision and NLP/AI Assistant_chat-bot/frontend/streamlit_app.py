@@ -1,7 +1,7 @@
 import streamlit as st
 from api_client import chat_bot
 from pathlib import Path
-
+from streamlit_mic_recorder import mic_recorder
 
 
 st.set_page_config(
