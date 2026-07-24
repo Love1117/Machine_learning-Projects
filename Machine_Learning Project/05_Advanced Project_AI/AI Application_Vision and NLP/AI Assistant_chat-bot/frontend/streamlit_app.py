@@ -1,5 +1,3 @@
-!pip install streamlit-mic-recorder
-
 import streamlit as st
 from api_client import chat_bot
 from pathlib import Path
