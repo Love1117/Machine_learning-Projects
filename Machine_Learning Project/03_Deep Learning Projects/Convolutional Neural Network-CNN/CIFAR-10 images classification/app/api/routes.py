@@ -15,9 +15,8 @@ def model_check():
 @router.post("/predict",  response_model=PredictionResponse)
 async def predict_route(
     file: UploadFile = File(...),
-    db: Session = Depends(get_db)
-):
-    if not file.content_type.startswith("image/"):
-        raise HTTPException(status_code=400, detail="File must be an image")
+    db: Session = Depends(get_db)):
+        if not file.content_type.startswith("image/"):
+            raise HTTPException(status_code=400, detail="File must be an image")
 
-    return await predict_image(file, db)
+        return await predict_image(file, db)
