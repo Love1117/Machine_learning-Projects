@@ -24,7 +24,7 @@ async def predict_image(file: UploadFile, db):
     confidence = float(np.max(predictions))
     predicted_class_name = Classes[predicted_class_index]
 
-    db_obj = save_prediction(db=db, filename=file.filename, predicted_class_name=predicted_class_name, confidence=confidence,)
+    db_obj = save_prediction(db, filename=file.filename, predicted_class_name=predicted_class_name, confidence=confidence)
 
     return {
         "filename": file.filename,
