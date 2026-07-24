@@ -1,14 +1,8 @@
 import streamlit as st
 from api_client import chat_bot
 from pathlib import Path
+from streamlit_mic_recorder import mic_recorder
 
-
-try:
-    from streamlit_mic_recorder import mic_recorder
-except Exception as e:
-    import streamlit as st
-    st.error(f"Mic recorder import failed: {e}")
-    st.stop()
 
 
 st.set_page_config(
