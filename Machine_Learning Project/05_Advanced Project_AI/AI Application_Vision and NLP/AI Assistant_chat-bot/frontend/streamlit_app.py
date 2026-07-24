@@ -1,4 +1,4 @@
-pip install streamlit-mic-recorder
+!pip install streamlit-mic-recorder
 
 import streamlit as st
 from api_client import chat_bot
