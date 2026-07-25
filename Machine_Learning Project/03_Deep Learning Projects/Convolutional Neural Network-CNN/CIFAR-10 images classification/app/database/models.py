@@ -8,7 +8,7 @@ class Prediction(Base):
     __tablename__ = "cifar_image_prediction_table"
 
     id = Column(Integer, primary_key=True, index=True)
-    filename = Column(String, nullable=False)
+    filename = Column(String)
     predicted_class_name = Column(String)
     confidence = Column(Float)
     created_at = Column(DateTime, default=datetime.utcnow)
