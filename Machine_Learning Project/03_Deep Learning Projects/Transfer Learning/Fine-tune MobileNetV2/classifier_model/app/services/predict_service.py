@@ -17,9 +17,10 @@ labels_path = tf.keras.utils.get_file('ImageNetLabels.txt','https://storage.goog
 imagenet_labels = np.array(open(labels_path).read().splitlines())
 
 
+
 async def image_prediction(file: UploadFile, db):
-  try:
-    # Read the image file
+    try:
+        # Read the image file
         contents = await file.read()
         image = Image.open(io.BytesIO(contents)).resize(IMAGE_SHAPE)
 
@@ -35,12 +36,12 @@ async def image_prediction(file: UploadFile, db):
         predicted_label = imagenet_labels[predicted_class_id] # Directly use the string label from the array
         confidence = float(np.max(result))
     
-    db_obj = save_prediction(db, filename=file.filename, prediction=predicted_label, confidence=confidence)
+        db_obj = save_prediction(db, filename=file.filename, prediction=predicted_label, confidence=confidence)
 
-    return {"filename": file.filename, 
+        return {"filename": file.filename, 
             "prediction": predicted_label, 
             "confidence": confidence,
             "db_id": db_obj.id}
-
-  except Exception as e:
-    raise HTTPException(status_code=500, detail=str(e))
+      
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
