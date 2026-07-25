@@ -13,9 +13,8 @@ def model_check():
 @router.post("/predict")
 async def predict_flower(
     file: UploadFile = File(...),
-    db: Session = Depends(get_db)
-):
-    if not file.content_type.startswith("image/"):
-        raise HTTPException(status_code=400, detail="File must be an image")
+    db: Session = Depends(get_db)):
+        if not file.content_type.startswith("image/"):
+            raise HTTPException(status_code=400, detail="File must be an image")
 
-    return await predict_flower_prediction(file, db)
+        return await predict_flower_prediction(file, db)
