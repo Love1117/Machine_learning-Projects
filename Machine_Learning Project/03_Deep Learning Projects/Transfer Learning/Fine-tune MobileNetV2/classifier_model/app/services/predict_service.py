@@ -9,8 +9,7 @@ from app.database.crud import save_prediction
 
 
 # Define image dimensions
-img_height = 224
-img_width = 224
+IMAGE_SHAPE = (224, 224)
 
 # Load ImageNet labels for prediction interpretation, as this is an ImageNet classifier
 labels_path = tf.keras.utils.get_file('ImageNetLabels.txt','https://storage.googleapis.com/download.tensorflow.org/data/ImageNetLabels.txt')
@@ -22,7 +21,7 @@ async def image_prediction(file: UploadFile, db):
     try:
         # Read the image file
         contents = await file.read()
-        image = Image.open(io.BytesIO(contents)).resize(IMAGE_SHAPE)
+        image = Image.open(io.BytesIO(contents)).convert("RGB").resize(IMAGE_SHAPE)
 
         # Preprocess the image
         image_array = np.array(image) / 255.0
