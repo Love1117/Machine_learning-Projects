@@ -8,7 +8,7 @@ class Prediction(Base):
     __tablename__ = "image_classifier_table"
 
     id = Column(Integer, primary_key=True, index=True)
-    filename = Column(String, nullable=False)
-    prediction = Column(Integer, nullable=False)
+    filename = Column(String)
+    prediction = Column(String)
     confidence = Column(Float)
     created_at = Column(DateTime, default=datetime.utcnow)
