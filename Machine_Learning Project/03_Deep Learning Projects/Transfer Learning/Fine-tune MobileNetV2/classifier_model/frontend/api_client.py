@@ -1,6 +1,6 @@
 import requests
 
-FASTAPI_URL = "http://fastapi:8000"
+FASTAPI_URL = "https://image-classifier-api-5d5f.onrender.com"
 
 def image_animal(file):
 
