@@ -10,7 +10,7 @@ from app.database.crud import save_prediction
 
 
 
-def predict_flower_prediction(file: UploadFile = File(...), db):
+async def predict_flower_prediction(file: UploadFile, db):
   try:
     # Read the image file
     contents = await file.read()
@@ -35,10 +35,10 @@ def predict_flower_prediction(file: UploadFile = File(...), db):
     predicted_class_name = flower_dict[predicted_class_idx]
     confidence = float(np.max(prediction))
 
-    db_obj = save_prediction("filename": file.filename, "predicted_class": predicted_class_name, "confidence": confidence)
+    db_obj = save_prediction(db, filename=file.filename, predicted_class=predicted_class_name, confidence=confidence)
 
     return {
-        "filename": filename,
+        "filename": file.filename,
         "predicted_class": predicted_class_name,
         "confidence": confidence,
         "db_id": db_obj.id
