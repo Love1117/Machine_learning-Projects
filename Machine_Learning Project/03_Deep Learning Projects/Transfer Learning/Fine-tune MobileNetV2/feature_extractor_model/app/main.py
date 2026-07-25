@@ -54,12 +54,6 @@ authentication_backend = AdminAuth(secret_key=SECRET_KEY)
 
 admin = Admin(app, engine, authentication_backend=authentication_backend)
 
- id = Column(Integer, primary_key=True, index=True)
-    filename = Column(String, nullable=False)
-    predicted_class_name = Column(Integer, nullable=False)
-    confidence = Column(Float)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
 
 # 4. Tell SQLAdmin how to display your Product table
 class VectorAdmin(ModelView, model=Prediction):
