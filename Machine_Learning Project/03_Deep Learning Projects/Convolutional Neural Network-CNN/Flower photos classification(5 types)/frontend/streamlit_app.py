@@ -72,7 +72,7 @@ if submit:
     <div class="prediction-card">
         <h3>Prediction Result</h3>
         <p><strong>Prediction:</strong> {result['predicted_class']}</p>
-        <p><strong>confidence:</strong> {result['confidence']:.2%}</p>
+        <p><strong>confidence:</strong> {result['confidence']:.2f}%</p>
     </div>
     """,
     unsafe_allow_html=True
