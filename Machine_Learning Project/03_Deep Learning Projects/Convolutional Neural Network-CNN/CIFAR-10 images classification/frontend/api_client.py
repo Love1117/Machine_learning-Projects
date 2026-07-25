@@ -1,6 +1,6 @@
 import requests
 
-FASTAPI_URL = "http://fastapi:8000"
+FASTAPI_URL = "https://cifar10-image-api.onrender.com"
 
 def image_class(file):
 
