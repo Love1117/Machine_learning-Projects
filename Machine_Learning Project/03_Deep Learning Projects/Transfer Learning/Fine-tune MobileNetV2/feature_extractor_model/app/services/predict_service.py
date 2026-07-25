@@ -14,7 +14,7 @@ img_width = 224
 
 
 
-def predict_flower(file: UploadFile = File(...), db):
+async def predict_flower(file: UploadFile = File(...), db):
   try:
     # Read the image file
     contents = await file.read()
@@ -30,10 +30,10 @@ def predict_flower(file: UploadFile = File(...), db):
     predicted_class_name = class_names[predicted_class_id]
     confidence = float(np.max(predictions))
 
-    db_obj = save_prediction("filename": file.filename, "predicted_class": predicted_class_name, "confidence": confidence)
+    db_obj = save_prediction(db, filename=file.filename, predicted_class=predicted_class_name, confidence=confidence)
 
     return {
-        "filename": filename,
+        "filename": file.filename,
         "predicted_class": predicted_class_name,
         "confidence": confidence,
         "db_id": db_obj.id
