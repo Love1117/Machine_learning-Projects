@@ -8,6 +8,6 @@ class Prediction(Base):
     __tablename__ = "written_digit_predictions_table"
 
     id = Column(Integer, primary_key=True, index=True)
-    filename = Column(String, nullable=False)
-    predicted_digit = Column(Integer, nullable=False)
+    filename = Column(String)
+    predicted_digit = Column(String)
     created_at = Column(DateTime, default=datetime.utcnow)
