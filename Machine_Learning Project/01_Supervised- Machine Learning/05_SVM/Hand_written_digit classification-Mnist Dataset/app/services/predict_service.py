@@ -11,7 +11,7 @@ from app.services.preprocessing import preprocess_image
 from app.database.crud import save_prediction
 
 
-def predict_digit(file, db: Session):
+async def predict_digit(file: UploadFile, db):
   try:
     contents = await file.read()
     image = Image.open(io.BytesIO(contents))
@@ -23,11 +23,11 @@ def predict_digit(file, db: Session):
     prediction = model.predict(features)[0]
     predicted_digit = int(prediction)
     
-    db_obj = save_prediction(db, filename, predicted_digit)
+    db_obj = save_prediction(db, filename=file.filename, predicted_digit=predicted_digit)
 
     return {
         "predicted_digit": int(prediction),
-        "filename": filename,
+        "filename": file.filename,
         "db_id": db_obj.id
     }
   except Exception as e:
