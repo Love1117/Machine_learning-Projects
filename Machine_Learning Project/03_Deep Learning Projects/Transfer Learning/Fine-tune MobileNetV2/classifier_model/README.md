@@ -1,5 +1,5 @@
 
-# flower Photo Image Classification using Lightweight(classifier) models
+# Image Classification using Lightweight(classifier) models
 
 
 # 🎯 Aim of the Project:
