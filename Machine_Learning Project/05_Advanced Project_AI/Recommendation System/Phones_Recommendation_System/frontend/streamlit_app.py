@@ -12,7 +12,7 @@ def is_valid_image(url):
         return False
 
 
-API_URL = "http://fastapi:8000"
+API_URL = "https://phone-recommendation-api.onrender.com"
 
 st.set_page_config(
     page_title="Mobile Recommender",
