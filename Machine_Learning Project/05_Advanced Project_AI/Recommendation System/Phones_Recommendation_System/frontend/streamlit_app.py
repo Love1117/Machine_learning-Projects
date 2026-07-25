@@ -71,7 +71,7 @@ if st.button("Recommend Phones"):
 
         for idx, phone in enumerate(recommendations):
 
-            with cols[idx % 5]:-
+            with cols[idx % 5]:
 
                 img_url = phone.get("image_url")
 
