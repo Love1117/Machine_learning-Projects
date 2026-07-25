@@ -39,7 +39,7 @@ with st.form("prediction_form"):
         
     with col1:
         file = st.file_uploader(
-        "Upload CIFAR-10 images",
+        "Upload flower photo images",
         type=["png", "jpg", "jpeg"])
 
 # -------------------------------
