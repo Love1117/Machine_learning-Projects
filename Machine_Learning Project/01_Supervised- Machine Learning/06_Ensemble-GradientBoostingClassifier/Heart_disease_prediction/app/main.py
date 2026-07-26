@@ -72,7 +72,7 @@ class HeartAdmin(ModelView, model=Prediction):
         Prediction.age,
         Prediction.bmi,
         Prediction.bp_status,
-        Prediction.Prediction,
+        Prediction.prediction,
     ]
 
     searchable_columns = [
