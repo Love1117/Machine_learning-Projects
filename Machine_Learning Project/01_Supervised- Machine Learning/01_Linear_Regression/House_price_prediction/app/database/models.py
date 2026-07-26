@@ -9,7 +9,7 @@ class Prediction(Base):
     id = Column(Integer, primary_key=True, index=True)
     Bedrooms = Column(Integer)
     Bathrooms = Column(Integer)
-    Living_Space = Column(Integer)
+    Living_Space = Column(Float)
     Median_Household_Income = Column(Float)
     Zip_Code = Column(Integer)
     Latitude = Column(Float)
