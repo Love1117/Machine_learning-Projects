@@ -71,7 +71,7 @@ class CredictCardAdmin(ModelView, model=Prediction):
     ]
 
     searchable_columns = [
-        Prediction.type_encoded,
+        Prediction.status_type,
         Prediction.Is_fraud,
     ]
 
