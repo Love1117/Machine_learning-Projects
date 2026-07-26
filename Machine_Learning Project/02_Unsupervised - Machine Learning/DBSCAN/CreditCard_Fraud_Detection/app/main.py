@@ -66,7 +66,7 @@ class CredictCardAdmin(ModelView, model=Prediction):
         Prediction.newbalanceOrig,
         Prediction.oldbalanceDest,
         Prediction.newbalanceDest,
-        Prediction.type_encoded,
+        Prediction.status_type,
         Prediction.Is_fraud,
     ]
 
