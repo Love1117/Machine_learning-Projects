@@ -12,7 +12,8 @@ def prediction(input_data, db):
     for sent in doc._.textrank.summary(limit_phrases=input_data.limit_phrases, limit_sentences=input_data.limit_sentences):
         summary_sentences.append(str(sent))
 
-
+    summary = " ".join(summary_sentences)
+    
     db_obj = save_prediction(db, input_data, summary)
 
     return {
