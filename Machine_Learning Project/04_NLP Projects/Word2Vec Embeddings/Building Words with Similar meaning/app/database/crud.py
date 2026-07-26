@@ -14,7 +14,7 @@ def save_prediction(db, request, result):
 
 
 
-def save_prediction2(db, request, similarity):
+def save_prediction2(db, request, float(similarity)):
   db_obj_one = Prediction2(
         word1=request.word1,
         word2=request.word2,
