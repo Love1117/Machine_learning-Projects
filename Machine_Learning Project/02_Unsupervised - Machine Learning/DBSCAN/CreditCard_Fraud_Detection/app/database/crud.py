@@ -9,7 +9,7 @@ def save_prediction(db, data, prediction):
        newbalanceOrig=data.newbalanceOrig,
        oldbalanceDest=data.oldbalanceDest,
        newbalanceDest=data.oldbalanceDest,
-       type_status=data.type_status,
+       status_type=data.status_type,
        Is_fraud=prediction
     )
 
