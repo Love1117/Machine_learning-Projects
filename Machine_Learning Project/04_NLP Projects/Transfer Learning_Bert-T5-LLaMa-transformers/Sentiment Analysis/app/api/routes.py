@@ -19,7 +19,7 @@ def model_check():
 @router.post("/predict-distilbert")
 def predict_roberta_sentiment(request: TextRequest, db: Session = Depends(get_db)):
     """
-  Analyzes the sentiment of the provided text using the VADER model.
-  Returns polarity scores (negative, neutral, positive, compound).
+  Analyzes the sentiment of the provided text using the DistilBERT model.
+  Returns polarity scores (negative or positive).
     """
     return prediction(request, db)
