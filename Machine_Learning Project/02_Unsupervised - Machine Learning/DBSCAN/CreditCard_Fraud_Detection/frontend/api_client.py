@@ -1,6 +1,6 @@
 import requests
 
-FASTAPI_URL = "http://fastapi:8000"
+FASTAPI_URL = "https://credit-card-fraud-detection-api-hnt3.onrender.com"
 
 def predict_fraud(data):
     response = requests.post(
