@@ -32,7 +32,7 @@ def load_resources():
         token=HF_GRU_TOKEN,
     )
 
-    model = keras.models.load_model(model_path)
+    # model = keras.models.load_model(model_path)
     tokenizer = joblib.load(tokenizer_path)
 
     print("✅ GRU model loaded successfully.")
