@@ -47,7 +47,7 @@ def next_prediction(request, db):
                 )
     similarity = word2vec_model.wv.similarity(request.word1, request.word2)
     
-    db_obj_one = save_prediction2(db, request, similarity)
+    db_obj_one = save_prediction2(db, request, float(similarity))
 
     return {
     "word1": request.word1,
