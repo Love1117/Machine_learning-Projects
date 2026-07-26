@@ -3,7 +3,7 @@ from fastapi import HTTPException
 
 from app.services.model_loader import model, scale
 from app.services.preprocessing import encode_bp
-from app.core.constants import SMOKE. ALCOHOL, PHYSICAL, GENDER 
+from app.core.constants import SMOKE, ALCOHOL, PHYSICAL, GENDER 
 from app.database.crud import save_prediction
 
 
