@@ -8,22 +8,26 @@ def prediction(request, db):
   try:
     inputs = Distilbert_tokenizer(request.text, truncation=True, padding=True, max_length=512, return_tensors="pt")
     with torch.no_grad():
-        outputs = DistilBERT_model(**inputs)
+        outputs = Distilbert_model(**inputs)
 
     logits = outputs.logits[0].detach().numpy()
     scores = softmax(logits)
 
-    rob_dict = {"Distilbert_neg": float(scores[0]),
-                "Distilbert_neu": float(scores[1]),
-                "Distilbert_pos": float(scores[2]),
+    sentiment_score= {"negative": float(scores[0]),
+                "positive": float(scores[1])
                }
 
-    db_obj = save_prediction(db=db, model="Distilbert", request=request, sentiment_scores=rob_dict)
+    predicted_class = torch.argmax(outputs.logits, dim=1).item()
+
+    label = "Positive" if predicted_class == 1 else "Negative"
+    
+    db_obj = save_prediction(db=db, model="Distilbert", request=request, sentiment_scores=sentiment_score)
 
     return {
         "model": "Distilbert", 
-        "text": request.text, 
-        "sentiment_scores": rob_dict,
+        "text": request.text,
+        "prediction": label,
+        "sentiment_scores": sentiment_score,
         "db_id": db_obj.id}
     
   except Exception as e:
