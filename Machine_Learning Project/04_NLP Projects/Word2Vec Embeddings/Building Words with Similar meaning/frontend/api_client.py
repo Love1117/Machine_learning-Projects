@@ -1,6 +1,6 @@
 import requests
 
-FASTAPI_URL = "http://fastapi:8000"
+FASTAPI_URL = "https://word-with-similar-meaning-api.onrender.com"
 
 def similar_word(request):
     response = requests.post(
