@@ -3,8 +3,8 @@ from fastapi import HTTPException
 
 from app.services.model_loader import model, scale, AddressAndCity_Encoder, State_Encoder, County_Encoder
 from app.database.crud import save_prediction
-
-
+import traceback
+  
 def prediction(data, db):
   try:
     if data.Address_And_City not in AddressAndCity_Encoder:
@@ -80,5 +80,8 @@ def prediction(data, db):
         "House_price": House_price,
         "db_id": db_obj.id
     }
-except Exception as e:
+
+
+  except Exception as e:
+    traceback.print_exc()
     raise HTTPException(status_code=500, detail=str(e))
