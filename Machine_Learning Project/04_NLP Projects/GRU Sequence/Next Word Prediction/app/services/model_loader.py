@@ -33,6 +33,9 @@ def load_resources():
     )
 
     # model = keras.models.load_model(model_path)
-    tokenizer = joblib.load(tokenizer_path)
+    model = None
+    
+    # tokenizer = joblib.load(tokenizer_path)
+    tokenizer = None
 
     print("✅ GRU model loaded successfully.")
