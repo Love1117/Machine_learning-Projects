@@ -1,6 +1,6 @@
 import requests
 
-FASTAPI_URL = "http://fastapi:8000"
+FASTAPI_URL = "https://house-price-prediction-api-i7r2.onrender.com"
 
 def predict_house_price(data):
     response = requests.post(
