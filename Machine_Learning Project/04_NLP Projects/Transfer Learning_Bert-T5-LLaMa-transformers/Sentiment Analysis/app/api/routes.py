@@ -16,7 +16,7 @@ def model_check():
     return {"status": "ok"}
 
 
-@router.post("/predict-roberta")
+@router.post("/predict-distilbert")
 def predict_roberta_sentiment(request: TextRequest, db: Session = Depends(get_db)):
     """
   Analyzes the sentiment of the provided text using the VADER model.
