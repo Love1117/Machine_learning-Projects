@@ -68,7 +68,7 @@ class SalaryPredictAdmin(ModelView, model=Prediction):
         Prediction.Longitude,
         Prediction.Address_And_City,
         Prediction.State,
-        Prediction.County
+        Prediction.County,
         Prediction.House_price,
     ]
 
