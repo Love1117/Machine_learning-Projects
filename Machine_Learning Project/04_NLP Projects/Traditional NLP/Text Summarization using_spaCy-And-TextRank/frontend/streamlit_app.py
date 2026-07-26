@@ -52,7 +52,7 @@ with st.form("prediction_form"):
         "Limit Phrases",
         min_value=1,
         value=1,
-        help="Max key terms to extract. Eg 10"        
+        placeholder="Max key terms to extract. Eg 10"        
 )
     
     col3, = st.columns(1)
@@ -62,7 +62,7 @@ with st.form("prediction_form"):
         "Limit Sentences",
         min_value=1,
         value=1,
-        help="Max sentences in summary. Eg 5"        
+        placeholder="Max sentences in summary. Eg 5"        
 )
 
   
