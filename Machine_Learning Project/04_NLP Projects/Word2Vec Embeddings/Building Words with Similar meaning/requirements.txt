@@ -1,13 +1,16 @@
 fastapi==0.110.0
-uvicorn==0.29.0
+uvicorn[standard]==0.29.0
 pydantic==2.6.4
+
 gensim==4.3.2
+numpy==1.26.4
+scipy==1.13.1
 
 sqlalchemy==2.0.32
 python-dotenv==1.0.1
-sqladmin
-itsdangerous
-psycopg2-binary
+sqladmin==0.16.0
+itsdangerous==2.2.0
+psycopg2-binary==2.9.10
 
-streamlit
-requests
+streamlit==1.46.1
+requests==2.32.4
