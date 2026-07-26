@@ -93,21 +93,45 @@ if submit:
     try:
         with st.spinner("Generating prediction..."):
             result = similar_word(payload)
-            
-        st.success("Similar Words Extracted Completed")
+
+        st.success("✅ Similar Words Extracted Successfully")
+
+        # Format the similar words nicely
+        similar_words_html = ""
+
+        for i, item in enumerate(result["similar_words"], start=1):
+            similar_words_html += f"""
+                <div style="margin-bottom:8px;">
+                <strong>{i}.</strong> {item['word']}
+                <span style="float:right;">
+                    Similarity: <strong>{item['similarity']:.4f}</strong>
+                </span>
+            </div>
+            """
         
         st.markdown(
-    f"""
-    <div class="prediction-card">
-        <p><strong>Word:</strong> {word}</p>
-        <p><strong>No Of Similar Words:</strong> {topn}</p>
-        <p><strong>similar Words:</strong> {result['similar_words']}</p>
-        
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+            f"""
+            <div class="prediction-card">
 
+            <h4>📖 Word Similarity Result</h4>
+
+            <hr>
+
+            <p><strong>Input Word:</strong> {word}</p>
+
+            <p><strong>Number of Similar Words:</strong> {topn}</p>
+
+            <hr>
+
+            <p><strong>Similar Words</strong></p>
+
+            {similar_words_html}
+
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        
     except Exception as e:
         st.error(str(e))
 
