@@ -1,6 +1,6 @@
 from app.database.models import Prediction
 
-def save_prediction(db, data, House_price):
+def save_prediction(db, data, prediction):
 
     db_obj = Prediction(
         Bedrooms = data.Bedrooms,
@@ -13,7 +13,7 @@ def save_prediction(db, data, House_price):
         Address_And_City = data.Address_And_City,
         State = data.State,
         County = data.County,
-        House_price = House_price)
+        House_price = prediction)
 
   
     db.add(db_obj)
