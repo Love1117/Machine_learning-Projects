@@ -1,6 +1,6 @@
 import requests
 
-FASTAPI_URL = "http://fastapi:8000"
+FASTAPI_URL = "https://heart-disease-prediction-api-bbdf.onrender.com"
 
 def predict_disease(data):
     response = requests.post(
