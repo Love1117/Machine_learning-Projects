@@ -1,7 +1,7 @@
 from fastapi import HTTPException
 
 from app.services.model_loader import model, tokenizer
-from app.services.preprocessing.py import predict_next_words
+from app.services.preprocessing import predict_next_words
 from app.database.crud import save_prediction
 
   
