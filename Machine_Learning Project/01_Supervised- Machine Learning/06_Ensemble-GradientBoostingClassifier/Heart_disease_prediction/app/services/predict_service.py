@@ -23,7 +23,7 @@ def prediction(data, db):
                                 "Physical_activity": PHYSICAL[data.Physical_activity],
                                 "age": data.age,
                                 "bmi": data.bmi,
-                                **encode_bp}])
+                                **bp_encode}])
 
     scale_df = scale.transform(input_data)
 
