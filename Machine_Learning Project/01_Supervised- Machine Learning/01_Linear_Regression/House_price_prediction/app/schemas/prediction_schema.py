@@ -4,7 +4,7 @@ from typing import Literal
 class PredictionRequest(BaseModel):
   Bedrooms: int= Field(..., example=2, description="fill in numbers of bedroom")
   Bathrooms: int= Field(..., example=3, description="fill in numbers of bathroom")
-  Living_Space: int= Field(..., example=1538, description="fill in the size of Living Space")
+  Living_Space: float= Field(..., example=1538, description="fill in the size of Living Space")
   Median_Household_Income: float= Field(..., example=370046.00, description="Median_Household_Income")
   Zip_Code: int= Field(..., example=10017, description="Zip Code")
   Latitude: float= Field(..., example=40.72, description="Latitude")
