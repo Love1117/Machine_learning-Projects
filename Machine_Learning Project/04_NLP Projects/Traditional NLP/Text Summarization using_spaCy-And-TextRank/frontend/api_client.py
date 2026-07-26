@@ -1,6 +1,6 @@
 import requests
 
-FASTAPI_URL = "http://fastapi:8000"
+FASTAPI_URL = "https://text-summarization-api-65g3.onrender.com"
 
 def summarize_text(input_data):
     response = requests.post(
