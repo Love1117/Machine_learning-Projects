@@ -22,7 +22,7 @@ load_css()
 st.markdown("""
 <div class="main-header">
     <h1>Sentiment Analysis</h1>
-    <p>Analyzes the sentiment of the provided text using the Roberta model.</p>
+    <p>Analyzes the sentiment of the provided text using the DistilBERT model.</p>
 </div>
 """, unsafe_allow_html=True)
 
