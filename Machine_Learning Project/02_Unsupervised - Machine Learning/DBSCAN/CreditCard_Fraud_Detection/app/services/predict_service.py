@@ -8,7 +8,7 @@ from app.database.crud import save_prediction
 
 def prediction(data, db):
   try:
-    type_encoded = encode_type(data.type_status)
+    type_encoded = encode_type(data.status_type)
 
     input_data = pd.DataFrame([{"step": data.step,
                                   "amount": data.amount,
