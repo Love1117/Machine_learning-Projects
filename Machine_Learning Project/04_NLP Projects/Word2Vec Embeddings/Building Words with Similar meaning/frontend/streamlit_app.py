@@ -101,11 +101,9 @@ if submit:
 
         for i, item in enumerate(result["similar_words"], start=1):
             similar_words_html += f"""
-                <div style="margin-bottom:8px;">
-                <strong>{i}.</strong> {item['word']}
-                <span style="float:right;">
-                    Similarity: <strong>{item['similarity']:.4f}</strong>
-                </span>
+            <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                <span><strong>{i}.</strong> {item['word']}</span>
+                <span><strong>{item['similarity']:.4f}</strong></span>
             </div>
             """
         
@@ -122,8 +120,6 @@ if submit:
             <p><strong>Number of Similar Words:</strong> {topn}</p>
 
             <hr>
-
-            <p><strong>Similar Words</strong></p>
 
             {similar_words_html}
 
