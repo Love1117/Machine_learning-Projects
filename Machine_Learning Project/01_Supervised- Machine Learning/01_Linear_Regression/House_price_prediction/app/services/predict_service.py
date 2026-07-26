@@ -74,7 +74,7 @@ def prediction(data, db):
     prediction = float(round(model.predict(scaled_df)[0], 2))
     House_price = f"${prediction:,.2f}"
     
-    db_obj = save_prediction(db, data, House_price)
+    db_obj = save_prediction(db, data, prediction)
     
     return {
         "House_price": House_price,
