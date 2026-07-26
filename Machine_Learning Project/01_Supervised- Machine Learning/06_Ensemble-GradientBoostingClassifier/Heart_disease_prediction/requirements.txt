@@ -2,9 +2,9 @@ fastapi
 uvicorn
 pydantic
 joblib
-pandas
+pandas==2.2.2
 scikit-learn==1.6.1
-numpy
+numpy==2.0.2
 
 sqlalchemy==2.0.32
 python-dotenv==1.0.1
