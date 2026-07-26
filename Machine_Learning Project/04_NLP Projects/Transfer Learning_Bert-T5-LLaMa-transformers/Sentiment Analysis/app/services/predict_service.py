@@ -19,7 +19,7 @@ def prediction(request, db):
                 "Roberta_pos": float(scores[2]),
                }
 
-    db_obj = save_prediction(db=db, model=Roberta, request=request, sentiment_scores=rob_dict)
+    db_obj = save_prediction(db=db, model="Roberta", request=request, sentiment_scores=rob_dict)
 
     return {
         "model": "Roberta", 
