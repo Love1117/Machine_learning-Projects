@@ -14,11 +14,11 @@ def save_prediction(db, request, result):
 
 
 
-def save_prediction2(db, request, float(similarity)):
+def save_prediction2(db, request, similarity):
   db_obj_one = Prediction2(
         word1=request.word1,
         word2=request.word2,
-        similarity_score=similarity)
+        similarity_score=float(similarity))
   db.add(db_obj_one)
   db.commit()
   db.refresh(db_obj_one)
