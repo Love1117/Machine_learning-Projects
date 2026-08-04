@@ -34,7 +34,7 @@ selected_song = st.selectbox(
 
 )
 
-API_URL = "http://fastapi:8000/recommend"
+API_URL = "https://music-recommendation-api-5ker.onrender.com"
 
 # Recommendation button
 if st.button("Recommend"):
