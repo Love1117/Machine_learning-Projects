@@ -52,7 +52,7 @@ if st.button("Recommend"):
 
             response = requests.post(
 
-                API_URL,
+                f"{API_URL}/recommend",
 
                 json={
                     "track_name": selected_song
