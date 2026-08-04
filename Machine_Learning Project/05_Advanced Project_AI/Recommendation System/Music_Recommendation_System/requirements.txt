@@ -7,4 +7,4 @@ joblib
 spotipy
 python-dotenv
 streamlit
-request
+requests
