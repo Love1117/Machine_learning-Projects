@@ -1,17 +1,9 @@
 import streamlit as st
 import requests
-import pandas as pd
-import joblib
 
 
 
-# Load songs
-songs = joblib.load("models/1st_version/songs.joblib")
-
-# Remove null values
-song_list = sorted(
-    songs["track_name"].dropna().unique().tolist()
-)
+API_URL = "https://music-recommendation-api-5ker.onrender.com"
 
 # Streamlit page
 st.set_page_config(
@@ -21,20 +13,32 @@ st.set_page_config(
 
 st.title("🎵 Music Recommendation System")
 
+
+# GET SONGS FROM FASTAPI
+try:
+    response = requests.get(
+        f"{API_URL}/songs"
+    )
+
+    song_list = response.json()["songs"]
+
+except:
+    st.error("FastAPI server is not running.")
+    st.stop()
+
+
 # Searchable dropdown
 selected_song = st.selectbox(
 
     "Search Song",
 
-    options=song_list,
+    song_list,
 
     index=None,
 
     placeholder="Type or select a song"
 
 )
-
-API_URL = "https://music-recommendation-api-5ker.onrender.com"
 
 # Recommendation button
 if st.button("Recommend"):
