@@ -69,12 +69,27 @@ def prediction(data, db):
     
     prediction = float(round(model.predict(scaled)[0], 2))
     Car_Price =  f"${prediction:,.2f}"
+
+    db_id = None
+    database_saved = False
     
-    db_obj = save_prediction(db, data, Car_Price)
+    try:
+        db_obj = save_prediction(db, data, Car_Price)
+        db_id = db_obj.id
+        database_saved = True
+     
+    except Exception as db_error:
+        traceback.print_exc()
+        try:
+            db.rollback()
+        except Exception:
+            pass
 
     return {
         "Car_Price": Car_Price,
-        "db_id": db_obj.id
+        "db_id": db_id,
+        "database_saved": database_saved
     }
+    
   except Exception as e:
     raise HTTPException(status_code=500, detail=str(e))
