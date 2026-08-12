@@ -92,4 +92,4 @@ def prediction(data, db):
     }
     
   except Exception as e:
-    raise HTTPException(status_code=500, detail=str(e))
+    raise HTTPException(status_code=500, detail="An error occurred while processing the prediction.")
