@@ -177,7 +177,7 @@ if submit:
 
         st.metric(
             label="is fraud transaction",
-            value=f"{result['prediction']}")
+            value=f"{result['Is_Fraud']}")
 
     except Exception as e:
         st.error(str(e))
