@@ -69,7 +69,7 @@ def prediction(data, db):
     database_saved = False
     
     try:
-        db_obj = save_prediction(db, data, Employee_Salary
+        db_obj = save_prediction(db, data, Employee_Salary)
         db_id = db_obj.id
         database_saved = True
      
