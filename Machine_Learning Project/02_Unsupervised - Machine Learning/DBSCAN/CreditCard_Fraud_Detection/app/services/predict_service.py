@@ -46,7 +46,7 @@ def prediction(data, db):
             pass
 
     return {
-        "prediction": is_fraud,
+        "Is_Fraud": is_fraud,
         "db_id": db_id,
         "database_saved": database_saved
     }
