@@ -6,6 +6,7 @@ from app.services.preprocessing import encode_type
 from app.database.crud import save_prediction
 
 
+
 def prediction(data, db):
   try:
     type_encoded = encode_type(data.status_type)
