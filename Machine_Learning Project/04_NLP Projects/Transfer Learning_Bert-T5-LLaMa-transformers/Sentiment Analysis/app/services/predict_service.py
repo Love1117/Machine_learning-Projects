@@ -20,15 +20,30 @@ def prediction(request, db):
     predicted_class = torch.argmax(outputs.logits, dim=1).item()
 
     label = "Positive" if predicted_class == 1 else "Negative"
+
+    db_id = None
+    database_saved = False
     
-    db_obj = save_prediction(db=db, model="Distilbert", request=request, sentiment_scores=sentiment_score)
+    try:
+        db_obj = save_prediction(db=db, model="Distilbert", request=request, sentiment_scores=sentiment_score)
+        db_id = db_obj.id
+        database_saved = True
+     
+    except Exception as db_error:
+        traceback.print_exc()
+        try:
+            db.rollback()
+        except Exception:
+            pass
+    
 
     return {
         "model": "Distilbert", 
         "text": request.text,
         "prediction": label,
         "sentiment_scores": sentiment_score,
-        "db_id": db_obj.id}
+        "db_id": db_id,
+        "database_saved": database_saved}
     
   except Exception as e:
-    raise HTTPException(status_code=500, detail=str(e))
+    raise HTTPException(status_code=500, detail="An error occurred while processing the prediction.")
