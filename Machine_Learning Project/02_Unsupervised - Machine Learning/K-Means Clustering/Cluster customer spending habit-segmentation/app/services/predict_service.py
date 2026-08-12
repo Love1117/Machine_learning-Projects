@@ -67,7 +67,7 @@ def prediction(data, db):
           
     
     return {
-        "prediction": Group_into,
+        "Grouped_into": Group_into,
         "db_id": db_id,
         "database_saved": database_saved
     }
