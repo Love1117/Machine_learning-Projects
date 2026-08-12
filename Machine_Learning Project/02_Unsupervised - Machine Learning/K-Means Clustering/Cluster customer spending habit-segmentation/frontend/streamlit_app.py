@@ -202,7 +202,7 @@ if submit:
 
         st.metric(
             label="Falls_into",
-            value=f"{result['prediction']}")
+            value=f"{result['Grouped_into']}")
 
     except Exception as e:
         st.error(str(e))
