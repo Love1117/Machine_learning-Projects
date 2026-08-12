@@ -51,7 +51,7 @@ def prediction(data, db):
             pass
     
     return {
-        "prediction": Falls_into,
+        "Falls_into": Falls_into,
         "db_id": db_id,
         "database_saved": database_saved
     }
