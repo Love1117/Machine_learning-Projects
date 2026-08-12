@@ -35,13 +35,27 @@ async def predict_flower_prediction(file: UploadFile, db):
     predicted_class_name = flower_dict[predicted_class_idx]
     confidence = float(np.max(prediction))
 
-    db_obj = save_prediction(db, filename=file.filename, predicted_class=predicted_class_name, confidence=confidence)
+    db_id = None
+    database_saved = False
+    
+    try:
+        db_obj = save_prediction(db, filename=file.filename, predicted_class=predicted_class_name, confidence=confidence)
+        db_id = db_obj.id
+        database_saved = True
+     
+    except Exception as db_error:
+        traceback.print_exc()
+        try:
+            db.rollback()
+        except Exception:
+            pass
 
     return {
         "filename": file.filename,
         "predicted_class": predicted_class_name,
         "confidence": confidence,
-        "db_id": db_obj.id
+        "db_id": db_id,
+        "database_saved": database_saved
     }
   except Exception as e:
-    raise HTTPException(status_code=500, detail=str(e))
+    raise HTTPException(status_code=500, detail="An error occurred while processing the prediction.")
