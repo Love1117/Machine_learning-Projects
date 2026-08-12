@@ -22,13 +22,26 @@ def prediction(data, db):
     prediction_probability = model.predict(scaled_input_data)[0][0]
     prediction_class = int(np.round(prediction_proba))
 
-
-    db_obj = save_prediction(db, data, predicted_insurance_claim, prediction_probability)
+    db_id = None
+    database_saved = False
+    
+    try:
+        db_obj = save_prediction(db, data, predicted_insurance_claim, prediction_probability)
+        db_id = db_obj.id
+        database_saved = True
+     
+    except Exception as db_error:
+        traceback.print_exc()
+        try:
+            db.rollback()
+        except Exception:
+            pass
 
     return {
         "prediction_probability": float(prediction_probability),
         "predicted_insurance_claim": "Has Insurance" if prediction_class ==1 else "No Insurance",
-        "db_id": db_obj.id
+        "db_id": db_id,
+        "database_saved": database_saved
     }
   except Exception as e:
-    raise HTTPException(status_code=500, detail=str(e))
+    raise HTTPException(status_code=500, detail="An error occurred while processing the prediction.")
