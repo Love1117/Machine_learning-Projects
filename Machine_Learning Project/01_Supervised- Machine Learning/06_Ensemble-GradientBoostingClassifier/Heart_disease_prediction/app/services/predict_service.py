@@ -29,11 +29,26 @@ def prediction(data, db):
 
     prediction = model.predict(scale_df)[0]
     Heart_Disease =  ("Yes" if prediction == 1 else "No")
-    db_obj = save_prediction(db, data, Heart_Disease)
+
+    db_id = None
+    database_saved = False
+    
+    try:
+        db_obj = save_prediction(db, data, Heart_Disease)
+        db_id = db_obj.id
+        database_saved = True
+     
+    except Exception as db_error:
+        traceback.print_exc()
+        try:
+            db.rollback()
+        except Exception:
+            pass
 
     return {
         "Heart_Disease": Heart_Disease,
-        "db_id": db_obj.id
+        "db_id": db_id,
+        "database_saved": database_saved
     }
   except Exception as e:
-    raise HTTPException(status_code=500, detail=str(e))
+    raise HTTPException(status_code=500, detail="An error occurred while processing the prediction.")
