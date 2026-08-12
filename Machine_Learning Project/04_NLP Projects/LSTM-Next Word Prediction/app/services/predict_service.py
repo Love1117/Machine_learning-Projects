@@ -14,14 +14,28 @@ def prediction(request, db):
             model=model
         )
 
-    db_obj = save_prediction(db, request, generated_text)
+    db_id = None
+    database_saved = False
+    
+    try:
+        db_obj = save_prediction(db, request, generated_text)
+        db_id = db_obj.id
+        database_saved = True
+     
+    except Exception as db_error:
+        traceback.print_exc()
+        try:
+            db.rollback()
+        except Exception:
+            pass
 
     return {
         "generated_text": generated_text,
-        "db_id": db_obj.id
+        "db_id": db_id,
+        "database_saved": database_saved
     }
   except Exception as e:
     print(f"Prediction error: {e}")
     import traceback
     traceback_str = traceback.format_exc()
-    return {"error": f"An internal error occurred during prediction: {e}", "traceback": traceback_str, "generated_text": ""}
+    return {"error": f"An internal error occurred during prediction", "traceback": traceback_str, "generated_text": ""}
