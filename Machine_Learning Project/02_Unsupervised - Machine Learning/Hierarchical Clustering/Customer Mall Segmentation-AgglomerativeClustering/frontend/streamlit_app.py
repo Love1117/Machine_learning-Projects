@@ -127,7 +127,7 @@ if submit:
 
         st.metric(
             label="Customer Segment",
-            value=f"{result['prediction']}")
+            value=f"{result['Falls_into']}")
 
     except Exception as e:
         st.error(str(e))
