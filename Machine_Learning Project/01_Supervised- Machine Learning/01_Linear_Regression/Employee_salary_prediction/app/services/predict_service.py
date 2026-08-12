@@ -64,14 +64,28 @@ def prediction(data, db):
     Scaled = scale.transform(input_data)
     prediction = float(round(model.predict(Scaled)[0], 2))
     Employee_Salary =  f"${prediction:,.2f}"
+
+    db_id = None
+    database_saved = False
     
-    db_obj = save_prediction(db, data, Employee_Salary)
+    try:
+        db_obj = save_prediction(db, data, Employee_Salary
+        db_id = db_obj.id
+        database_saved = True
+     
+    except Exception as db_error:
+        traceback.print_exc()
+        try:
+            db.rollback()
+        except Exception:
+            pass
     
     return {
         "Employee_Salary": Employee_Salary,
-        "db_id": db_obj.id
+        "db_id": db_id,
+        "database_saved": database_saved
     }
   
   except Exception as e:
     traceback.print_exc()
-    raise HTTPException(status_code=500, detail=str(e))
+    raise HTTPException(status_code=500, detail="An error occurred while processing the prediction.")
