@@ -16,7 +16,7 @@ labels_path = tf.keras.utils.get_file('ImageNetLabels.txt','https://storage.goog
 imagenet_labels = np.array(open(labels_path).read().splitlines())
 
 
-
+        
 async def image_prediction(file: UploadFile, db):
     try:
         # Read the image file
@@ -34,13 +34,28 @@ async def image_prediction(file: UploadFile, db):
         predicted_class_id = tf.math.argmax(result[0], axis=-1).numpy() # Get the class ID as a Python integer
         predicted_label = imagenet_labels[predicted_class_id] # Directly use the string label from the array
         confidence = float(np.max(result))
-    
-        db_obj = save_prediction(db, filename=file.filename, prediction=predicted_label, confidence=confidence)
 
+        db_id = None
+        database_saved = False
+    
+        try:
+            db_obj = save_prediction(db, filename=file.filename, prediction=predicted_label, confidence=confidence)
+            db_id = db_obj.id
+            database_saved = True
+     
+        except Exception as db_error:
+            traceback.print_exc()
+            try:
+                db.rollback()
+            except Exception:
+                pass
+
+        
         return {"filename": file.filename, 
             "prediction": predicted_label, 
             "confidence": confidence,
-            "db_id": db_obj.id}
+            "db_id": db_id,
+            "database_saved": database_saved}
       
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail="An error occurred while processing the prediction.")
