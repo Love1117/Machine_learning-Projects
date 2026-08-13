@@ -161,7 +161,7 @@ if submit:
         "newbalanceOrig": newbalanceOrig,
         "oldbalanceDest": oldbalanceDest,
         "newbalanceDest": newbalanceDest,
-        "type_status": type_status
+        "status_type": status_type
     }
 
 
