@@ -4,7 +4,7 @@ from fastapi import HTTPException
 from app.services.model_loader import model, scale
 from app.services.preprocessing import encode_type
 from app.database.crud import save_prediction
-
+import traceback
 
 
 def prediction(data, db):
@@ -51,5 +51,12 @@ def prediction(data, db):
         "db_id": db_id,
         "database_saved": database_saved
     }
+    
   except Exception as e:
-    raise HTTPException(status_code=500, detail="An error occurred while processing the prediction.")
+    import traceback
+    traceback.print_exc()
+
+    raise HTTPException(
+        status_code=500,
+        detail=str(e)
+    )
