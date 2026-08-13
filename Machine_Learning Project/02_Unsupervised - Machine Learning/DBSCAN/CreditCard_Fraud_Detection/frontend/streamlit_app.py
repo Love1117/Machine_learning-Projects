@@ -45,7 +45,7 @@ with st.form("prediction_form"):
         help="Enter No of step (e.g. 183)")
 
     with col2:
-        type_status = st.selectbox(
+        status_type = st.selectbox(
         "Select Payment Type",
         ["CASH_OUT", "PAYMENT", "CASH_IN", "TRANSFER", "DEBIT"],
         index=None,
