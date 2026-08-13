@@ -180,5 +180,5 @@ if submit:
             value=f"{result['Is_Fraud']}")
 
     except Exception as e:
-        st.esrror(f"Prediction failed: {e}")
+        st.error(f"Prediction failed: {e}")
         st.exception(e)
