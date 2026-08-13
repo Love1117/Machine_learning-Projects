@@ -6,7 +6,7 @@ from app.services.model_loader import songs, matrix
 
 
 
-def recommend_music(request: MusicRequest):
+def recommend_music(request):
     try:
         requested_track = request.track_name
         matching_indices = songs[songs["track_name"].str.lower() == requested_track.lower()].index
