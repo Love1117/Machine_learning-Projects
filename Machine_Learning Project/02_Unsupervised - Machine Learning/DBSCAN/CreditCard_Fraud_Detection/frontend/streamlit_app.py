@@ -129,7 +129,7 @@ if submit:
     if step is None:
         missing_fields.append("Step")
 
-    if type_status is None:
+    if status_type is None:
         missing_fields.append("Select Payment Type")
 
     if amount is None:
