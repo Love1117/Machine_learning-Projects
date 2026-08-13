@@ -9,4 +9,3 @@ def predict_fraud(data):
     )
     response.raise_for_status()
     return response.json()
-    
