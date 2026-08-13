@@ -10,9 +10,9 @@ def predict_fraud(data):
         timeout=60
     )
 
-    if response.status_code != 200:
-        raise Exception(
-            f"FastAPI Error {response.status_code}: {response.text}"
-        )
+if response.status_code != 200:
+    print("STATUS:", response.status_code)
+    print("RESPONSE:", response.text)
 
-    return response.json()
+    raise Exception(
+        f"FastAPI Error {response.status_code}: {response.text}")
